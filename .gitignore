@@ -1,0 +1,6 @@
+iguana/
+iguana-*.zip
+iguana-*.zip.*
+/volumes/
+results/
+*.log
