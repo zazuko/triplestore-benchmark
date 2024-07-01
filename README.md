@@ -22,17 +22,16 @@ To get started, follow these steps:
 
 1. Run the fetch script to download Iguana from the specified GitHub release into the `iguana` directory:
 
-    ```sh
-    ./scripts/fetch-iguana.sh
-    ```
+   ```sh
+   ./scripts/fetch-iguana.sh
+   ```
 
-    The script will pull the specified version of Iguana as stated in `scripts/fetch-iguana.sh`.
+   The script will pull the specified version of Iguana as stated in `scripts/fetch-iguana.sh`.
 
 2. Execute the benchmark using the predetermined scenario by running:
 
-    ```sh
-    ./scripts/scenario-lindas.sh
-    ```
+   ```sh
+   ./scripts/scenario-lindas.sh
+   ```
 
-    This command initiates the benchmark using the configuration outlined in `scenarios/lindas.yaml`.
-
+   This command initiates the benchmark using the configuration outlined in `scenarios/lindas.yaml`.
