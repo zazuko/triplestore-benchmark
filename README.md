@@ -11,7 +11,7 @@ Currently, we are in the process of preparing a baseline comparison of the LINDA
 Ensure you have the following prerequisites ready:
 
 - [Java](https://www.java.com/en/)
-- A snapshot of the LINDAS dataset, which you can download [here](https://zazuko-download.fra1.cdn.digitaloceanspaces.com/lindas/lindas_2024-06-14.nq.gz). The dataset is approximately 2.3 GB compressed and 60GB uncompressed.
+- A snapshot of the LINDAS dataset, which you can download [here](https://download.zazukoians.org/lindas/lindas_2024-06-14.nq.gz). The dataset is approximately 2.3 GB compressed and 60GB uncompressed.
 - A triplestore that you wish to test against.
 
 We use [Iguana](https://github.com/dice-group/IGUANA) to benchmark the queries.
