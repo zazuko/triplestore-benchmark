@@ -1,5 +1,6 @@
 
 ###
+# Query 0
 # 000164.rq
 
   PREFIX schema: <http://schema.org/>
@@ -15,6 +16,7 @@
   ORDER BY ?position
 
 ###
+# Query 1
 # 000165.rq
 
   PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -43,14 +45,17 @@
 
 
 ###
+# Query 2
 # 000369.rq
 CONSTRUCT { ?s a ?o. ?s <http://www.w3.org/2000/01/rdf-schema#label> ?label. } WHERE { ?s a ?o. OPTIONAL {?s <http://www.w3.org/2000/01/rdf-schema#label> ?label.} FILTER REGEX(STR(?s), "^https://ld.stadt-zuerich.ch/statistics/measure/") }
 
 ###
+# Query 3
 # 000370.rq
 CONSTRUCT { ?s a ?o. ?s <http://www.w3.org/2000/01/rdf-schema#label> ?label. } WHERE { ?s a ?o. OPTIONAL {?s <http://www.w3.org/2000/01/rdf-schema#label> ?label.} FILTER REGEX(STR(?s), "^https://ld.stadt-zuerich.ch/statistics/property/") }
 
 ###
+# Query 4
 # 003284.rq
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -62,6 +67,7 @@ WHERE {
 } ORDER BY DESC(?d) LIMIT 10
 
 ###
+# Query 5
 # 003313.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -78,6 +84,7 @@ GROUP BY ?time ?somePropertyLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 6
 # 003315.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -94,6 +101,7 @@ GROUP BY ?time
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 7
 # 003316.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -110,6 +118,7 @@ GROUP BY ?time
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 8
 # 003317.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -126,10 +135,12 @@ GROUP BY ?time ?Count
 #ORDER BY ?time
 
 ###
+# Query 9
 # 003318.rq
 describe <https://ld.stadt-zuerich.ch/statistics/measure/BST>
 
 ###
+# Query 10
 # 003326.rq
 PREFIX cube: <https://cube.link/>
 select ?obs ?count
@@ -139,6 +150,7 @@ select ?obs ?count
 }
 
 ###
+# Query 11
 # 003329.rq
 PREFIX schema: <http://schema.org/>
 select ?uri ?name
@@ -148,6 +160,7 @@ select ?uri ?name
 }
 
 ###
+# Query 12
 # 003334.rq
 PREFIX cube: <https://cube.link/>
 select ?obs ?count
@@ -158,6 +171,7 @@ select ?obs ?count
 }
 
 ###
+# Query 13
 # 003339.rq
 PREFIX cube: <https://cube.link/>
 select ?obs ?raum ?count
@@ -168,6 +182,7 @@ select ?obs ?raum ?count
 }
 
 ###
+# Query 14
 # 003340.rq
 PREFIX cube: <https://cube.link/>
 select ?obs ?raum ?count
@@ -178,6 +193,7 @@ select ?obs ?raum ?count
 }
 
 ###
+# Query 15
 # 003341.rq
 PREFIX schema: <http://schema.org/>
 PREFIX cube: <https://cube.link/>
@@ -190,6 +206,7 @@ select ?obs ?raumname ?count
 }
 
 ###
+# Query 16
 # 003350.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -216,10 +233,12 @@ GROUP BY ?time
 ORDER BY ?time
 
 ###
+# Query 17
 # 003675.rq
 CONSTRUCT { ?s a ?o. } WHERE { GRAPH ?g{  ?s a ?o. FILTER REGEX(STR(?s), "^https://lod.opentransportdata.swiss/didok/") }}
 
 ###
+# Query 18
 # 003850.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -237,6 +256,7 @@ GROUP BY ?time ?somePropertyLabel
 ORDER BY ?time DESC(?totalAnteil)
 
 ###
+# Query 19
 # 003968.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -254,6 +274,7 @@ ORDER BY DESC(?totalCount)
 LIMIT 20
 
 ###
+# Query 20
 # 003976.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -269,6 +290,7 @@ GROUP BY ?somePropertyLabel
 ORDER BY DESC(?totalCount)
 
 ###
+# Query 21
 # 004023.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -287,6 +309,7 @@ GROUP BY ?somePropertyLabel
 ORDER BY DESC(?totalCount)
 
 ###
+# Query 22
 # 004037.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -303,6 +326,7 @@ GROUP BY ?NNMLabel
 ORDER BY DESC(?totalCount)
 
 ###
+# Query 23
 # 004040.rq
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -312,6 +336,7 @@ SELECT * WHERE {
 LIMIT 10
 
 ###
+# Query 24
 # 005231.rq
 
             PREFIX schema: <http://schema.org/>
@@ -324,6 +349,7 @@ LIMIT 10
 
 
 ###
+# Query 25
 # 005427.rq
 
             PREFIX schema: <http://schema.org/>
@@ -336,6 +362,7 @@ LIMIT 10
 
 
 ###
+# Query 26
 # 005431.rq
 # SELECT cardianlities for properties
 SELECT (max(?count) as ?max) (min(?count) as ?min) WHERE {
@@ -350,6 +377,7 @@ SELECT (max(?count) as ?max) (min(?count) as ?min) WHERE {
 }
 
 ###
+# Query 27
 # 006527.rq
 
             PREFIX schema: <http://schema.org/>
@@ -362,6 +390,7 @@ SELECT (max(?count) as ?max) (min(?count) as ?min) WHERE {
 
 
 ###
+# Query 28
 # 006532.rq
 
             PREFIX schema: <http://schema.org/>
@@ -374,6 +403,7 @@ SELECT (max(?count) as ?max) (min(?count) as ?min) WHERE {
 
 
 ###
+# Query 29
 # 006563.rq
 
         PREFIX cube: <https://cube.link/>
@@ -406,6 +436,7 @@ SELECT (max(?count) as ?max) (min(?count) as ?min) WHERE {
 
 
 ###
+# Query 30
 # 006567.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -432,6 +463,7 @@ WHERE {
 }
 
 ###
+# Query 31
 # 006859.rq
 
             PREFIX schema: <http://schema.org/>
@@ -452,6 +484,7 @@ WHERE {
 
 
 ###
+# Query 32
 # 006861.rq
 
             PREFIX schema: <http://schema.org/>
@@ -472,6 +505,7 @@ WHERE {
 
 
 ###
+# Query 33
 # 006868.rq
 
             PREFIX schema: <http://schema.org/>
@@ -492,6 +526,7 @@ WHERE {
 
 
 ###
+# Query 34
 # 006875.rq
 
             PREFIX schema: <http://schema.org/>
@@ -512,6 +547,7 @@ WHERE {
 
 
 ###
+# Query 35
 # 006876.rq
 
             PREFIX schema: <http://schema.org/>
@@ -532,6 +568,7 @@ WHERE {
 
 
 ###
+# Query 36
 # 006937.rq
 
         PREFIX cube: <https://cube.link/>
@@ -568,6 +605,7 @@ WHERE {
 
 
 ###
+# Query 37
 # 007038.rq
 
         PREFIX cube: <https://cube.link/>
@@ -603,6 +641,7 @@ WHERE {
 
 
 ###
+# Query 38
 # 007814.rq
 
             PREFIX schema: <http://schema.org/>
@@ -623,6 +662,7 @@ WHERE {
 
 
 ###
+# Query 39
 # 007819.rq
 
             PREFIX schema: <http://schema.org/>
@@ -643,6 +683,7 @@ WHERE {
 
 
 ###
+# Query 40
 # 007822.rq
 
             PREFIX schema: <http://schema.org/>
@@ -663,6 +704,7 @@ WHERE {
 
 
 ###
+# Query 41
 # 007823.rq
 
             PREFIX schema: <http://schema.org/>
@@ -683,6 +725,7 @@ WHERE {
 
 
 ###
+# Query 42
 # 008553.rq
 
             PREFIX schema: <http://schema.org/>
@@ -695,6 +738,7 @@ WHERE {
 
 
 ###
+# Query 43
 # 008556.rq
 
             PREFIX schema: <http://schema.org/>
@@ -707,6 +751,7 @@ WHERE {
 
 
 ###
+# Query 44
 # 008557.rq
 
             PREFIX schema: <http://schema.org/>
@@ -719,6 +764,7 @@ WHERE {
 
 
 ###
+# Query 45
 # 008701.rq
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -730,10 +776,12 @@ WHERE {
 }
 
 ###
+# Query 46
 # 008921.rq
 CONSTRUCT { ?s a ?o. ?s <http://www.w3.org/2000/01/rdf-schema#label> ?label. } WHERE { ?s a ?o. OPTIONAL {?s <http://www.w3.org/2000/01/rdf-schema#label> ?label.} FILTER REGEX(STR(?s), "^https://ld.stadt-zuerich.ch/statistics/code/") }
 
 ###
+# Query 47
 # 008971.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -752,6 +800,7 @@ GROUP BY ?time ?somePropertyLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 48
 # 008974.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -769,6 +818,7 @@ GROUP BY ?time ?somePropertyLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 49
 # 008977.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -785,6 +835,7 @@ GROUP BY ?time
 ORDER BY ?time
 
 ###
+# Query 50
 # 008980.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -803,6 +854,7 @@ GROUP BY ?time ?somePropertyLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 51
 # 008981.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -819,6 +871,7 @@ GROUP BY ?time
 ORDER BY ?time
 
 ###
+# Query 52
 # 008982.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -835,6 +888,7 @@ GROUP BY ?time
 ORDER BY ?time
 
 ###
+# Query 53
 # 008988.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -851,6 +905,7 @@ GROUP BY ?time
 ORDER BY ?time
 
 ###
+# Query 54
 # 009044.rq
 
             PREFIX schema: <http://schema.org/>
@@ -870,6 +925,7 @@ ORDER BY ?time
 
 
 ###
+# Query 55
 # 009045.rq
 
             PREFIX schema: <http://schema.org/>
@@ -889,14 +945,17 @@ ORDER BY ?time
 
 
 ###
+# Query 56
 # 010151.rq
 CONSTRUCT { ?s a ?o. ?s <http://www.w3.org/2000/01/rdf-schema#label> ?label. } WHERE { ?s a ?o. OPTIONAL {?s <http://www.w3.org/2000/01/rdf-schema#label> ?label.} FILTER REGEX(STR(?s), "^https://ld.stadt-zuerich.ch/statistics/") }
 
 ###
+# Query 57
 # 011013.rq
 SELECT * WHERE {?s ?p ?o.} LIMIT 1
 
 ###
+# Query 58
 # 011271.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -914,6 +973,7 @@ GROUP BY ?time ?kreisLabel
 ORDER BY ?time DESC(?durchschnittlicherMietpreis)
 
 ###
+# Query 59
 # 011277.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -930,6 +990,7 @@ GROUP BY ?kreisLabel
 ORDER BY ?durchschnittlicherMietpreis
 
 ###
+# Query 60
 # 011279.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -945,6 +1006,7 @@ GROUP BY ?kreisLabel
 ORDER BY DESC(?durchschnittlichesEinkommen)
 
 ###
+# Query 61
 # 011280.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -962,6 +1024,7 @@ GROUP BY ?kreisLabel
 ORDER BY ?durchschnittlichesEinkommen
 
 ###
+# Query 62
 # 011778.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -989,6 +1052,7 @@ WHERE {
 }
 
 ###
+# Query 63
 # 011794.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -1017,6 +1081,7 @@ WHERE {
 }
 
 ###
+# Query 64
 # 011795.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -1045,6 +1110,7 @@ WHERE {
 }
 
 ###
+# Query 65
 # 011885.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -1071,6 +1137,7 @@ WHERE {
 }
 
 ###
+# Query 66
 # 012212.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -1101,6 +1168,7 @@ GROUP BY ?observedBy
 ORDER BY ?observedBy
 
 ###
+# Query 67
 # 012350.rq
 PREFIX schema: <http://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -1131,6 +1199,7 @@ WHERE {
 }
 
 ###
+# Query 68
 # 012371.rq
 PREFIX schema: <http://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -1155,6 +1224,7 @@ WHERE {
 }
 
 ###
+# Query 69
 # 012426.rq
 
             PREFIX schema: <http://schema.org/>
@@ -1174,6 +1244,7 @@ WHERE {
 
 
 ###
+# Query 70
 # 012509.rq
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX otd: <https://lod.opentransportdata.swiss/vocab/>
@@ -1189,6 +1260,7 @@ WHERE {
 }
 
 ###
+# Query 71
 # 015249.rq
 PREFIX gtfs: <http://vocab.gtfs.org/terms#>
 PREFIX schema: <http://schema.org/>
@@ -1204,6 +1276,7 @@ WHERE {
 }
 
 ###
+# Query 72
 # 015477.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -1245,6 +1318,7 @@ WHERE
       }
 
 ###
+# Query 73
 # 015478.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -1296,6 +1370,7 @@ WHERE
   }
 
 ###
+# Query 74
 # 015869.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -1347,6 +1422,7 @@ WHERE
   }
 
 ###
+# Query 75
 # 015870.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -1388,6 +1464,7 @@ WHERE
       }
 
 ###
+# Query 76
 # 015876.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -1429,6 +1506,7 @@ WHERE
       }
 
 ###
+# Query 77
 # 015877.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -1480,6 +1558,7 @@ WHERE
   }
 
 ###
+# Query 78
 # 015878.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -1521,6 +1600,7 @@ WHERE
       }
 
 ###
+# Query 79
 # 015879.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -1572,6 +1652,7 @@ WHERE
   }
 
 ###
+# Query 80
 # 015880.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -1613,6 +1694,7 @@ WHERE
       }
 
 ###
+# Query 81
 # 015881.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -1664,6 +1746,7 @@ WHERE
   }
 
 ###
+# Query 82
 # 015883.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -1715,6 +1798,7 @@ WHERE
   }
 
 ###
+# Query 83
 # 015884.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -1756,6 +1840,7 @@ WHERE
       }
 
 ###
+# Query 84
 # 015889.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -1797,6 +1882,7 @@ WHERE
       }
 
 ###
+# Query 85
 # 015890.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -1848,6 +1934,7 @@ WHERE
   }
 
 ###
+# Query 86
 # 016093.rq
 PREFIX gtfs: <http://vocab.gtfs.org/terms#>
 PREFIX otd: <https://lod.opentransportdata.swiss/vocab/>
@@ -1863,6 +1950,7 @@ WHERE {
 }
 
 ###
+# Query 87
 # 016096.rq
 PREFIX schema: <http://schema.org/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -1888,6 +1976,7 @@ WHERE {
 }
 
 ###
+# Query 88
 # 016229.rq
 
             PREFIX schema: <http://schema.org/>
@@ -1900,6 +1989,7 @@ WHERE {
 
 
 ###
+# Query 89
 # 016230.rq
 
             PREFIX schema: <http://schema.org/>
@@ -1912,6 +2002,7 @@ WHERE {
 
 
 ###
+# Query 90
 # 016237.rq
 
             PREFIX schema: <http://schema.org/>
@@ -1924,6 +2015,7 @@ WHERE {
 
 
 ###
+# Query 91
 # 016238.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -1941,6 +2033,7 @@ GROUP BY ?time ?raumLabel
 ORDER BY DESC(?totalCount)
 
 ###
+# Query 92
 # 016239.rq
 
             PREFIX schema: <http://schema.org/>
@@ -1953,6 +2046,7 @@ ORDER BY DESC(?totalCount)
 
 
 ###
+# Query 93
 # 016240.rq
 
             PREFIX schema: <http://schema.org/>
@@ -1965,6 +2059,7 @@ ORDER BY DESC(?totalCount)
 
 
 ###
+# Query 94
 # 016241.rq
 
             PREFIX schema: <http://schema.org/>
@@ -1977,6 +2072,7 @@ ORDER BY DESC(?totalCount)
 
 
 ###
+# Query 95
 # 016242.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -1994,6 +2090,7 @@ GROUP BY ?time ?somePropertyLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 96
 # 016243.rq
 
             PREFIX schema: <http://schema.org/>
@@ -2006,6 +2103,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 97
 # 016244.rq
 
             PREFIX schema: <http://schema.org/>
@@ -2018,6 +2116,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 98
 # 016245.rq
 
             PREFIX schema: <http://schema.org/>
@@ -2030,6 +2129,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 99
 # 016246.rq
 
             PREFIX schema: <http://schema.org/>
@@ -2042,6 +2142,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 100
 # 016247.rq
 
             PREFIX schema: <http://schema.org/>
@@ -2054,6 +2155,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 101
 # 016248.rq
 
             PREFIX schema: <http://schema.org/>
@@ -2066,6 +2168,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 102
 # 016249.rq
 
             PREFIX schema: <http://schema.org/>
@@ -2084,6 +2187,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 103
 # 016251.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -2101,6 +2205,7 @@ GROUP BY ?time ?todesursacheLabel
 ORDER BY ?time DESC(?totalSterbefälle)
 
 ###
+# Query 104
 # 016252.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -2119,6 +2224,7 @@ GROUP BY ?time ?todesursacheLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 105
 # 016255.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -2137,6 +2243,7 @@ GROUP BY ?time ?todesursachenLabel
 ORDER BY ?time DESC(?totalSterbefälle)
 
 ###
+# Query 106
 # 016256.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -2155,6 +2262,7 @@ GROUP BY ?time ?todesursacheLabel
 ORDER BY ?time DESC(?totalSterbefälle)
 
 ###
+# Query 107
 # 016305.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -2172,6 +2280,7 @@ GROUP BY ?time ?somePropertyLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 108
 # 016308.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -2188,6 +2297,7 @@ GROUP BY ?time
 ORDER BY ?time
 
 ###
+# Query 109
 # 016314.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -2206,6 +2316,7 @@ GROUP BY ?time ?somePropertyLabel
 ORDER BY DESC(?totalCount)
 
 ###
+# Query 110
 # 016335.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -2224,6 +2335,7 @@ GROUP BY ?time ?ehelichkeitLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 111
 # 016336.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -2240,6 +2352,7 @@ GROUP BY ?time
 ORDER BY ?time
 
 ###
+# Query 112
 # 016378.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -2257,6 +2370,7 @@ GROUP BY ?time ?somePropertyLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 113
 # 016409.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -2274,6 +2388,7 @@ GROUP BY ?time ?sprachenLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 114
 # 016439.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX cube: <https://cube.link/>
@@ -2312,6 +2427,7 @@ FROM <https://lindas.admin.ch/stadtzuerich/stat>
 
 
 ###
+# Query 115
 # 016441.rq
 PREFIX schema: <http://schema.org/>
 PREFIX ssz: <https://ld.stadt-zuerich.ch/schema/>
@@ -2345,6 +2461,7 @@ WHERE {
 }
 
 ###
+# Query 116
 # 016442.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX hydra: <http://www.w3.org/ns/hydra/core#>
@@ -2377,6 +2494,7 @@ WHERE {
 }
 
 ###
+# Query 117
 # 016443.rq
 PREFIX hydra: <http://www.w3.org/ns/hydra/core#>
 PREFIX cube: <https://cube.link/>
@@ -2402,6 +2520,7 @@ WHERE {
 }
 
 ###
+# Query 118
 # 016454.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX cube: <https://cube.link/>
@@ -2449,6 +2568,7 @@ FROM <https://lindas.admin.ch/stadtzuerich/stat>
 }
 
 ###
+# Query 119
 # 016459.rq
 PREFIX schema: <http://schema.org/>
 
@@ -2462,6 +2582,7 @@ WHERE {
 
 
 ###
+# Query 120
 # 016460.rq
 PREFIX schema: <http://schema.org/>
 
@@ -2475,6 +2596,7 @@ WHERE {
 
 
 ###
+# Query 121
 # 016461.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX schema: <http://schema.org/>
@@ -2495,6 +2617,7 @@ WHERE {
 
 
 ###
+# Query 122
 # 016462.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX schema: <http://schema.org/>
@@ -2515,6 +2638,7 @@ WHERE {
 
 
 ###
+# Query 123
 # 016463.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX schema: <http://schema.org/>
@@ -2541,6 +2665,7 @@ WHERE {
 
 
 ###
+# Query 124
 # 016472.rq
 PREFIX hydra: <http://www.w3.org/ns/hydra/core#>
 PREFIX cube: <https://cube.link/>
@@ -2602,6 +2727,7 @@ WHERE {
 #LIMIT 10
 
 ###
+# Query 125
 # 016485.rq
 PREFIX schema: <http://schema.org/>
 
@@ -2615,6 +2741,7 @@ WHERE {
 
 
 ###
+# Query 126
 # 016486.rq
 PREFIX schema: <http://schema.org/>
 
@@ -2628,6 +2755,7 @@ WHERE {
 
 
 ###
+# Query 127
 # 016487.rq
 PREFIX schema: <http://schema.org/>
 
@@ -2641,6 +2769,7 @@ WHERE {
 
 
 ###
+# Query 128
 # 016488.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX cube: <https://cube.link/>
@@ -2692,6 +2821,7 @@ FROM <https://lindas.admin.ch/stadtzuerich/stat>
 }
 
 ###
+# Query 129
 # 016491.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX cube: <https://cube.link/>
@@ -2742,6 +2872,7 @@ FROM <https://lindas.admin.ch/stadtzuerich/stat>
 }
 
 ###
+# Query 130
 # 016492.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX cube: <https://cube.link/>
@@ -2790,6 +2921,7 @@ FROM <https://lindas.admin.ch/stadtzuerich/stat>
 }
 
 ###
+# Query 131
 # 016493.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX cube: <https://cube.link/>
@@ -2836,6 +2968,7 @@ FROM <https://lindas.admin.ch/stadtzuerich/stat>
 }
 
 ###
+# Query 132
 # 016496.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -2856,6 +2989,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 133
 # 016497.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -2875,6 +3009,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 134
 # 016505.rq
 PREFIX schema: <http://schema.org/>
 
@@ -2888,6 +3023,7 @@ WHERE {
 
 
 ###
+# Query 135
 # 016511.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX cube: <https://cube.link/>
@@ -2933,6 +3069,7 @@ FROM <https://lindas.admin.ch/stadtzuerich/stat>
 }
 
 ###
+# Query 136
 # 016512.rq
 PREFIX schema: <http://schema.org/>
 PREFIX cube: <https://cube.link/>
@@ -2946,6 +3083,7 @@ select ?dimension ?type (lcase(?id) as ?identifier) {
 
 
 ###
+# Query 137
 # 016514.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX cube: <https://cube.link/>
@@ -2990,6 +3128,7 @@ FROM <https://lindas.admin.ch/stadtzuerich/stat>
 }
 
 ###
+# Query 138
 # 016515.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX cube: <https://cube.link/>
@@ -3032,6 +3171,7 @@ FROM <https://lindas.admin.ch/stadtzuerich/stat>
 }
 
 ###
+# Query 139
 # 016527.rq
 PREFIX hydra: <http://www.w3.org/ns/hydra/core#>
 PREFIX cube: <https://cube.link/>
@@ -3057,6 +3197,7 @@ WHERE {
 }
 
 ###
+# Query 140
 # 016531.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX cube: <https://cube.link/>
@@ -3110,6 +3251,7 @@ FROM <https://lindas.admin.ch/stadtzuerich/stat>
 }
 
 ###
+# Query 141
 # 016534.rq
 PREFIX hydra: <http://www.w3.org/ns/hydra/core#>
 PREFIX cube: <https://cube.link/>
@@ -3171,6 +3313,7 @@ WHERE {
 #LIMIT 10
 
 ###
+# Query 142
 # 016536.rq
 #pragma describe.strategy cbd
 
@@ -3182,10 +3325,12 @@ CONSTRUCT {
 }
 
 ###
+# Query 143
 # 016538.rq
 describe <https://view-builder.ld.stadt-zuerich.ch/view/BEV355OD3556>
 
 ###
+# Query 144
 # 016557.rq
 PREFIX schema: <http://schema.org/>
 PREFIX ssz: <https://ld.stadt-zuerich.ch/schema/>
@@ -3219,6 +3364,7 @@ WHERE {
 }
 
 ###
+# Query 145
 # 016561.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX cube: <https://cube.link/>
@@ -3274,6 +3420,7 @@ FROM <https://lindas.admin.ch/stadtzuerich/stat>
 }
 
 ###
+# Query 146
 # 016562.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX schema: <http://schema.org/>
@@ -3340,6 +3487,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 147
 # 016563.rq
 PREFIX schema: <http://schema.org/>
 
@@ -3353,6 +3501,7 @@ WHERE {
 
 
 ###
+# Query 148
 # 016564.rq
 PREFIX schema: <http://schema.org/>
 
@@ -3366,6 +3515,7 @@ WHERE {
 
 
 ###
+# Query 149
 # 016573.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX schema: <http://schema.org/>
@@ -3432,6 +3582,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 150
 # 016574.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX cube: <https://cube.link/>
@@ -3486,6 +3637,7 @@ FROM <https://lindas.admin.ch/stadtzuerich/stat>
 }
 
 ###
+# Query 151
 # 016581.rq
 SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension10 ?dimension11 ?dimension3 ?dimension12 ?dimension13 ?dimension4 ?dimension14 ?dimension15 ?dimension5 ?dimension16 ?dimension17 ?dimension6 ?dimension18 ?dimension19 ?dimension7 ?dimension20 ?dimension21 WHERE {
   <https://ld.stadt-zuerich.ch/statistics/000230> <https://cube.link/observationSet> ?observationSet0 .
@@ -3529,6 +3681,7 @@ SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension10 ?dimension11 ?d
 GROUP BY ?dimension0 ?dimension1 ?dimension2 ?dimension10 ?dimension11 ?dimension3 ?dimension12 ?dimension13 ?dimension4 ?dimension14 ?dimension15 ?dimension5 ?dimension16 ?dimension17 ?dimension6 ?dimension18 ?dimension19 ?dimension7 ?dimension20 ?dimension21 LIMIT 100
 
 ###
+# Query 152
 # 016587.rq
 PREFIX schema: <http://schema.org/>
 
@@ -3542,6 +3695,7 @@ WHERE {
 
 
 ###
+# Query 153
 # 016591.rq
 PREFIX schema: <http://schema.org/>
 
@@ -3555,6 +3709,7 @@ WHERE {
 
 
 ###
+# Query 154
 # 016596.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX cube: <https://cube.link/>
@@ -3607,6 +3762,7 @@ FROM <https://lindas.admin.ch/stadtzuerich/stat>
 }
 
 ###
+# Query 155
 # 016598.rq
 PREFIX hydra: <http://www.w3.org/ns/hydra/core#>
 PREFIX cube: <https://cube.link/>
@@ -3668,6 +3824,7 @@ WHERE {
 #LIMIT 10
 
 ###
+# Query 156
 # 016601.rq
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX cube: <https://cube.link/>
@@ -3721,6 +3878,7 @@ FROM <https://lindas.admin.ch/stadtzuerich/stat>
 }
 
 ###
+# Query 157
 # 016602.rq
 SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension9 ?dimension10 ?dimension3 ?dimension11 ?dimension12 ?dimension4 ?dimension13 ?dimension14 ?dimension5 ?dimension15 ?dimension16 ?dimension6 ?dimension17 ?dimension18 ?dimension7 ?dimension19 ?dimension20 ?dimension8 ?dimension21 ?dimension22 WHERE {
   <https://ld.stadt-zuerich.ch/statistics/000230> <https://cube.link/observationSet> ?observationSet0 .
@@ -3758,6 +3916,7 @@ SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension9 ?dimension10 ?di
 GROUP BY ?dimension0 ?dimension1 ?dimension2 ?dimension9 ?dimension10 ?dimension3 ?dimension11 ?dimension12 ?dimension4 ?dimension13 ?dimension14 ?dimension5 ?dimension15 ?dimension16 ?dimension6 ?dimension17 ?dimension18 ?dimension7 ?dimension19 ?dimension20 ?dimension8 ?dimension21 ?dimension22 LIMIT 100
 
 ###
+# Query 158
 # 016605.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -3784,6 +3943,7 @@ GROUP BY ?time ?Todesfälle ?WirtschaftlicheBevölkerung
 ORDER BY ?time
 
 ###
+# Query 159
 # 016610.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -3799,6 +3959,7 @@ GROUP BY ?time
 ORDER BY ?time
 
 ###
+# Query 160
 # 016630.rq
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -3807,6 +3968,7 @@ SELECT (count(*) as ?c) WHERE {
 }
 
 ###
+# Query 161
 # 016631.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -3824,6 +3986,7 @@ GROUP BY ?time
 ORDER BY ?time
 
 ###
+# Query 162
 # 016632.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -3839,6 +4002,7 @@ GROUP BY ?time
 ORDER BY ?time
 
 ###
+# Query 163
 # 016708.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -3855,6 +4019,7 @@ ORDER BY DESC(?totalCount)
 LIMIT 20
 
 ###
+# Query 164
 # 016712.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -3872,6 +4037,7 @@ GROUP BY ?NNMLabel
 ORDER BY DESC(?totalCount)
 
 ###
+# Query 165
 # 016721.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -3890,6 +4056,7 @@ GROUP BY ?somePropertyLabel
 ORDER BY DESC(?totalCount)
 
 ###
+# Query 166
 # 016722.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -3908,6 +4075,7 @@ GROUP BY ?time ?sexLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 167
 # 016723.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -3923,6 +4091,7 @@ GROUP BY ?time
 ORDER BY ?time
 
 ###
+# Query 168
 # 016726.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -3940,6 +4109,7 @@ GROUP BY ?time ?HELLabel
 ORDER BY ?time
 
 ###
+# Query 169
 # 016731.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -3958,6 +4128,7 @@ GROUP BY ?time ?somePropertyLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 170
 # 016788.rq
 
             PREFIX schema: <http://schema.org/>
@@ -3973,6 +4144,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 171
 # 016789.rq
 
             PREFIX schema: <http://schema.org/>
@@ -3988,6 +4160,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 172
 # 016790.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4003,6 +4176,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 173
 # 016791.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4022,6 +4196,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 174
 # 016792.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4041,6 +4216,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 175
 # 016793.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4060,6 +4236,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 176
 # 016794.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4079,6 +4256,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 177
 # 016795.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4098,6 +4276,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 178
 # 016796.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4117,6 +4296,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 179
 # 016797.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4136,6 +4316,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 180
 # 016798.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4155,6 +4336,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 181
 # 016799.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4174,6 +4356,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 182
 # 016800.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4193,6 +4376,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 183
 # 016801.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4212,6 +4396,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 184
 # 016802.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4231,6 +4416,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 185
 # 016803.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4250,6 +4436,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 186
 # 016804.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4269,6 +4456,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 187
 # 016805.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4288,6 +4476,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 188
 # 016806.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4307,6 +4496,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 189
 # 016807.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4326,6 +4516,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 190
 # 016808.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4345,6 +4536,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 191
 # 016809.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4364,6 +4556,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 192
 # 016810.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4383,6 +4576,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 193
 # 016811.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4402,6 +4596,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 194
 # 016812.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4421,6 +4616,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 195
 # 016813.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4440,6 +4636,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 196
 # 016817.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4452,6 +4649,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 197
 # 016818.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4471,6 +4669,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 198
 # 016820.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4483,6 +4682,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 199
 # 016821.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4495,6 +4695,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 200
 # 016823.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4507,6 +4708,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 201
 # 016824.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4519,6 +4721,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 202
 # 016826.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4538,6 +4741,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 203
 # 016827.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4550,6 +4754,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 204
 # 016828.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4562,6 +4767,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 205
 # 016830.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4574,6 +4780,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 206
 # 016831.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4586,6 +4793,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 207
 # 016832.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4605,6 +4813,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 208
 # 016833.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4617,6 +4826,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 209
 # 016834.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4636,6 +4846,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 210
 # 016835.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4648,6 +4859,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 211
 # 016837.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4660,6 +4872,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 212
 # 016838.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4672,6 +4885,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 213
 # 016840.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4684,6 +4898,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 214
 # 016841.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4696,6 +4911,7 @@ ORDER BY ?time DESC(?totalCount)
 
 
 ###
+# Query 215
 # 017015.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -4714,6 +4930,7 @@ GROUP BY ?time ?NAMLabel
 ORDER BY DESC(?totalCount)
 
 ###
+# Query 216
 # 017022.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -4730,6 +4947,7 @@ GROUP BY ?somePropertyLabel
 ORDER BY DESC(?totalCount)
 
 ###
+# Query 217
 # 017025.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -4746,6 +4964,7 @@ GROUP BY ?somePropertyLabel
 ORDER BY DESC(?totalCount)
 
 ###
+# Query 218
 # 017147.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4765,6 +4984,7 @@ ORDER BY DESC(?totalCount)
 
 
 ###
+# Query 219
 # 017148.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4784,6 +5004,7 @@ ORDER BY DESC(?totalCount)
 
 
 ###
+# Query 220
 # 017149.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4803,6 +5024,7 @@ ORDER BY DESC(?totalCount)
 
 
 ###
+# Query 221
 # 017152.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4822,6 +5044,7 @@ ORDER BY DESC(?totalCount)
 
 
 ###
+# Query 222
 # 017541.rq
 PREFIX schema: <http://schema.org/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -4855,6 +5078,7 @@ WHERE {
 
 
 ###
+# Query 223
 # 017615.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -4873,6 +5097,7 @@ ORDER BY DESC(?totalCount)
 LIMIT 20
 
 ###
+# Query 224
 # 017628.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -4890,6 +5115,7 @@ GROUP BY ?time ?somePropertyLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 225
 # 017629.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -4907,6 +5133,7 @@ GROUP BY ?NAMLabel
 ORDER BY DESC(?totalCount)
 
 ###
+# Query 226
 # 017633.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -4925,6 +5152,7 @@ ORDER BY DESC(?totalCount)
 LIMIT 20
 
 ###
+# Query 227
 # 017648.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -4940,6 +5168,7 @@ GROUP BY ?time
 ORDER BY ?time
 
 ###
+# Query 228
 # 018687.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -4960,6 +5189,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 229
 # 019176.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4979,6 +5209,7 @@ LIMIT 10
 
 
 ###
+# Query 230
 # 019191.rq
 
             PREFIX schema: <http://schema.org/>
@@ -4991,6 +5222,7 @@ LIMIT 10
 
 
 ###
+# Query 231
 # 019207.rq
 PREFIX schema: <http://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -5015,6 +5247,7 @@ WHERE {
 }
 
 ###
+# Query 232
 # 019216.rq
 
             PREFIX schema: <http://schema.org/>
@@ -5027,6 +5260,7 @@ WHERE {
 
 
 ###
+# Query 233
 # 019222.rq
 
             PREFIX schema: <http://schema.org/>
@@ -5039,6 +5273,7 @@ WHERE {
 
 
 ###
+# Query 234
 # 019230.rq
 
             PREFIX schema: <http://schema.org/>
@@ -5051,6 +5286,7 @@ WHERE {
 
 
 ###
+# Query 235
 # 019231.rq
 
             PREFIX schema: <http://schema.org/>
@@ -5063,6 +5299,7 @@ WHERE {
 
 
 ###
+# Query 236
 # 019321.rq
 
             PREFIX schema: <http://schema.org/>
@@ -5082,6 +5319,7 @@ WHERE {
 
 
 ###
+# Query 237
 # 019366.rq
 
             PREFIX schema: <http://schema.org/>
@@ -5101,6 +5339,7 @@ WHERE {
 
 
 ###
+# Query 238
 # 019445.rq
 
             PREFIX schema: <http://schema.org/>
@@ -5120,6 +5359,7 @@ WHERE {
 
 
 ###
+# Query 239
 # 019451.rq
 
             PREFIX schema: <http://schema.org/>
@@ -5139,6 +5379,7 @@ WHERE {
 
 
 ###
+# Query 240
 # 019719.rq
 PREFIX qb: <http://purl.org/linked-data/cube#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -5154,6 +5395,7 @@ SELECT  ?dataset (COUNT(*) AS ?count) ?label WHERE { GRAPH <https://linked.opend
 }} GROUP BY ?dataset ?label
 
 ###
+# Query 241
 # 020440.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5174,6 +5416,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 242
 # 020457.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5202,6 +5445,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 243
 # 020472.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5234,6 +5478,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 244
 # 020476.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5274,6 +5519,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 245
 # 020507.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5294,6 +5540,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 246
 # 020514.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5316,6 +5563,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 247
 # 020517.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5338,6 +5586,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 248
 # 020519.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5366,6 +5615,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 249
 # 020520.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5393,6 +5643,7 @@ WHERE {
 }
 
 ###
+# Query 250
 # 020521.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5425,6 +5676,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 251
 # 020522.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5461,6 +5713,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 252
 # 020523.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5501,6 +5754,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 253
 # 020525.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5543,6 +5797,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 254
 # 020526.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5582,6 +5837,7 @@ GROUP BY(?nameLabel)
 ORDER BY DESC(?total) ?nameLabel
 
 ###
+# Query 255
 # 020527.rq
 
 prefix schema: <http://schema.org/>
@@ -5702,6 +5958,7 @@ WHERE {
 }
 
 ###
+# Query 256
 # 020529.rq
 
 prefix schema: <http://schema.org/>
@@ -5812,6 +6069,7 @@ WHERE {
 }
 
 ###
+# Query 257
 # 020533.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5874,6 +6132,7 @@ ORDER BY DESC(?geburten) ?nameLabel
 LIMIT 20
 
 ###
+# Query 258
 # 021369.rq
 
             PREFIX schema: <http://schema.org/>
@@ -5886,6 +6145,7 @@ LIMIT 20
 
 
 ###
+# Query 259
 # 021377.rq
 
             PREFIX schema: <http://schema.org/>
@@ -5898,6 +6158,7 @@ LIMIT 20
 
 
 ###
+# Query 260
 # 021382.rq
 
             PREFIX schema: <http://schema.org/>
@@ -5910,6 +6171,7 @@ LIMIT 20
 
 
 ###
+# Query 261
 # 027603.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5930,6 +6192,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 262
 # 028642.rq
 
             PREFIX schema: <http://schema.org/>
@@ -5949,6 +6212,7 @@ ORDER BY ?cuLabel
 
 
 ###
+# Query 263
 # 033699.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5969,6 +6233,7 @@ LIMIT 10
 #ORDER BY ?cuLabel
 
 ###
+# Query 264
 # 033705.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -5989,6 +6254,7 @@ WHERE {
 #ORDER BY ?cuLabel
 
 ###
+# Query 265
 # 033746.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6010,6 +6276,7 @@ ORDER BY ?cuLabel
 
 
 ###
+# Query 266
 # 033899.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6032,6 +6299,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 267
 # 033905.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6054,6 +6322,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 268
 # 033908.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6076,6 +6345,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 269
 # 033913.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6098,6 +6368,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 270
 # 033915.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6119,6 +6390,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 271
 # 033920.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6141,6 +6413,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 272
 # 033938.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6161,6 +6434,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 273
 # 033941.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6183,6 +6457,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 274
 # 033943.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6205,6 +6480,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 275
 # 033959.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6227,6 +6503,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 276
 # 033968.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6251,6 +6528,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 277
 # 033969.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6273,6 +6551,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 278
 # 033970.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6298,6 +6577,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 279
 # 033973.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6320,6 +6600,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 280
 # 033980.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6341,6 +6622,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 281
 # 033981.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6363,6 +6645,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 282
 # 033988.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6384,6 +6667,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 283
 # 033989.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6406,6 +6690,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 284
 # 033990.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6434,6 +6719,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 285
 # 033993.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6462,6 +6748,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 286
 # 033996.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6490,6 +6777,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 287
 # 033997.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6518,6 +6806,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 288
 # 034000.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6541,6 +6830,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 289
 # 034022.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6565,6 +6855,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 290
 # 034027.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6592,6 +6883,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 291
 # 034028.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6620,6 +6912,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 292
 # 034029.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6646,6 +6939,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 293
 # 034030.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6670,6 +6964,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 294
 # 034031.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6693,6 +6988,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 295
 # 034032.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6715,6 +7011,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 296
 # 034033.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6737,6 +7034,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 297
 # 034034.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6759,6 +7057,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 298
 # 034035.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6787,6 +7086,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 299
 # 034036.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6809,6 +7109,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 300
 # 034037.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6831,6 +7132,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 301
 # 034038.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6862,6 +7164,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 302
 # 034039.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6883,6 +7186,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 303
 # 034040.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6911,6 +7215,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 304
 # 034042.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6942,6 +7247,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 305
 # 034044.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6966,6 +7272,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 306
 # 034045.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -6997,6 +7304,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 307
 # 034055.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7021,6 +7329,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 308
 # 034056.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7045,6 +7354,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 309
 # 034060.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7067,6 +7377,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 310
 # 034064.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7091,6 +7402,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 311
 # 034072.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7119,6 +7431,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 312
 # 034075.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7143,6 +7456,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 313
 # 034076.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7172,6 +7486,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 314
 # 034079.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7204,6 +7519,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 315
 # 034089.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7234,6 +7550,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 316
 # 034092.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7266,6 +7583,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 317
 # 034093.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7289,6 +7607,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 318
 # 034098.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7318,6 +7637,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 319
 # 034104.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7341,6 +7661,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 320
 # 034105.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7366,6 +7687,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 321
 # 034106.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7398,6 +7720,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 322
 # 034113.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7422,6 +7745,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 323
 # 034114.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7446,6 +7770,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 324
 # 034116.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7477,6 +7802,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 325
 # 034118.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7502,6 +7828,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 326
 # 034119.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7533,6 +7860,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 327
 # 034125.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7565,6 +7893,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 328
 # 034129.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7589,6 +7918,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 329
 # 034133.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7604,6 +7934,7 @@ WHERE {
 
 
 ###
+# Query 330
 # 034135.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7644,6 +7975,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 331
 # 034138.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7674,6 +8006,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 332
 # 034139.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7706,6 +8039,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 333
 # 034142.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7736,6 +8070,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 334
 # 034147.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7761,6 +8096,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 335
 # 034150.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7786,6 +8122,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 336
 # 034153.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7816,6 +8153,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 337
 # 034154.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7847,6 +8185,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 338
 # 034155.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7873,6 +8212,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 339
 # 034156.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7896,6 +8236,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 340
 # 034157.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7920,6 +8261,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 341
 # 034164.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7951,6 +8293,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 342
 # 034172.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -7983,6 +8326,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 343
 # 034173.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8001,6 +8345,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 344
 # 034178.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8032,6 +8377,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 345
 # 034179.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8056,6 +8402,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 346
 # 034184.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8087,6 +8434,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 347
 # 034185.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8118,6 +8466,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 348
 # 034186.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8143,6 +8492,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 349
 # 034190.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8171,6 +8521,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 350
 # 034193.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8196,6 +8547,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 351
 # 034198.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8224,6 +8576,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 352
 # 034199.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8249,6 +8602,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 353
 # 034200.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8280,6 +8634,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 354
 # 034205.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8306,6 +8661,7 @@ WHERE {
 }
 
 ###
+# Query 355
 # 034207.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8337,6 +8693,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 356
 # 034209.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8368,6 +8725,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 357
 # 034212.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8393,6 +8751,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 358
 # 034213.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8418,6 +8777,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 359
 # 034215.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8447,6 +8807,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 360
 # 034216.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8479,6 +8840,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 361
 # 034217.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8507,6 +8869,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 362
 # 034218.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8533,6 +8896,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 363
 # 034219.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8566,6 +8930,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 364
 # 034222.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8594,6 +8959,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 365
 # 034226.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8628,6 +8994,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 366
 # 034227.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8655,6 +9022,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 367
 # 034229.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8682,6 +9050,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 368
 # 034230.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8713,6 +9082,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 369
 # 034233.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8744,6 +9114,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 370
 # 034234.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8778,6 +9149,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 371
 # 034236.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8807,6 +9179,7 @@ ORDER BY ?time
 LIMIT 10
 
 ###
+# Query 372
 # 034237.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8841,6 +9214,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 373
 # 034239.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8870,6 +9244,7 @@ ORDER BY ?time
 LIMIT 10
 
 ###
+# Query 374
 # 034240.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8904,6 +9279,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 375
 # 034244.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8933,6 +9309,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 376
 # 034250.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8962,6 +9339,7 @@ WHERE {
 #LIMIT 10
 
 ###
+# Query 377
 # 034251.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -8997,6 +9375,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 378
 # 034253.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9024,6 +9403,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 379
 # 034254.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9058,6 +9438,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 380
 # 034263.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9089,6 +9470,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 381
 # 034265.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9122,6 +9504,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 382
 # 034268.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9148,6 +9531,7 @@ WHERE {
 }
 
 ###
+# Query 383
 # 034269.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9175,6 +9559,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 384
 # 034276.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9209,6 +9594,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 385
 # 034277.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9240,6 +9626,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 386
 # 034278.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9271,6 +9658,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 387
 # 034287.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9302,6 +9690,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 388
 # 034290.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9338,6 +9727,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 389
 # 034293.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9374,6 +9764,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 390
 # 034294.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9406,6 +9797,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 391
 # 034297.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9434,6 +9826,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 392
 # 034298.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9470,6 +9863,7 @@ WHERE {
 LIMIT 1000
 
 ###
+# Query 393
 # 034301.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9506,6 +9900,7 @@ WHERE {
 LIMIT 10000
 
 ###
+# Query 394
 # 034302.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9534,6 +9929,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 395
 # 034311.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9563,6 +9959,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 396
 # 034316.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9601,6 +9998,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 397
 # 034326.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9635,6 +10033,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 398
 # 034327.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9666,6 +10065,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 399
 # 034339.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9700,6 +10100,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 400
 # 034346.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9722,6 +10123,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 401
 # 034347.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9753,6 +10155,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 402
 # 034348.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9786,6 +10189,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 403
 # 034349.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9819,6 +10223,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 404
 # 034350.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9851,6 +10256,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 405
 # 034351.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9875,6 +10281,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 406
 # 034354.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9899,6 +10306,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 407
 # 034359.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9923,6 +10331,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 408
 # 034362.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9947,6 +10356,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 409
 # 034363.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9971,6 +10381,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 410
 # 034364.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -9996,6 +10407,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 411
 # 034372.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10021,6 +10433,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 412
 # 034379.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10046,6 +10459,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 413
 # 034381.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10066,6 +10480,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 414
 # 034382.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10086,6 +10501,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 415
 # 034383.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10103,6 +10519,7 @@ WHERE {
 limit 50
 
 ###
+# Query 416
 # 034384.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10120,6 +10537,7 @@ WHERE {
 limit 100
 
 ###
+# Query 417
 # 034388.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10140,6 +10558,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 418
 # 034389.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10160,6 +10579,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 419
 # 034390.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10180,6 +10600,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 420
 # 034391.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10200,6 +10621,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 421
 # 034392.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10220,6 +10642,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 422
 # 034396.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10240,6 +10663,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 423
 # 034401.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10279,6 +10703,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 424
 # 034408.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10319,6 +10744,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 425
 # 034421.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10358,6 +10784,7 @@ WHERE {
 
 
 ###
+# Query 426
 # 034423.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10390,6 +10817,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 427
 # 034424.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10429,6 +10857,7 @@ WHERE {
 
 
 ###
+# Query 428
 # 034425.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10468,6 +10897,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 429
 # 034428.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10507,6 +10937,7 @@ WHERE {
 
 
 ###
+# Query 430
 # 034431.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10547,6 +10978,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 431
 # 034432.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10579,6 +11011,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 432
 # 034437.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10611,6 +11044,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 433
 # 034438.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10651,6 +11085,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 434
 # 034439.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10682,6 +11117,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 435
 # 034440.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10712,6 +11148,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 436
 # 034441.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10745,6 +11182,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 437
 # 034442.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10778,6 +11216,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 438
 # 034445.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10818,6 +11257,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 439
 # 034446.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10849,6 +11289,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 440
 # 034450.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10882,6 +11323,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 441
 # 034451.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10915,6 +11357,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 442
 # 034452.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10955,6 +11398,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 443
 # 034455.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -10988,6 +11432,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 444
 # 034456.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11029,6 +11474,7 @@ ORDER by ?gebjahr
 LIMIT 10
 
 ###
+# Query 445
 # 034457.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11063,6 +11509,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 446
 # 034458.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11096,6 +11543,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 447
 # 034461.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11127,6 +11575,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 448
 # 034462.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11168,6 +11617,7 @@ ORDER by ?gebjahr
 LIMIT 10
 
 ###
+# Query 449
 # 034465.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11204,6 +11654,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 450
 # 034475.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11241,6 +11692,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 451
 # 034477.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11270,6 +11722,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 452
 # 034478.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11309,6 +11762,7 @@ WHERE {
 
 
 ###
+# Query 453
 # 034479.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11338,6 +11792,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 454
 # 034480.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11379,6 +11834,7 @@ ORDER by DESC(?gebjahr)
 LIMIT 10
 
 ###
+# Query 455
 # 034481.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11413,6 +11869,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 456
 # 034484.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11452,6 +11909,7 @@ WHERE {
 
 
 ###
+# Query 457
 # 034487.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11482,6 +11940,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 458
 # 034488.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11521,6 +11980,7 @@ WHERE {
 
 
 ###
+# Query 459
 # 034489.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11560,6 +12020,7 @@ WHERE {
 
 
 ###
+# Query 460
 # 034490.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11595,6 +12056,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 461
 # 034492.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11625,6 +12087,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 462
 # 034493.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11664,6 +12127,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 463
 # 034494.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11703,6 +12167,7 @@ WHERE {
 
 
 ###
+# Query 464
 # 034496.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11733,6 +12198,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 465
 # 034497.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11768,6 +12234,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 466
 # 034500.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11798,6 +12265,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 467
 # 034501.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11841,6 +12309,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 468
 # 034505.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11880,6 +12349,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 469
 # 034506.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11910,6 +12380,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 470
 # 034508.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11945,6 +12416,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 471
 # 034509.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -11979,6 +12451,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 472
 # 034510.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12009,6 +12482,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 473
 # 034513.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12048,6 +12522,7 @@ WHERE {
 
 
 ###
+# Query 474
 # 034514.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12078,6 +12553,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 475
 # 034515.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12117,6 +12593,7 @@ WHERE {
 
 
 ###
+# Query 476
 # 034516.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12147,6 +12624,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 477
 # 034517.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12181,6 +12659,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 478
 # 034520.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12215,6 +12694,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 479
 # 034524.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12255,6 +12735,7 @@ WHERE {
 ORDER by DESC(?gebjahr)
 
 ###
+# Query 480
 # 034528.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12285,6 +12766,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 481
 # 034538.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12325,6 +12807,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 482
 # 034541.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12356,6 +12839,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 483
 # 034545.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12395,6 +12879,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 484
 # 034546.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12426,6 +12911,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 485
 # 034547.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12465,6 +12951,7 @@ WHERE {
 ORDER BY ASC(?gebjahr)
 
 ###
+# Query 486
 # 034552.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12505,6 +12992,7 @@ WHERE {
 #LIMIT 10
 
 ###
+# Query 487
 # 034556.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12545,6 +13033,7 @@ WHERE {
 order by desc(?gebjahr)
 
 ###
+# Query 488
 # 034557.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12590,6 +13079,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 489
 # 034558.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12628,6 +13118,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 490
 # 034561.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12663,6 +13154,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 491
 # 034562.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12698,6 +13190,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 492
 # 034563.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12740,6 +13233,7 @@ WHERE {
 ORDER by DESC(?gebjahr)
 
 ###
+# Query 493
 # 034566.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12775,6 +13269,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 494
 # 034571.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12818,6 +13313,7 @@ WHERE {
 ORDER by DESC(?gebjahr)
 
 ###
+# Query 495
 # 034572.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12863,6 +13359,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 496
 # 034578.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12906,6 +13403,7 @@ WHERE {
 ORDER by DESC(?gebjahr)
 
 ###
+# Query 497
 # 034583.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12945,6 +13443,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 498
 # 034584.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -12980,6 +13479,7 @@ WHERE {
 # LIMIT 10
 
 ###
+# Query 499
 # 034591.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13012,6 +13512,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 500
 # 034599.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13047,6 +13548,7 @@ WHERE {
 # LIMIT 10
 
 ###
+# Query 501
 # 034600.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13089,6 +13591,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 502
 # 034604.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13120,6 +13623,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 503
 # 034605.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13155,6 +13659,7 @@ WHERE {
  LIMIT 10
 
 ###
+# Query 504
 # 034606.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13189,6 +13694,7 @@ ORDER BY (?jahrgang)
 LIMIT 10
 
 ###
+# Query 505
 # 034607.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13222,6 +13728,7 @@ ORDER BY (?jahrgang)
 LIMIT 10
 
 ###
+# Query 506
 # 034611.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13257,6 +13764,7 @@ WHERE {
 # LIMIT 10
 
 ###
+# Query 507
 # 034612.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13297,6 +13805,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 508
 # 034615.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13340,6 +13849,7 @@ WHERE {
 ORDER BY ASC(?gebjahr)
 
 ###
+# Query 509
 # 034616.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13380,6 +13890,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 510
 # 034618.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13423,6 +13934,7 @@ WHERE {
 ORDER by DESC(?gebjahr)
 
 ###
+# Query 511
 # 034619.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13456,6 +13968,7 @@ ORDER BY (?jahrgang)
 LIMIT 10
 
 ###
+# Query 512
 # 034627.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13497,6 +14010,7 @@ WHERE {
 ORDER BY ?gebjahr
 
 ###
+# Query 513
 # 034637.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13530,6 +14044,7 @@ ORDER BY (?jahrgang)
 LIMIT 10
 
 ###
+# Query 514
 # 034639.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13561,6 +14076,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 515
 # 034640.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13601,6 +14117,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 516
 # 034642.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13641,6 +14158,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 517
 # 034643.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13683,6 +14201,7 @@ WHERE {
 ORDER BY ASC(?gebjahr)
 
 ###
+# Query 518
 # 034644.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13717,6 +14236,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 519
 # 034645.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13758,6 +14278,7 @@ WHERE {
 ORDER BY ?gebjahr
 
 ###
+# Query 520
 # 034648.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13802,6 +14323,7 @@ group by(?nameLabel)
 order by desc(?total) ?nameLabel
 
 ###
+# Query 521
 # 034652.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13843,6 +14365,7 @@ WHERE {
 ORDER BY ?gebjahr
 
 ###
+# Query 522
 # 034656.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13874,6 +14397,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 523
 # 034662.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13916,6 +14440,7 @@ WHERE {
 ORDER BY ASC(?gebjahr)
 
 ###
+# Query 524
 # 034665.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13956,6 +14481,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 525
 # 034666.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -13990,6 +14516,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 526
 # 034668.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14032,6 +14559,7 @@ WHERE {
 ORDER BY ASC(?gebjahr)
 
 ###
+# Query 527
 # 034669.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14066,6 +14594,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 528
 # 034670.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14097,6 +14626,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 529
 # 034671.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14138,6 +14668,7 @@ WHERE {
 ORDER BY ?gebjahr
 
 ###
+# Query 530
 # 034681.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14169,6 +14700,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 531
 # 034682.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14209,6 +14741,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 532
 # 034683.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14240,6 +14773,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 533
 # 034685.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14271,6 +14805,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 534
 # 034687.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14312,6 +14847,7 @@ WHERE {
 ORDER BY ?gebjahr
 
 ###
+# Query 535
 # 034688.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14344,6 +14880,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 536
 # 034703.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14380,6 +14917,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 537
 # 034704.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14415,6 +14953,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 538
 # 034708.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <http://cube.link/>
@@ -14448,6 +14987,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 539
 # 034710.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14483,6 +15023,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 540
 # 034711.rq
 PREFIX schema: <https://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14516,6 +15057,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 541
 # 034712.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14549,6 +15091,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 542
 # 034717.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14586,6 +15129,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 543
 # 034720.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14626,6 +15170,7 @@ WHERE {
 order by desc(?gebjahr)
 
 ###
+# Query 544
 # 034721.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14666,6 +15211,7 @@ WHERE {
 order by desc(?gebjahr)
 
 ###
+# Query 545
 # 034722.rq
 
 prefix schema: <http://schema.org/>
@@ -14786,6 +15332,7 @@ WHERE {
 }
 
 ###
+# Query 546
 # 034723.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14824,6 +15371,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 547
 # 034724.rq
 
 prefix schema: <http://schema.org/>
@@ -14944,6 +15492,7 @@ WHERE {
 }
 
 ###
+# Query 548
 # 034727.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -14982,6 +15531,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 549
 # 034728.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15024,6 +15574,7 @@ WHERE {
 ORDER BY ASC(?gebjahr)
 
 ###
+# Query 550
 # 034736.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15061,6 +15612,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 551
 # 034741.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15103,6 +15655,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 552
 # 034742.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15140,6 +15693,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 553
 # 034751.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15180,6 +15734,7 @@ WHERE {
 order by desc(?gebjahr)
 
 ###
+# Query 554
 # 034752.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15211,6 +15766,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 555
 # 034753.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15249,6 +15805,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 556
 # 034756.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15289,6 +15846,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 557
 # 034757.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15331,6 +15889,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 558
 # 034758.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15373,6 +15932,7 @@ WHERE {
 # LIMIT 10
 
 ###
+# Query 559
 # 034761.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15415,6 +15975,7 @@ WHERE {
 # LIMIT 10
 
 ###
+# Query 560
 # 034762.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15446,6 +16007,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 561
 # 034764.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15484,6 +16046,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 562
 # 034769.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15526,6 +16089,7 @@ WHERE {
 # LIMIT 10
 
 ###
+# Query 563
 # 034770.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15564,6 +16128,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 564
 # 034773.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15603,6 +16168,7 @@ GROUP BY(?nameLabel)
 ORDER BY DESC(?total) ?nameLabel
 
 ###
+# Query 565
 # 034781.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15645,6 +16211,7 @@ ORDER BY ?gebjahr
 # LIMIT 10
 
 ###
+# Query 566
 # 034790.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15665,6 +16232,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 567
 # 034794.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15704,6 +16272,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 568
 # 034797.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15746,6 +16315,7 @@ WHERE {
 ORDER BY ?gebjahr
 
 ###
+# Query 569
 # 034801.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15785,6 +16355,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 570
 # 034804.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15805,6 +16376,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 571
 # 034805.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15829,6 +16401,7 @@ WHERE {
 limit 10
 
 ###
+# Query 572
 # 034809.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15849,6 +16422,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 573
 # 034810.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15873,6 +16447,7 @@ WHERE {
 limit 10
 
 ###
+# Query 574
 # 034811.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15893,6 +16468,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 575
 # 034813.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15933,6 +16509,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 576
 # 034814.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -15975,6 +16552,7 @@ ORDER BY ?gebjahr
 # LIMIT 10
 
 ###
+# Query 577
 # 034818.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16000,6 +16578,7 @@ WHERE {
 limit 10
 
 ###
+# Query 578
 # 034821.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16040,6 +16619,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 579
 # 034824.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16060,6 +16640,7 @@ WHERE {
 Limit 10
 
 ###
+# Query 580
 # 034833.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16078,6 +16659,7 @@ WHERE {
 Limit 10
 
 ###
+# Query 581
 # 034836.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16117,6 +16699,7 @@ WHERE {
 ORDER BY DESC(?geburtsjahrYear)
 
 ###
+# Query 582
 # 034837.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16156,6 +16739,7 @@ WHERE {
 ORDER BY DESC(?geburtsjahrYear)
 
 ###
+# Query 583
 # 034844.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16195,6 +16779,7 @@ WHERE {
 ORDER BY DESC(?geburtsjahrYear)
 
 ###
+# Query 584
 # 034845.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16210,6 +16795,7 @@ WHERE {
 #FILTER (?cu = "https://ld.stadt-zuerich.ch/statistics/000218")
 
 ###
+# Query 585
 # 034846.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16249,6 +16835,7 @@ WHERE {
 ORDER BY DESC(?geburtsjahrYear)
 
 ###
+# Query 586
 # 034847.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16262,6 +16849,7 @@ WHERE {
 }
 
 ###
+# Query 587
 # 034851.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16276,6 +16864,7 @@ FILTER (?cu = "https://ld.stadt-zuerich.ch/statistics/000218")
 
 
 ###
+# Query 588
 # 034852.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16291,6 +16880,7 @@ WHERE {
 
 
 ###
+# Query 589
 # 034853.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16309,6 +16899,7 @@ WHERE {
 
 
 ###
+# Query 590
 # 034855.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16326,6 +16917,7 @@ WHERE {
 
 
 ###
+# Query 591
 # 034856.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16343,6 +16935,7 @@ WHERE {
 
 
 ###
+# Query 592
 # 034857.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16382,6 +16975,7 @@ WHERE {
 ORDER BY DESC(?geburtsjahrYear)
 
 ###
+# Query 593
 # 034858.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16399,6 +16993,7 @@ WHERE {
 
 
 ###
+# Query 594
 # 034859.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16416,6 +17011,7 @@ WHERE {
 
 
 ###
+# Query 595
 # 034860.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16433,6 +17029,7 @@ WHERE {
 
 
 ###
+# Query 596
 # 034861.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16450,6 +17047,7 @@ WHERE {
 
 
 ###
+# Query 597
 # 034862.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16467,6 +17065,7 @@ WHERE {
 
 
 ###
+# Query 598
 # 034863.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16484,6 +17083,7 @@ WHERE {
 
 
 ###
+# Query 599
 # 034866.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16502,6 +17102,7 @@ WHERE {
 
 
 ###
+# Query 600
 # 034867.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16521,6 +17122,7 @@ WHERE {
 
 
 ###
+# Query 601
 # 034868.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16540,6 +17142,7 @@ WHERE {
 
 
 ###
+# Query 602
 # 034869.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16559,6 +17162,7 @@ WHERE {
 
 
 ###
+# Query 603
 # 034876.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16579,6 +17183,7 @@ WHERE {
 
 
 ###
+# Query 604
 # 034877.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16621,6 +17226,7 @@ ORDER BY ?gebjahr
 # LIMIT 10
 
 ###
+# Query 605
 # 034880.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16641,6 +17247,7 @@ WHERE {
 
 
 ###
+# Query 606
 # 034883.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16661,6 +17268,7 @@ WHERE {
 
 
 ###
+# Query 607
 # 034884.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16681,6 +17289,7 @@ WHERE {
 
 
 ###
+# Query 608
 # 034887.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -16710,6 +17319,7 @@ GROUP BY ?time ?raumLabel
 ORDER BY ?time
 
 ###
+# Query 609
 # 034889.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -16739,6 +17349,7 @@ GROUP BY ?time ?raumLabel
 ORDER BY ?time
 
 ###
+# Query 610
 # 035877.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16760,6 +17371,7 @@ WHERE {
 
 
 ###
+# Query 611
 # 035888.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16781,6 +17393,7 @@ WHERE {
 
 
 ###
+# Query 612
 # 035889.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16806,6 +17419,7 @@ WHERE {
 
 
 ###
+# Query 613
 # 035890.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16830,6 +17444,7 @@ WHERE {
 
 
 ###
+# Query 614
 # 035891.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16854,6 +17469,7 @@ WHERE {
 
 
 ###
+# Query 615
 # 035892.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16878,6 +17494,7 @@ WHERE {
 
 
 ###
+# Query 616
 # 035894.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16902,6 +17519,7 @@ WHERE {
 
 
 ###
+# Query 617
 # 035895.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16926,6 +17544,7 @@ WHERE {
 
 
 ###
+# Query 618
 # 035896.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16950,6 +17569,7 @@ WHERE {
 
 
 ###
+# Query 619
 # 035897.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16974,6 +17594,7 @@ WHERE {
 
 
 ###
+# Query 620
 # 035898.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -16998,6 +17619,7 @@ WHERE {
 
 
 ###
+# Query 621
 # 035900.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17024,6 +17646,7 @@ WHERE {
 ORDER BY ?jahr
 
 ###
+# Query 622
 # 035902.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17055,6 +17678,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 623
 # 035938.rq
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <http://schema.org/>
@@ -17076,6 +17700,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 624
 # 035953.rq
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <http://schema.org/>
@@ -17097,6 +17722,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 625
 # 035966.rq
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <http://schema.org/>
@@ -17118,6 +17744,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 626
 # 035986.rq
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <http://schema.org/>
@@ -17139,6 +17766,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 627
 # 035991.rq
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <http://schema.org/>
@@ -17160,6 +17788,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 628
 # 035996.rq
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <http://schema.org/>
@@ -17181,6 +17810,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 629
 # 036001.rq
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <http://schema.org/>
@@ -17202,6 +17832,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 630
 # 036003.rq
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <http://schema.org/>
@@ -17223,6 +17854,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 631
 # 036018.rq
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <http://schema.org/>
@@ -17244,6 +17876,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 632
 # 036439.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17268,6 +17901,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 633
 # 036446.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17292,6 +17926,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 634
 # 036454.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17314,6 +17949,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 635
 # 036461.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17339,6 +17975,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 636
 # 036462.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17363,6 +18000,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 637
 # 036477.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17390,6 +18028,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 638
 # 036479.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17417,6 +18056,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 639
 # 036480.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17439,6 +18079,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 640
 # 036483.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17461,6 +18102,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 641
 # 036485.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17483,6 +18125,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 642
 # 036489.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17505,6 +18148,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 643
 # 036492.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17530,6 +18174,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 644
 # 036493.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17552,6 +18197,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 645
 # 036497.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17574,6 +18220,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 646
 # 036498.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17596,6 +18243,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 647
 # 036500.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17621,6 +18269,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 648
 # 036501.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17643,6 +18292,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 649
 # 036503.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17668,6 +18318,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 650
 # 036504.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17695,6 +18346,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 651
 # 036505.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17717,6 +18369,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 652
 # 036507.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17742,6 +18395,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 653
 # 036508.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17764,6 +18418,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 654
 # 036509.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17788,6 +18443,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 655
 # 036514.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17815,6 +18471,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 656
 # 036515.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17837,6 +18494,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 657
 # 036516.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17862,6 +18520,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 658
 # 036519.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17885,6 +18544,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 659
 # 036522.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17907,6 +18567,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 660
 # 036527.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17931,6 +18592,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 661
 # 036535.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17959,6 +18621,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 662
 # 036540.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -17982,6 +18645,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 663
 # 036541.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18006,6 +18670,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 664
 # 036543.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18028,6 +18693,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 665
 # 036545.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18052,6 +18718,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 666
 # 036547.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18074,6 +18741,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 667
 # 036548.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18096,6 +18764,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 668
 # 036552.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18122,6 +18791,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 669
 # 036553.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18146,6 +18816,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 670
 # 036554.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18172,6 +18843,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 671
 # 036555.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18203,6 +18875,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 672
 # 036557.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18227,6 +18900,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 673
 # 036558.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18253,6 +18927,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 674
 # 036559.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18279,6 +18954,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 675
 # 036561.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18301,6 +18977,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 676
 # 036563.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18324,6 +19001,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 677
 # 036564.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18350,6 +19028,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 678
 # 036565.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18374,6 +19053,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 679
 # 036567.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18396,6 +19076,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 680
 # 036568.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18418,6 +19099,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 681
 # 036581.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18442,6 +19124,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 682
 # 036582.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18466,6 +19149,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 683
 # 036583.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18490,6 +19174,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 684
 # 036586.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18522,6 +19207,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 685
 # 036587.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18550,6 +19236,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 686
 # 036591.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18575,6 +19262,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 687
 # 036592.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18599,6 +19287,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 688
 # 036593.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18631,6 +19320,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 689
 # 036594.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18659,6 +19349,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 690
 # 036595.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18684,6 +19375,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 691
 # 036598.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18712,6 +19404,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 692
 # 036601.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18735,6 +19428,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 693
 # 036602.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18759,6 +19453,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 694
 # 036603.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18782,6 +19477,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 695
 # 036605.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18810,6 +19506,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 696
 # 036607.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18834,6 +19531,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 697
 # 036611.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18858,6 +19556,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 698
 # 036617.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18881,6 +19580,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 699
 # 036620.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18914,6 +19614,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 700
 # 036622.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18942,6 +19643,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 701
 # 036623.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18967,6 +19669,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 702
 # 036624.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -18995,6 +19698,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 703
 # 036625.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19020,6 +19724,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 704
 # 036626.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19048,6 +19753,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 705
 # 036627.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19073,6 +19779,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 706
 # 036628.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19098,6 +19805,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 707
 # 036632.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19133,6 +19841,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 708
 # 036634.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19158,6 +19867,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 709
 # 036636.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19193,6 +19903,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 710
 # 036637.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19217,6 +19928,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 711
 # 036638.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19242,6 +19954,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 712
 # 036641.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19276,6 +19989,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 713
 # 036642.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19300,6 +20014,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 714
 # 036643.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19330,6 +20045,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 715
 # 036644.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19364,6 +20080,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 716
 # 036649.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19390,6 +20107,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 717
 # 036650.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19424,6 +20142,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 718
 # 036651.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19449,6 +20168,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 719
 # 036653.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19478,6 +20198,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 720
 # 036654.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19499,6 +20220,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 721
 # 036655.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19524,6 +20246,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 722
 # 036657.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19558,6 +20281,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 723
 # 036661.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19584,6 +20308,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 724
 # 036662.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19618,6 +20343,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 725
 # 036663.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19644,6 +20370,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 726
 # 036668.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19667,6 +20394,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 727
 # 036676.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19692,6 +20420,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 728
 # 036678.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19717,6 +20446,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 729
 # 036679.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19745,6 +20475,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 730
 # 036680.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19768,6 +20499,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 731
 # 036698.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19795,6 +20527,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 732
 # 036699.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19819,6 +20552,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 733
 # 036704.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19843,6 +20577,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 734
 # 036705.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19868,6 +20603,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 735
 # 036706.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19896,6 +20632,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 736
 # 036713.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19925,6 +20662,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 737
 # 036716.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19958,6 +20696,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 738
 # 036717.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -19985,6 +20724,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 739
 # 036718.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20016,6 +20756,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 740
 # 036721.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20042,6 +20783,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 741
 # 036722.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20077,6 +20819,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 742
 # 036723.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20104,6 +20847,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 743
 # 036727.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20135,6 +20879,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 744
 # 036731.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20170,6 +20915,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 745
 # 036736.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20196,6 +20942,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 746
 # 036738.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20231,6 +20978,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 747
 # 036739.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20257,6 +21005,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 748
 # 036744.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20283,6 +21032,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 749
 # 036749.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20313,6 +21063,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 750
 # 036752.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20339,6 +21090,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 751
 # 036753.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20365,6 +21117,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 752
 # 036754.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20390,6 +21143,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 753
 # 036759.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20415,6 +21169,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 754
 # 036760.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20441,6 +21196,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 755
 # 036762.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20466,6 +21222,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 756
 # 036763.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20492,6 +21249,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 757
 # 036764.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20524,6 +21282,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 758
 # 036765.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20558,6 +21317,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 759
 # 036766.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20585,6 +21345,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 760
 # 036767.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20612,6 +21373,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 761
 # 036768.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20650,6 +21412,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 762
 # 036777.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20674,6 +21437,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 763
 # 036778.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20700,6 +21464,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 764
 # 036779.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20732,6 +21497,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 765
 # 036780.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20766,6 +21532,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 766
 # 036781.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20798,6 +21565,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 767
 # 036782.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20826,6 +21594,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 768
 # 036785.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20855,6 +21624,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 769
 # 036791.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20882,6 +21652,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 770
 # 036792.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20908,6 +21679,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 771
 # 036794.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20937,6 +21709,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 772
 # 036796.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -20969,6 +21742,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 773
 # 036804.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21011,6 +21785,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 774
 # 036809.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21040,6 +21815,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 775
 # 036814.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21076,6 +21852,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 776
 # 036815.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21102,6 +21879,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 777
 # 036816.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21145,6 +21923,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 778
 # 036817.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21181,6 +21960,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 779
 # 036818.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21210,6 +21990,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 780
 # 036819.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21246,6 +22027,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 781
 # 036820.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21282,6 +22064,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 782
 # 036822.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21308,6 +22091,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 783
 # 036823.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21334,6 +22118,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 784
 # 036835.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21358,6 +22143,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 785
 # 036836.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21382,6 +22168,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 786
 # 036840.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21408,6 +22195,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 787
 # 036844.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21437,6 +22225,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 788
 # 036845.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21466,6 +22255,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 789
 # 036847.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21492,6 +22282,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 790
 # 036849.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21533,6 +22324,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 791
 # 036850.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21574,6 +22366,7 @@ WHERE {
 LIMIT 50
 
 ###
+# Query 792
 # 036851.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21603,6 +22396,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 793
 # 036869.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21630,6 +22424,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 794
 # 036874.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21655,6 +22450,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 795
 # 036892.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21683,6 +22479,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 796
 # 036893.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21725,6 +22522,7 @@ WHERE {
 LIMIT 50
 
 ###
+# Query 797
 # 036896.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21761,6 +22559,7 @@ WHERE {
 LIMIT 100
 
 ###
+# Query 798
 # 036900.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21788,6 +22587,7 @@ WHERE {
 }
 
 ###
+# Query 799
 # 036903.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21816,6 +22616,7 @@ WHERE {
 }
 
 ###
+# Query 800
 # 036905.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21847,6 +22648,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 801
 # 036906.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21877,6 +22679,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 802
 # 036909.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21904,6 +22707,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 803
 # 036910.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21932,6 +22736,7 @@ WHERE {
 }
 
 ###
+# Query 804
 # 036911.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21960,6 +22765,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 805
 # 036912.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -21988,6 +22794,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 806
 # 036915.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22017,6 +22824,7 @@ WHERE {
 Limit 10
 
 ###
+# Query 807
 # 036918.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22049,6 +22857,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 808
 # 036923.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22077,6 +22886,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 809
 # 036934.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22104,6 +22914,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 810
 # 036939.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22134,6 +22945,7 @@ WHERE {
 Limit 10
 
 ###
+# Query 811
 # 036940.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22160,6 +22972,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 812
 # 036943.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22188,6 +23001,7 @@ WHERE {
 }
 
 ###
+# Query 813
 # 036950.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22216,6 +23030,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 814
 # 036951.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22241,6 +23056,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 815
 # 036952.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22270,6 +23086,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 816
 # 036953.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22298,6 +23115,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 817
 # 036956.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22329,6 +23147,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 818
 # 036959.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22357,6 +23176,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 819
 # 036960.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22386,6 +23206,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 820
 # 036961.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22414,6 +23235,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 821
 # 036962.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22445,6 +23267,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 822
 # 036963.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22489,6 +23312,7 @@ WHERE {
 LIMIT 50
 
 ###
+# Query 823
 # 036964.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22518,6 +23342,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 824
 # 036965.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22562,6 +23387,7 @@ WHERE {
 LIMIT 50
 
 ###
+# Query 825
 # 036966.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22588,6 +23414,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 826
 # 036969.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22616,6 +23443,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 827
 # 036978.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22644,6 +23472,7 @@ WHERE {
 }
 
 ###
+# Query 828
 # 036979.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22672,6 +23501,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 829
 # 036980.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22700,6 +23530,7 @@ WHERE {
 }
 
 ###
+# Query 830
 # 036985.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22730,6 +23561,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 831
 # 036986.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22759,6 +23591,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 832
 # 036987.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22793,6 +23626,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 833
 # 036989.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22837,6 +23671,7 @@ WHERE {
 LIMIT 50
 
 ###
+# Query 834
 # 036996.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22869,6 +23704,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 835
 # 036997.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22913,6 +23749,7 @@ WHERE {
 LIMIT 50
 
 ###
+# Query 836
 # 036999.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22947,6 +23784,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 837
 # 037004.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -22975,6 +23813,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 838
 # 037008.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23006,6 +23845,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 839
 # 037010.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23031,6 +23871,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 840
 # 037013.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23076,6 +23917,7 @@ WHERE {
 LIMIT 50
 
 ###
+# Query 841
 # 037014.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23105,6 +23947,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 842
 # 037015.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23135,6 +23978,7 @@ WHERE {
 }
 
 ###
+# Query 843
 # 037018.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23164,6 +24008,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 844
 # 037019.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23190,6 +24035,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 845
 # 037020.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23220,6 +24066,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 846
 # 037024.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23250,6 +24097,7 @@ WHERE {
 }
 
 ###
+# Query 847
 # 037025.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23297,6 +24145,7 @@ WHERE {
 LIMIT 50
 
 ###
+# Query 848
 # 037029.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23326,6 +24175,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 849
 # 037030.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23360,6 +24210,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 850
 # 037032.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23386,6 +24237,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 851
 # 037035.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23417,6 +24269,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 852
 # 037038.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23443,6 +24296,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 853
 # 037039.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23471,6 +24325,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 854
 # 037040.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23501,6 +24356,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 855
 # 037041.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23529,6 +24385,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 856
 # 037045.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23564,6 +24421,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 857
 # 037047.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23594,6 +24452,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 858
 # 037052.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23625,6 +24484,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 859
 # 037056.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23657,6 +24517,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 860
 # 037060.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23689,6 +24550,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 861
 # 037061.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23721,6 +24583,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 862
 # 037062.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23758,6 +24621,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 863
 # 037063.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23790,6 +24654,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 864
 # 037066.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23819,6 +24684,7 @@ WHERE {
 }
 
 ###
+# Query 865
 # 037069.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23848,6 +24714,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 866
 # 037070.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23883,6 +24750,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 867
 # 037071.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23915,6 +24783,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 868
 # 037072.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23953,6 +24822,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 869
 # 037076.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -23991,6 +24861,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 870
 # 037079.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24023,6 +24894,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 871
 # 037080.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24061,6 +24933,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 872
 # 037081.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24096,6 +24969,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 873
 # 037082.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24129,6 +25003,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 874
 # 037085.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24167,6 +25042,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 875
 # 037086.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24202,6 +25078,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 876
 # 037095.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24237,6 +25114,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 877
 # 037098.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24288,6 +25166,7 @@ WHERE {
 LIMIT 50
 
 ###
+# Query 878
 # 037099.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24316,6 +25195,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 879
 # 037101.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24344,6 +25224,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 880
 # 037105.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24372,6 +25253,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 881
 # 037106.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24400,6 +25282,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 882
 # 037107.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24436,6 +25319,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 883
 # 037112.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24472,6 +25356,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 884
 # 037117.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24506,6 +25391,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 885
 # 037121.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24545,6 +25431,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 886
 # 037122.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24577,6 +25464,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 887
 # 037123.rq
 PREFIX schema: <http://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -24601,6 +25489,7 @@ WHERE {
 }
 
 ###
+# Query 888
 # 037128.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24637,6 +25526,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 889
 # 037129.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24671,6 +25561,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 890
 # 037130.rq
 PREFIX schema: <http://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -24695,6 +25586,7 @@ WHERE {
 }
 
 ###
+# Query 891
 # 037131.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24725,6 +25617,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 892
 # 037132.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24761,6 +25654,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 893
 # 037135.rq
 PREFIX schema: <http://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -24785,6 +25679,7 @@ WHERE {
 }
 
 ###
+# Query 894
 # 037136.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24822,6 +25717,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 895
 # 037137.rq
 PREFIX schema: <http://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -24846,6 +25742,7 @@ WHERE {
 }
 
 ###
+# Query 896
 # 037142.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24883,6 +25780,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 897
 # 037143.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24920,6 +25818,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 898
 # 037145.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24957,6 +25856,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 899
 # 037157.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -24994,6 +25894,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 900
 # 037159.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25031,6 +25932,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 901
 # 037160.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25059,6 +25961,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 902
 # 037162.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25097,6 +26000,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 903
 # 037163.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25131,6 +26035,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 904
 # 037172.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25169,6 +26074,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 905
 # 037179.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25207,6 +26113,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 906
 # 037180.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25235,6 +26142,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 907
 # 037185.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25273,6 +26181,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 908
 # 037190.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25313,6 +26222,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 909
 # 037194.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25347,6 +26257,7 @@ WHERE {
 #LIMIT 10
 
 ###
+# Query 910
 # 037198.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25381,6 +26292,7 @@ WHERE {
 LIMIT 20
 
 ###
+# Query 911
 # 037199.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25421,6 +26333,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 912
 # 037200.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25457,6 +26370,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 913
 # 037201.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25496,6 +26410,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 914
 # 037202.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25531,6 +26446,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 915
 # 037203.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25560,6 +26476,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 916
 # 037204.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25595,6 +26512,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 917
 # 037211.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25634,6 +26552,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 918
 # 037214.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25669,6 +26588,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 919
 # 037215.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25703,6 +26623,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 920
 # 037216.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25731,6 +26652,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 921
 # 037220.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25769,6 +26691,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 922
 # 037223.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25801,6 +26724,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 923
 # 037227.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25837,6 +26761,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 924
 # 037229.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25873,6 +26798,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 925
 # 037242.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25908,6 +26834,7 @@ WHERE {
 
 
 ###
+# Query 926
 # 037243.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25945,6 +26872,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 927
 # 037244.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -25981,6 +26909,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 928
 # 037251.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26015,6 +26944,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 929
 # 037252.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26055,6 +26985,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 930
 # 037253.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26086,6 +27017,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 931
 # 037255.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26118,6 +27050,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 932
 # 037261.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26152,6 +27085,7 @@ ORDER BY ?name_text
 #LIMIT 10
 
 ###
+# Query 933
 # 037263.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26187,6 +27121,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 934
 # 037264.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26222,6 +27157,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 935
 # 037265.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26257,6 +27193,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 936
 # 037266.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26296,6 +27233,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 937
 # 037272.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26335,6 +27273,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 938
 # 037273.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26373,6 +27312,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 939
 # 037274.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26412,6 +27352,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 940
 # 037275.rq
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <http://schema.org/>
@@ -26433,6 +27374,7 @@ WHERE {
 ORDER BY ?cuLabel
 
 ###
+# Query 941
 # 037279.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26467,6 +27409,7 @@ ORDER BY ?name_text
 #LIMIT 10
 
 ###
+# Query 942
 # 037280.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26504,6 +27447,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 943
 # 037283.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26541,6 +27485,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 944
 # 037293.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26575,6 +27520,7 @@ ORDER BY ?name_text
 LIMIT 10
 
 ###
+# Query 945
 # 037294.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26607,6 +27553,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 946
 # 037296.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26639,6 +27586,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 947
 # 037297.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26675,6 +27623,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 948
 # 037298.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26713,6 +27662,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 949
 # 037307.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26749,6 +27699,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 950
 # 037333.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26785,6 +27736,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 951
 # 037334.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26821,6 +27773,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 952
 # 037339.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26859,6 +27812,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 953
 # 037340.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26897,6 +27851,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 954
 # 037344.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26937,6 +27892,7 @@ ORDER BY DESC(?gebJahr)
 LIMIT 10
 
 ###
+# Query 955
 # 037345.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -26979,6 +27935,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 956
 # 037352.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27017,6 +27974,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 957
 # 037353.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27051,6 +28009,7 @@ ORDER BY ?name_text
 LIMIT 10
 
 ###
+# Query 958
 # 037356.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27092,6 +28051,7 @@ ORDER BY DESC(?gebJahr)
 LIMIT 10
 
 ###
+# Query 959
 # 037364.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27129,6 +28089,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 960
 # 037365.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27173,6 +28134,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 961
 # 037366.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27210,6 +28172,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 962
 # 037369.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27254,6 +28217,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 963
 # 037372.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27291,6 +28255,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 964
 # 037373.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27335,6 +28300,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 965
 # 037378.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27372,6 +28338,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 966
 # 037379.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27412,6 +28379,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 967
 # 037380.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27449,6 +28417,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 968
 # 037381.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27492,6 +28461,7 @@ WHERE {
   ORDER BY DESC(?gebjahr)
 
 ###
+# Query 969
 # 037382.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27529,6 +28499,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 970
 # 037383.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27566,6 +28537,7 @@ WHERE {
 
 
 ###
+# Query 971
 # 037391.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27607,6 +28579,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 972
 # 037394.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27644,6 +28617,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 973
 # 037401.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27685,6 +28659,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 974
 # 037402.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27724,6 +28699,7 @@ ORDER BY ?geburtsjahr
 LIMIT 10
 
 ###
+# Query 975
 # 037409.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27768,6 +28744,7 @@ WHERE {
   ORDER BY DESC(?gebjahr)
 
 ###
+# Query 976
 # 037410.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27806,6 +28783,7 @@ WHERE {
 
 
 ###
+# Query 977
 # 037411.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -27847,6 +28825,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 978
 # 037413.rq
 
 prefix schema: <http://schema.org/>
@@ -27978,6 +28957,7 @@ WHERE {
 }
 
 ###
+# Query 979
 # 037414.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28013,6 +28993,7 @@ ORDER BY ?geburtsjahr
 #LIMIT 10
 
 ###
+# Query 980
 # 037415.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28053,6 +29034,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 981
 # 037417.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28092,6 +29074,7 @@ WHERE {
 
 
 ###
+# Query 982
 # 037420.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28136,6 +29119,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 983
 # 037426.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28171,6 +29155,7 @@ WHERE {
 ORDER BY (?jahrgang)
 
 ###
+# Query 984
 # 037427.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28211,6 +29196,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 985
 # 037430.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28250,6 +29236,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 986
 # 037431.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28292,6 +29279,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 987
 # 037439.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28329,6 +29317,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 988
 # 037442.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28367,6 +29356,7 @@ WHERE {
 
 
 ###
+# Query 989
 # 037443.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28406,6 +29396,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 990
 # 037449.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28452,6 +29443,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 991
 # 037450.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28489,6 +29481,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 992
 # 037452.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28528,6 +29521,7 @@ ORDER BY ?name_text
 LIMIT 10
 
 ###
+# Query 993
 # 037453.rq
 
 prefix schema: <http://schema.org/>
@@ -28659,6 +29653,7 @@ WHERE {
 }
 
 ###
+# Query 994
 # 037454.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28696,6 +29691,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 995
 # 037455.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28740,6 +29736,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 996
 # 037456.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28779,6 +29776,7 @@ ORDER BY ?name_text
 LIMIT 10
 
 ###
+# Query 997
 # 037463.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28819,6 +29817,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 998
 # 037464.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28865,6 +29864,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 999
 # 037465.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28906,6 +29906,7 @@ ORDER BY ?name_text
 LIMIT 10
 
 ###
+# Query 1000
 # 037466.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28946,6 +29947,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1001
 # 037467.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -28992,6 +29994,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1002
 # 037473.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29036,6 +30039,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1003
 # 037475.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29076,6 +30080,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1004
 # 037476.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29121,6 +30126,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1005
 # 037479.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29163,6 +30169,7 @@ ORDER BY ?name_text
 LIMIT 10
 
 ###
+# Query 1006
 # 037480.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29207,6 +30214,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1007
 # 037484.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29249,6 +30257,7 @@ ORDER BY ?name_text
 LIMIT 10
 
 ###
+# Query 1008
 # 037490.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29284,6 +30293,7 @@ ORDER BY ?geburtsjahr
 #LIMIT 10
 
 ###
+# Query 1009
 # 037492.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29328,6 +30338,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1010
 # 037493.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29368,6 +30379,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1011
 # 037494.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29408,6 +30420,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1012
 # 037495.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29448,6 +30461,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1013
 # 037496.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29488,6 +30502,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1014
 # 037497.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29532,6 +30547,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1015
 # 037498.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29567,6 +30583,7 @@ ORDER BY ?geburtsjahr
 #LIMIT 10
 
 ###
+# Query 1016
 # 037499.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29602,6 +30619,7 @@ ORDER BY ?geburtsjahr
 #LIMIT 10
 
 ###
+# Query 1017
 # 037501.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29642,6 +30660,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1018
 # 037502.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29677,6 +30696,7 @@ ORDER BY ?geburtsjahr
 #LIMIT 10
 
 ###
+# Query 1019
 # 037503.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29717,6 +30737,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1020
 # 037505.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29757,6 +30778,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1021
 # 037506.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29801,6 +30823,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1022
 # 037509.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29846,6 +30869,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1023
 # 037513.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -29864,6 +30888,7 @@ ORDER BY DESC(?totalCount)
 LIMIT 1
 
 ###
+# Query 1024
 # 037514.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -29879,6 +30904,7 @@ GROUP BY ?time
 ORDER BY ?time
 
 ###
+# Query 1025
 # 037515.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29919,6 +30945,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1026
 # 037518.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -29965,6 +30992,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1027
 # 037532.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -29983,6 +31011,7 @@ GROUP BY ?time ?somePropertyLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 1028
 # 037533.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30023,6 +31052,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1029
 # 037534.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30063,6 +31093,7 @@ WHERE {
 ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1030
 # 037540.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30114,6 +31145,7 @@ WHERE {
 LIMIT 50
 
 ###
+# Query 1031
 # 037551.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30154,6 +31186,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1032
 # 037554.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30194,6 +31227,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1033
 # 037557.rq
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <http://schema.org/>
@@ -30214,6 +31248,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1034
 # 037559.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30257,6 +31292,7 @@ ORDER BY ?name_text
 LIMIT 10
 
 ###
+# Query 1035
 # 037564.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30300,6 +31336,7 @@ ORDER BY ?name_text
 LIMIT 10
 
 ###
+# Query 1036
 # 037580.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -30317,6 +31354,7 @@ GROUP BY ?time ?somePropertyLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 1037
 # 037585.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -30335,6 +31373,7 @@ GROUP BY ?time ?somePropertyLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 1038
 # 037587.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -30352,6 +31391,7 @@ GROUP BY ?time ?somePropertyLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 1039
 # 037672.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30400,6 +31440,7 @@ WHERE {
   ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1040
 # 037673.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30448,6 +31489,7 @@ WHERE {
   ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1041
 # 037674.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30496,6 +31538,7 @@ WHERE {
   ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1042
 # 037675.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30544,6 +31587,7 @@ WHERE {
   ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1043
 # 037680.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -30562,6 +31606,7 @@ GROUP BY ?time ?somePropertyLabel
 ORDER BY ?time DESC(?totalAnteil)
 
 ###
+# Query 1044
 # 037686.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -30580,6 +31625,7 @@ GROUP BY ?time ?zimmerzahlLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 1045
 # 037690.rq
 PREFIX schema: <http://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -30604,6 +31650,7 @@ WHERE {
 }
 
 ###
+# Query 1046
 # 037692.rq
 PREFIX schema: <http://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -30628,6 +31675,7 @@ WHERE {
 }
 
 ###
+# Query 1047
 # 037713.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30668,6 +31716,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1048
 # 037716.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30708,6 +31757,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1049
 # 037717.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30748,6 +31798,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1050
 # 037718.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30788,6 +31839,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1051
 # 037725.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30828,6 +31880,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1052
 # 037726.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30868,6 +31921,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1053
 # 037727.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30908,6 +31962,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1054
 # 037728.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30948,6 +32003,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1055
 # 037731.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -30988,6 +32044,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1056
 # 037732.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -31028,6 +32085,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1057
 # 037733.rq
 PREFIX cube: <https://cube.link/>
 PREFIX schema: <http://schema.org/>
@@ -31045,6 +32103,7 @@ GROUP BY ?time ?zimmerzahlLabel
 ORDER BY ?time DESC(?totalCount)
 
 ###
+# Query 1058
 # 037734.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -31093,6 +32152,7 @@ WHERE {
   ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1059
 # 037735.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -31141,6 +32201,7 @@ WHERE {
   ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1060
 # 037737.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -31189,6 +32250,7 @@ WHERE {
   ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1061
 # 037751.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -31237,6 +32299,7 @@ WHERE {
   ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1062
 # 037752.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -31285,6 +32348,7 @@ WHERE {
   ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1063
 # 037753.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -31333,6 +32397,7 @@ WHERE {
   ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1064
 # 037754.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -31381,6 +32446,7 @@ WHERE {
   ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1065
 # 037755.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -31429,6 +32495,7 @@ WHERE {
   ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1066
 # 037758.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -31477,6 +32544,7 @@ WHERE {
   ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1067
 # 037785.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -31494,6 +32562,7 @@ WHERE {
 limit 10
 
 ###
+# Query 1068
 # 037799.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -31515,6 +32584,7 @@ WHERE {
 limit 10
 
 ###
+# Query 1069
 # 037801.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -31538,6 +32608,7 @@ WHERE {
 limit 10
 
 ###
+# Query 1070
 # 037803.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -31561,6 +32632,7 @@ WHERE {
 limit 10
 
 ###
+# Query 1071
 # 037804.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -31584,6 +32656,7 @@ WHERE {
 limit 10
 
 ###
+# Query 1072
 # 037805.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -31607,6 +32680,7 @@ WHERE {
 limit 10
 
 ###
+# Query 1073
 # 038156.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -31648,6 +32722,7 @@ WHERE
       }
 
 ###
+# Query 1074
 # 038157.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -31699,6 +32774,7 @@ WHERE
   }
 
 ###
+# Query 1075
 # 038158.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -31740,6 +32816,7 @@ WHERE
       }
 
 ###
+# Query 1076
 # 038159.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -31791,6 +32868,7 @@ WHERE
   }
 
 ###
+# Query 1077
 # 038166.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -31832,6 +32910,7 @@ WHERE
       }
 
 ###
+# Query 1078
 # 038167.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -31883,6 +32962,7 @@ WHERE
   }
 
 ###
+# Query 1079
 # 038169.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -31934,6 +33014,7 @@ WHERE
   }
 
 ###
+# Query 1080
 # 038170.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -31975,6 +33056,7 @@ WHERE
       }
 
 ###
+# Query 1081
 # 038172.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -32016,6 +33098,7 @@ WHERE
       }
 
 ###
+# Query 1082
 # 038173.rq
 
 PREFIX  :     <http://voc.zazuko.com/zack#>
@@ -32067,6 +33150,7 @@ WHERE
   }
 
 ###
+# Query 1083
 # 038364.rq
 
             PREFIX schema: <http://schema.org/>
@@ -32079,6 +33163,7 @@ WHERE
 
 
 ###
+# Query 1084
 # 038612.rq
 
             PREFIX schema: <http://schema.org/>
@@ -32094,6 +33179,7 @@ WHERE
 
 
 ###
+# Query 1085
 # 038613.rq
 
             PREFIX schema: <http://schema.org/>
@@ -32106,6 +33192,7 @@ WHERE
 
 
 ###
+# Query 1086
 # 040499.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32142,6 +33229,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1087
 # 040511.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32178,6 +33266,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1088
 # 040512.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32212,6 +33301,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1089
 # 040521.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32246,6 +33336,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1090
 # 040522.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32280,6 +33371,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1091
 # 040523.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32314,6 +33406,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1092
 # 040527.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32348,6 +33441,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1093
 # 040534.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32383,6 +33477,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1094
 # 040543.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32418,6 +33513,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1095
 # 040546.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32454,6 +33550,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1096
 # 040547.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32490,6 +33587,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1097
 # 040550.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32526,6 +33624,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1098
 # 040556.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32565,6 +33664,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1099
 # 040557.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32604,6 +33704,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1100
 # 040558.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32643,6 +33744,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1101
 # 040559.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32682,6 +33784,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1102
 # 040562.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32721,6 +33824,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1103
 # 040563.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32760,6 +33864,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1104
 # 040566.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32799,6 +33904,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1105
 # 040569.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32839,6 +33945,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1106
 # 040570.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32880,6 +33987,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1107
 # 040579.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32921,6 +34029,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1108
 # 040585.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -32962,6 +34071,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1109
 # 040586.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -33003,6 +34113,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1110
 # 040587.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -33044,6 +34155,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1111
 # 040591.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -33085,6 +34197,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1112
 # 040592.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -33128,6 +34241,7 @@ ORDER BY DESC (?jahr)
 LIMIT 10
 
 ###
+# Query 1113
 # 040593.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -33170,6 +34284,7 @@ WHERE {
 LIMIT 10
 
 ###
+# Query 1114
 # 040594.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -33213,6 +34328,7 @@ ORDER BY DESC (?jahr)
 LIMIT 10
 
 ###
+# Query 1115
 # 040595.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -33256,6 +34372,7 @@ ORDER BY DESC (?jahr)
 LIMIT 10
 
 ###
+# Query 1116
 # 040596.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -33299,6 +34416,7 @@ ORDER BY DESC (?jahr)
 LIMIT 10
 
 ###
+# Query 1117
 # 040602.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -33341,6 +34459,7 @@ ORDER BY DESC (?jahr)
 LIMIT 10
 
 ###
+# Query 1118
 # 040603.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -33382,6 +34501,7 @@ WHERE {
 ORDER BY DESC (?jahr)
 
 ###
+# Query 1119
 # 040624.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -33400,6 +34520,7 @@ ORDER BY ?cuLabel
 LIMIT 10
 
 ###
+# Query 1120
 # 040860.rq
 
             PREFIX schema: <http://schema.org/>
@@ -33412,6 +34533,7 @@ LIMIT 10
 
 
 ###
+# Query 1121
 # 040863.rq
 
             PREFIX schema: <http://schema.org/>
@@ -33431,6 +34553,7 @@ LIMIT 10
 
 
 ###
+# Query 1122
 # 040873.rq
 
             PREFIX schema: <http://schema.org/>
@@ -33443,6 +34566,7 @@ LIMIT 10
 
 
 ###
+# Query 1123
 # 040874.rq
 
             PREFIX schema: <http://schema.org/>
@@ -33455,6 +34579,7 @@ LIMIT 10
 
 
 ###
+# Query 1124
 # 041097.rq
 PREFIX schema: <http://schema.org/>
 PREFIX schemac: <https://cube.link/>
@@ -33503,6 +34628,7 @@ WHERE {
   ORDER BY DESC(?gebjahr)
 
 ###
+# Query 1125
 # 041137.rq
 
 prefix qb: <http://purl.org/linked-data/cube#>
