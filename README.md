@@ -12,40 +12,17 @@ Stay tuned for updates on this section.
 
 Ensure you have the following prerequisites ready:
 
-- [Java](https://www.java.com/en/)
+- [k6](https://k6.io/docs/get-started/installation/)
 - A snapshot of the LINDAS dataset, which you can download [here](https://download.zazukoians.org/lindas/lindas_2024-06-14.nq.gz).
   The dataset is approximately 2.3 GB compressed and 60GB uncompressed.
 - A triplestore that you wish to test against.
 
-We use [Iguana](https://github.com/dice-group/IGUANA) to benchmark the queries.
+We use [k6](https://k6.io/) to benchmark the queries.
+We also provide a quick way to check if the triplestore is compliant with the queries that are run against LINDAS.
 
 ## Quick Start
 
-To get started, follow these steps:
-
-1. Run the fetch script to download Iguana from the specified GitHub release into the `iguana` directory:
-
-   ```sh
-   ./scripts/fetch-iguana.sh
-   ```
-
-   The script will pull the specified version of Iguana as stated in `scripts/fetch-iguana.sh`.
-
-2. Execute the benchmark using the predetermined scenario by running:
-
-   ```sh
-   ./scripts/scenario-lindas.sh
-   ```
-
-   This command initiates the benchmark using the configuration outlined in `scenarios/lindas.yaml`.
-
-## Using `k6`
-
-We also provide some `k6` script to benchmark your SPAQRL endpoint or make sure it is compliant with the queries that are run against LINDAS.
-
-More information about `k6` can be found [here](https://k6.io/).
-
-## Conformity Test
+### Conformity Test
 
 Check that your triplestore is able to support some common queries against the LINDAS dataset:
 
@@ -60,13 +37,16 @@ k6 run \
 The query timeout is set to 5min.
 The script has a limit of 1 day to run.
 
-And inspect results:
+This will run the queries against the triplestore and check if they are able to return a result.
+The results are stored in a file `./results/summary-conformity.json`.
+
+And inspect results in a human-readable format, run the following command:
 
 ```sh
-./scripts/summary-conformity.sh
+./scripts/summary-conformity-simple.sh
 ```
 
-## Benchmark
+### Benchmark
 
 Run the benchmark against your triplestore:
 
@@ -81,7 +61,9 @@ k6 run \
 The query timeout is set to 2min30s.
 It will run 10 virtual users, that will run the maximum number of queries they can against the triplestore during 120s, and this for each query.
 
-And inspect results:
+The results are stored in a file `./results/summary-benchmark.json`.
+
+To inspect the results in a human-readable format, run the following command:
 
 ```sh
 ./scripts/summary-benchmark.sh
