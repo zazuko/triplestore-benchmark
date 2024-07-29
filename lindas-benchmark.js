@@ -7,6 +7,10 @@ import { Trend } from 'k6/metrics';
 const stepDuration = 120; // seconds
 
 const endpoint = __ENV.SPARQL_ENDPOINT;
+const startStr = __ENV.START || "0";
+const endStr = __ENV.END || "10";
+const start = parseInt(startStr);
+const end = parseInt(endStr);
 
 let authorizationHeader = null;
 
@@ -35,7 +39,7 @@ const queries = new SharedArray('queries', function () {
 
 const trends = []
 const scenarios = {}
-for (let i = 0; i < queries.length; i++) {
+for (let i = start; i < end; i++) {
   scenarios[`query_${i}`] = {
     executor: 'constant-vus',
     vus: 10,
@@ -43,7 +47,7 @@ for (let i = 0; i < queries.length; i++) {
     env: {
       QUERY_ID: `${i}`,
     },
-    startTime: `${i * stepDuration}s`,
+    startTime: `${(i - start) * stepDuration}s`,
     gracefulStop: `${stepDuration}s`,
   };
   trends.push(new Trend(`query_${i}_duration`, true));
@@ -56,7 +60,7 @@ export const options = {
 export default function () {
   const queryId = __ENV.QUERY_ID;
   const query = queries[queryId];
-  const trend = trends[queryId];
+  const trend = trends[queryId - start];
 
   group(`Query#${queryId}`, () => {
     const response = http.post(endpoint, {
@@ -76,7 +80,9 @@ export default function () {
 }
 
 export function handleSummary (data) {
-  return {
-    './results/summary-benchmark.json': JSON.stringify(data, null, 2),
-  };
+  const date = new Date().toISOString();
+  const strDate = date.replace(/:/g, '-').replace(/\..+/, '');
+  const res = {};
+  res[`./results/summary-benchmark-${strDate}.json`] = JSON.stringify(data, null, 2);
+  return res;
 }
