@@ -1,5 +1,7 @@
 # LINDAS Triplestore Benchmark
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/?autostart=true&editor=code#https://github.com/zazuko/lindas-benchmark)
+
 Welcome to the LINDAS Triplestore Benchmark repository!
 Here, you can explore SPARQL queries extracted from the Swiss government SPARQL endpoint, LINDAS, to benchmark and compare other triplestores.
 
