@@ -5,3 +5,5 @@ iguana-*.zip.*
 results/*
 !results/summary-benchmark-2024-08-08T05-04-32.json
 *.log
+dist/
+*.db
