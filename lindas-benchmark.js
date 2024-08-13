@@ -8,7 +8,7 @@ const stepDuration = 120; // seconds
 
 const endpoint = __ENV.SPARQL_ENDPOINT;
 const startStr = __ENV.START || "0";
-const endStr = __ENV.END || "10";
+const endStr = __ENV.END || "1125";
 const start = parseInt(startStr);
 const end = parseInt(endStr);
 
@@ -39,7 +39,7 @@ const queries = new SharedArray('queries', function () {
 
 const trends = []
 const scenarios = {}
-for (let i = start; i < end; i++) {
+for (let i = start; i <= end; i++) {
   scenarios[`query_${i}`] = {
     executor: 'constant-vus',
     vus: 10,
