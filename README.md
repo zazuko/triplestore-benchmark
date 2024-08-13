@@ -40,7 +40,7 @@ The script has a limit of 1 day to run.
 This will run the queries against the triplestore and check if they are able to return a result.
 The results are stored in a file `./results/summary-conformity.json`.
 
-And inspect results in a human-readable format, run the following command:
+And inspect results in a human-readable format, run the following command (`jq` is required):
 
 ```sh
 ./scripts/summary-conformity-simple.sh
@@ -58,13 +58,20 @@ k6 run \
   lindas-benchmark.js
 ```
 
+In case you want to run the benchmark on some specific queries (it can be useful in order to check that it can hit your endpoint as expected), you can add those parameters:
+
+- `-e START=0`: The index of the first query to run (default: `0`)
+- `-e END=1125`: The index of the last query to run (default: `1125`)
+
 The query timeout is set to 2min30s.
 It will run 10 virtual users, that will run the maximum number of queries they can against the triplestore during 120s, and this for each query.
 
-The results are stored in a file `./results/summary-benchmark.json`.
+The results are stored in a file `./results/summary-benchmark-YYYY-MM-DDTHH-MM-SS.json`.
 
-To inspect the results in a human-readable format, run the following command:
+To inspect the results in a human-readable format, run the following command (`jq` is required):
 
 ```sh
-./scripts/summary-benchmark.sh
+./scripts/summary-benchmark.sh ./results/summary-benchmark-YYYY-MM-DDTHH-MM-SS.json
 ```
+
+by updating the path to the JSON file you want to inspect.
