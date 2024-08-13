@@ -2,7 +2,7 @@
 name = "lindas-benchmark"
 version = "0.1.0"
 description = ""
-authors = [""]
+authors = ["John Doe <john.doe@example.com>"]
 readme = "README.md"
 packages = []
 
