@@ -1,7 +1,11 @@
 #!/bin/sh
 
-# JSON input file
-input_json="./results/summary-benchmark.json"
+# JSON results file
+input_json="$1"
+if [ -z "${input_json}" ]; then
+  echo "Usage: $0 <results-json-file-path>"
+  exit 1
+fi
 
 # Extract and print query information
 jq -r '
