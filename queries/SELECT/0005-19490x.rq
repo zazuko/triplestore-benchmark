@@ -1,0 +1,4 @@
+SELECT (COUNT(*) AS ?triples) WHERE {
+  SELECT * WHERE { ?s ?p ?o. }
+  LIMIT 3
+}

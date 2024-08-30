@@ -1,0 +1,10 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cube: <https://cube.link/>
+SELECT ?time (AVG(?alter) AS ?durchschnittsalter) WHERE {
+  ?observationSet cube:observation ?observation.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/measure/ALT> ?alter;
+    <https://ld.stadt-zuerich.ch/statistics/property/TIME> ?time.
+  FILTER((?time >= "2003-01-01"^^xsd:date) && (?time <= "2022-12-31"^^xsd:date))
+}
+GROUP BY ?time
+ORDER BY (?time)

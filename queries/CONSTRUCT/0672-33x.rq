@@ -1,0 +1,17 @@
+PREFIX schema: <http://schema.org/>
+CONSTRUCT { ?uri schema:name ?label. }
+WHERE {
+  GRAPH ?g {
+    ?uri schema:name ?label.
+    VALUES ?uri {
+      <http://www.geonames.org/ontology#featureCode>
+      <http://www.geonames.org/ontology#A.ADM1>
+      <http://www.w3.org/2004/02/skos/core#hiddenLabel>
+      <http://www.w3.org/ns/prov#hadPrimarySource>
+      <https://register.ld.admin.ch/agvch/canton/1>
+      <https://geo.ld.admin.ch/boundaries/canton/1>
+      schema:name
+      <https://ld.admin.ch/dimension/bgdi/biota/forestfirewarningregions/2600>
+    }
+  }
+}

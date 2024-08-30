@@ -1,0 +1,143 @@
+PREFIX cube: <https://cube.link/>
+PREFIX meta: <https://cube.link/meta/>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX time: <http://www.w3.org/2006/time#>
+CONSTRUCT {
+  ?dimension sh:path ?dimensionIri.
+  ?dimension rdf:type ?dimensionType.
+  ?dimension qudt:scaleType ?dimensionScaleType.
+  ?dimension qudt:unit ?dimensionUnit.
+  ?dimensionUnit schema:name ?dimensionUnitLabel.
+  ?dimensionUnit qudt:CurrencyUnit ?dimensionUnitIsCurrency.
+  ?dimensionUnit qudt:currencyExponent ?dimensionUnitCurrencyExponent.
+  ?dimension sh:order ?dimensionOrder.
+  ?dimension meta:dataKind ?dimensionDataKind.
+  ?dimensionDataKind rdf:type ?dimensionDataKindType.
+  ?dimensionDataKind time:unitType ?dimensionTimeUnitType.
+  ?dimension schema:name ?dimensionLabel.
+  ?dimension schema:description ?dimensionDescription.
+  ?observation ?observationPredicate ?observationValue.
+  ?observation ?observationPredicate ?observationLabel.
+  ?observationValue schema:position ?observationPosition.
+}
+WHERE {
+  {
+    VALUES ?cube {
+      <https://environment.ld.admin.ch/foen/nfi/nfi_C-90/cube/2023-3>
+    }
+    ?cube (cube:observationConstraint/sh:property) ?dimension.
+    ?dimension sh:path ?dimensionIri.
+    OPTIONAL { ?dimension rdf:type ?dimensionType. }
+    OPTIONAL { ?dimension qudt:scaleType ?dimensionScaleType. }
+    OPTIONAL {
+      { ?dimension qudt:hasUnit ?dimensionUnit. }
+      OPTIONAL { ?dimensionUnit rdfs:label ?dimensionUnitRdfsLabel. }
+      OPTIONAL { ?dimensionUnit qudt:symbol ?dimensionUnitSymbol. }
+      OPTIONAL { ?dimensionUnit qudt:ucumCode ?dimensionUnitUcumCode. }
+      OPTIONAL { ?dimensionUnit qudt:expression ?dimensionUnitExpression. }
+      OPTIONAL { ?dimensionUnit ?dimensionUnitIsCurrency qudt:CurrencyUnit. }
+      OPTIONAL { ?dimensionUnit qudt:currencyExponent ?dimensionUnitCurrencyExponent. }
+      BIND(STR(COALESCE(STR(?dimensionUnitSymbol), STR(?dimensionUnitUcumCode), STR(?dimensionUnitExpression), STR(?dimensionUnitRdfsLabel))) AS ?dimensionUnitLabel)
+      FILTER((LANG(?dimensionUnitRdfsLabel)) = "en")
+    }
+    OPTIONAL { ?dimension sh:order ?dimensionOrder. }
+    OPTIONAL {
+      ?dimension meta:dataKind ?dimensionDataKind.
+      ?dimensionDataKind rdf:type ?dimensionDataKindType.
+    }
+    OPTIONAL {
+      ?dimension meta:dataKind ?dimensionDataKind.
+      ?dimensionDataKind time:unitType ?dimensionTimeUnitType.
+    }
+    OPTIONAL {
+      ?dimension schema:name ?dimensionLabel_de.
+      FILTER((LANG(?dimensionLabel_de)) = "de")
+    }
+    OPTIONAL {
+      ?dimension schema:name ?dimensionLabel_fr.
+      FILTER((LANG(?dimensionLabel_fr)) = "fr")
+    }
+    OPTIONAL {
+      ?dimension schema:name ?dimensionLabel_it.
+      FILTER((LANG(?dimensionLabel_it)) = "it")
+    }
+    OPTIONAL {
+      ?dimension schema:name ?dimensionLabel_en.
+      FILTER((LANG(?dimensionLabel_en)) = "en")
+    }
+    OPTIONAL {
+      ?dimension schema:name ?dimensionLabel_.
+      FILTER((LANG(?dimensionLabel_)) = "")
+    }
+    BIND(COALESCE(?dimensionLabel_de, ?dimensionLabel_fr, ?dimensionLabel_it, ?dimensionLabel_en, ?dimensionLabel_) AS ?dimensionLabel)
+    OPTIONAL {
+      ?dimension schema:description ?dimensionDescription_de.
+      FILTER((LANG(?dimensionDescription_de)) = "de")
+    }
+    OPTIONAL {
+      ?dimension schema:description ?dimensionDescription_fr.
+      FILTER((LANG(?dimensionDescription_fr)) = "fr")
+    }
+    OPTIONAL {
+      ?dimension schema:description ?dimensionDescription_it.
+      FILTER((LANG(?dimensionDescription_it)) = "it")
+    }
+    OPTIONAL {
+      ?dimension schema:description ?dimensionDescription_en.
+      FILTER((LANG(?dimensionDescription_en)) = "en")
+    }
+    OPTIONAL {
+      ?dimension schema:description ?dimensionDescription_.
+      FILTER((LANG(?dimensionDescription_)) = "")
+    }
+    BIND(COALESCE(?dimensionDescription_de, ?dimensionDescription_fr, ?dimensionDescription_it, ?dimensionDescription_en, ?dimensionDescription_) AS ?dimensionDescription)
+    FILTER((?dimensionIri != cube:observedBy) && (?dimensionIri != rdf:type))
+  }
+  UNION
+  {
+    VALUES ?cube {
+      <https://environment.ld.admin.ch/foen/nfi/nfi_C-90/cube/2023-3>
+    }
+    ?cube (cube:observationConstraint/sh:property/sh:path) ?observationPredicate.
+    {
+      SELECT * WHERE {
+        {
+          SELECT * WHERE {
+            ?cube cube:observationSet ?observationSet.
+            ?observationSet cube:observation ?observation.
+            FILTER((EXISTS { ?cube (cube:observationConstraint/sh:property/sh:datatype) cube:Undefined. }) || (NOT EXISTS { ?observation ?p ""^^cube:Undefined. }))
+          }
+          LIMIT 10
+        }
+        ?observation ?observationPredicate ?observationValue.
+        OPTIONAL {
+          ?observationValue schema:name ?observationLabel_de.
+          FILTER((LANG(?observationLabel_de)) = "de")
+        }
+        OPTIONAL {
+          ?observationValue schema:name ?observationLabel_fr.
+          FILTER((LANG(?observationLabel_fr)) = "fr")
+        }
+        OPTIONAL {
+          ?observationValue schema:name ?observationLabel_it.
+          FILTER((LANG(?observationLabel_it)) = "it")
+        }
+        OPTIONAL {
+          ?observationValue schema:name ?observationLabel_en.
+          FILTER((LANG(?observationLabel_en)) = "en")
+        }
+        OPTIONAL {
+          ?observationValue schema:name ?observationLabel_.
+          FILTER((LANG(?observationLabel_)) = "")
+        }
+        BIND(COALESCE(?observationLabel_de, ?observationLabel_fr, ?observationLabel_it, ?observationLabel_en, ?observationLabel_) AS ?observationLabel)
+        OPTIONAL { ?observationValue schema:position ?observationPosition. }
+        FILTER((?observationPredicate != cube:observedBy) && (?observationPredicate != rdf:type))
+      }
+    }
+  }
+}

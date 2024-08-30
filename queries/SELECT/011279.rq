@@ -1,0 +1,10 @@
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?kreisLabel (AVG(?bew) AS ?durchschnittlichesEinkommen) WHERE {
+  ?observationSet cube:observation ?observation.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/measure/BEW> ?bew;
+    <https://ld.stadt-zuerich.ch/statistics/property/RAUM> ?kreis.
+  ?kreis schema:name ?kreisLabel.
+}
+GROUP BY ?kreisLabel
+ORDER BY DESC (?durchschnittlichesEinkommen)

@@ -1,0 +1,18 @@
+PREFIX cube: <https://cube.link/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX blv: <https://agriculture.ld.admin.ch/fsvo/animal-disease/>
+SELECT ?min ?max FROM <https://lindas.admin.ch/fsvo/animaldisease>
+WHERE {
+  {
+    SELECT ?cubeShape WHERE {
+      BIND(<https://agriculture.ld.admin.ch/fsvo/animal-disease> AS ?cube)
+      ?cube cube:observationConstraint ?cubeShape.
+    }
+    LIMIT 1
+  }
+  BIND(blv:diagnosis-date AS ?dimension)
+  ?cubeShape sh:property ?property.
+  ?property sh:path ?dimension;
+    sh:minInclusive ?min;
+    sh:maxInclusive ?max.
+}

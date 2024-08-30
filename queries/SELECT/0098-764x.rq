@@ -1,0 +1,42 @@
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?iri WHERE {
+  {
+    SELECT ?iri ?version WHERE {
+      VALUES ?oldIri {
+        <https://environment.ld.admin.ch/foen/gefahren-waldbrand-warnung/1>
+      }
+      ?versionHistory schema:hasPart ?oldIri, ?iri.
+      ?iri schema:version ?version;
+        schema:creativeWorkStatus ?status.
+      ?oldIri schema:creativeWorkStatus ?oldStatus.
+      FILTER((NOT EXISTS { ?iri schema:expires ?expires. }) && (?status IN(?oldStatus, <https://ld.admin.ch/vocabulary/CreativeWorkStatus/Published>)))
+    }
+    ORDER BY DESC (?version)
+  }
+  UNION
+  {
+    SELECT ?iri ?status ?version WHERE {
+      VALUES ?versionHistory {
+        <https://environment.ld.admin.ch/foen/gefahren-waldbrand-warnung/1>
+      }
+      ?versionHistory schema:hasPart ?iri.
+      ?iri schema:version ?version;
+        schema:creativeWorkStatus ?status.
+      FILTER(NOT EXISTS { ?iri schema:expires ?expires. })
+    }
+    ORDER BY DESC (?status) DESC (?version)
+  }
+  UNION
+  {
+    SELECT ?iri ?status WHERE {
+      VALUES ?iri {
+        <https://environment.ld.admin.ch/foen/gefahren-waldbrand-warnung/1>
+      }
+      ?iri cube:observationConstraint ?shape;
+        schema:creativeWorkStatus ?status.
+      FILTER((NOT EXISTS { ?iri schema:expires ?expires. }) && (NOT EXISTS { ?versionHistory schema:hasPart ?iri. }))
+    }
+    ORDER BY DESC (?status)
+  }
+}

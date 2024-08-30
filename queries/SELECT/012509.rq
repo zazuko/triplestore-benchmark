@@ -1,0 +1,10 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX otd: <https://lod.opentransportdata.swiss/vocab/>
+SELECT DISTINCT ?Zonenplan ?ZonenPlan_label ?Alliance ?Alliance_label WHERE {
+  ?Relation <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> otd:Relation;
+    otd:zone ?Relation_zone;
+    otd:zoningPlan ?Zonenplan.
+  ?Zonenplan rdfs:label ?ZonenPlan_label;
+    otd:alliance ?Alliance.
+  ?Alliance rdfs:label ?Alliance_label.
+}

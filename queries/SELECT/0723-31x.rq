@@ -1,0 +1,53 @@
+SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5 WHERE {
+  <https://energy.ld.admin.ch/elcom/electricityprice-swiss> <https://cube.link/observationSet> ?observationSet0.
+  ?observationSet0 <https://cube.link/observation> ?source0.
+  ?source0 <https://energy.ld.admin.ch/elcom/electricityprice/dimension/category> ?dimension0;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/period> ?dimension1;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/product> ?dimension2;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/total> ?dimension3.
+  FILTER(?dimension2 IN(<https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest>, <https://energy.ld.admin.ch/elcom/electricityprice/product/standard>))
+  FILTER(?dimension0 = <https://energy.ld.admin.ch/elcom/electricityprice/category/H1>)
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension4_0.
+    FILTER(LANGMATCHES(LANG(?dimension4_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension4_1.
+    FILTER(LANGMATCHES(LANG(?dimension4_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension4_2.
+    FILTER(LANGMATCHES(LANG(?dimension4_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension4_3.
+    FILTER(LANGMATCHES(LANG(?dimension4_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension4_4.
+    FILTER((LANG(?dimension4_4)) = "")
+  }
+  BIND(COALESCE(?dimension4_0, ?dimension4_1, ?dimension4_2, ?dimension4_3, ?dimension4_4) AS ?dimension4)
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension5_0.
+    FILTER(LANGMATCHES(LANG(?dimension5_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension5_1.
+    FILTER(LANGMATCHES(LANG(?dimension5_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension5_2.
+    FILTER(LANGMATCHES(LANG(?dimension5_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension5_3.
+    FILTER(LANGMATCHES(LANG(?dimension5_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension5_4.
+    FILTER((LANG(?dimension5_4)) = "")
+  }
+  BIND(COALESCE(?dimension5_0, ?dimension5_1, ?dimension5_2, ?dimension5_3, ?dimension5_4) AS ?dimension5)
+}
+GROUP BY ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5

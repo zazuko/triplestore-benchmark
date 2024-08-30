@@ -1,0 +1,10 @@
+PREFIX schema: <http://schema.org/>
+CONSTRUCT { ?uri schema:name ?label. }
+WHERE {
+  GRAPH ?g {
+    ?uri schema:name ?label.
+    VALUES ?uri {
+      <https://culture.ld.admin.ch/sfa/stapfer-enquete-1799/1/Auszaehlung/4>
+    }
+  }
+}

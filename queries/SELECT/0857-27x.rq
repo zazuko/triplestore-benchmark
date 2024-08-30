@@ -1,0 +1,33 @@
+SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension3 WHERE {
+  <https://environment.ld.admin.ch/foen/ubd000504/8> <https://cube.link/observationSet> ?observationSet0.
+  ?observationSet0 <https://cube.link/observation> ?source0.
+  ?source0 <https://environment.ld.admin.ch/foen/ubd000504/jahr> ?dimension0;
+    <https://environment.ld.admin.ch/foen/ubd000504/energietraeger> ?dimension1;
+    <https://environment.ld.admin.ch/foen/ubd000504/werteNichtGerundet> ?dimension2.
+  ?dimension1 <http://schema.org/sameAs> ?dimension4.
+  FILTER(?dimension4 = <https://environment.ld.admin.ch/foen/ubd000504/Energietraeger/en1>)
+  FILTER(?dimension0 >= "1990"^^<http://www.w3.org/2001/XMLSchema#gYear>)
+  FILTER(?dimension0 <= "2007"^^<http://www.w3.org/2001/XMLSchema#gYear>)
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension3_0.
+    FILTER(LANGMATCHES(LANG(?dimension3_0), "en"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension3_1.
+    FILTER(LANGMATCHES(LANG(?dimension3_1), "de"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension3_2.
+    FILTER(LANGMATCHES(LANG(?dimension3_2), "fr"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension3_3.
+    FILTER(LANGMATCHES(LANG(?dimension3_3), "it"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension3_4.
+    FILTER((LANG(?dimension3_4)) = "")
+  }
+  BIND(COALESCE(?dimension3_0, ?dimension3_1, ?dimension3_2, ?dimension3_3, ?dimension3_4) AS ?dimension3)
+}
+GROUP BY ?dimension0 ?dimension1 ?dimension2 ?dimension3

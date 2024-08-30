@@ -1,0 +1,55 @@
+CONSTRUCT {
+  ?resource2 <https://agriculture.ld.admin.ch/foag/property/market> ?resource1.
+  ?resource3 <https://agriculture.ld.admin.ch/foag/property/product-group> ?resource2.
+  ?resource4 <https://agriculture.ld.admin.ch/foag/property/product-subgroup> ?resource3.
+  ?resource4 ?resource5 ?resource6.
+  ?resource3 ?resource7 ?resource8.
+  ?resource2 ?resource9 ?resource10.
+  ?resource1 ?resource11 ?resource12.
+}
+WHERE {
+  VALUES ?resource1 {
+    <https://agriculture.ld.admin.ch/foag/market/1>
+    <https://agriculture.ld.admin.ch/foag/market/2>
+    <https://agriculture.ld.admin.ch/foag/market/3>
+    <https://agriculture.ld.admin.ch/foag/market/0>
+  }
+  {
+    { ?resource2 <https://agriculture.ld.admin.ch/foag/property/market> ?resource1. }
+    UNION
+    {
+      ?resource2 <https://agriculture.ld.admin.ch/foag/property/market> ?resource1.
+      {
+        { ?resource3 <https://agriculture.ld.admin.ch/foag/property/product-group> ?resource2. }
+        UNION
+        {
+          ?resource3 <https://agriculture.ld.admin.ch/foag/property/product-group> ?resource2.
+          {
+            { ?resource4 <https://agriculture.ld.admin.ch/foag/property/product-subgroup> ?resource3. }
+            UNION
+            {
+              ?resource4 <https://agriculture.ld.admin.ch/foag/property/product-subgroup> ?resource3;
+                ?resource5 ?resource6.
+            }
+          }
+          UNION
+          { ?resource3 ?resource7 ?resource8. }
+        }
+      }
+      UNION
+      { ?resource2 ?resource9 ?resource10. }
+    }
+  }
+  UNION
+  { ?resource1 ?resource11 ?resource12. }
+  ?resource1 ^<https://agriculture.ld.admin.ch/foag/property/market> ?resource2.
+  {
+    ?resource2 ^<https://agriculture.ld.admin.ch/foag/property/product-group> ?resource3.
+    {
+      ?resource3 ^<https://agriculture.ld.admin.ch/foag/property/product-subgroup> ?resource4.
+      ?resource4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://agriculture.ld.admin.ch/foag/Product>.
+    }
+    ?resource3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://agriculture.ld.admin.ch/foag/ProductSubgroup>.
+  }
+  ?resource2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://agriculture.ld.admin.ch/foag/ProductGroup>.
+}

@@ -1,0 +1,17 @@
+PREFIX schema: <http://schema.org/>
+CONSTRUCT { ?uri schema:name ?label. }
+WHERE {
+  GRAPH ?g {
+    ?uri schema:name ?label.
+    VALUES ?uri {
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+      schema:CreativeWork
+      schema:name
+      schema:url
+      schema:sdPublisher
+      <https://ld.admin.ch/application/cube-creator>
+      schema:hasPart
+      <https://register.ld.admin.ch/.well-known/dataset/opendataswiss-meta>
+    }
+  }
+}

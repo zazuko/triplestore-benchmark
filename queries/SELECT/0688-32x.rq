@@ -1,0 +1,8 @@
+PREFIX cube: <https://cube.link/>
+SELECT ?dimension0 WHERE {
+  <https://environment.ld.admin.ch/foen/ubd000502/5> (cube:observationSet/cube:observation) ?observation.
+  ?observation <https://environment.ld.admin.ch/foen/ubd000502/gas> ?dimension0.
+  VALUES ?dimension0 {
+    <https://ld.admin.ch/cube/dimension/testdimension/test1>
+  }
+}

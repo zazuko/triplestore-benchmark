@@ -1,0 +1,13 @@
+PREFIX cube: <https://cube.link/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT * FROM <https://lindas.admin.ch/stadtzuerich/stat>
+WHERE {
+  VALUES ?kennzahl {
+    <https://ld.stadt-zuerich.ch/statistics/measure/BEW>
+  }
+  ?shape rdf:type cube:Constraint;
+    (sh:property/sh:path) ?kennzahl.
+  ?cube rdf:type cube:Cube;
+    cube:observationConstraint ?shape.
+}

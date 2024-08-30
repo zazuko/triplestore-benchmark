@@ -1,0 +1,52 @@
+PREFIX schema: <http://schema.org/>
+SELECT DISTINCT ?definedTermSet ?definedTerm ?identifier ?position ?name ?startDate ?endDate ?altName ?departmentUri ?generalSecretariat ?centralFederalAdministration WHERE {
+  BIND(<https://ld.admin.ch/office> AS ?definedTermSet)
+  ?definedTerm schema:inDefinedTermSet ?definedTermSet.
+  OPTIONAL {
+    ?definedTerm schema:identifier ?identifier.
+    FILTER((ISLITERAL(?identifier)) = "true"^^<http://www.w3.org/2001/XMLSchema#boolean>)
+  }
+  OPTIONAL { ?definedTerm schema:position ?position. }
+  OPTIONAL { ?definedTerm schema:startDate ?startDate. }
+  OPTIONAL { ?definedTerm schema:endDate ?endDate. }
+  {
+    ?definedTerm schema:name ?name.
+    FILTER((LANG(?name)) = "de")
+    OPTIONAL {
+      ?definedTerm schema:alternateName ?altName.
+      FILTER((LANG(?altName)) = "de")
+    }
+  }
+  UNION
+  {
+    ?definedTerm schema:name ?name.
+    FILTER((LANG(?name)) = "fr")
+    OPTIONAL {
+      ?definedTerm schema:alternateName ?altName.
+      FILTER((LANG(?altName)) = "fr")
+    }
+  }
+  UNION
+  {
+    ?definedTerm schema:name ?name.
+    FILTER((LANG(?name)) = "it")
+    OPTIONAL {
+      ?definedTerm schema:alternateName ?altName.
+      FILTER((LANG(?altName)) = "it")
+    }
+  }
+  OPTIONAL { ?definedTerm schema:parentOrganization ?departmentUri. }
+  OPTIONAL {
+    VALUES ?generalSecretariat {
+      <https://register.ld.admin.ch/termdat/441817>
+    }
+    ?definedTerm schema:additionalType ?generalSecretariat.
+  }
+  OPTIONAL {
+    VALUES ?centralFederalAdministration {
+      <https://register.ld.admin.ch/termdat/57178>
+      <https://register.ld.admin.ch/termdat/57179>
+    }
+    ?definedTerm schema:additionalType ?centralFederalAdministration.
+  }
+}

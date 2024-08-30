@@ -1,0 +1,22 @@
+PREFIX schema: <http://schema.org/>
+PREFIX cube: <https://cube.link/>
+PREFIX blv: <https://agriculture.ld.admin.ch/fsvo/animal-disease/>
+SELECT DISTINCT ?specie ?specieName WHERE {
+  {
+    SELECT ?observation WHERE {
+      {
+        SELECT ?observationSet WHERE {
+          BIND(<https://agriculture.ld.admin.ch/fsvo/animal-disease> AS ?cube)
+          ?cube cube:observationSet ?observationSet.
+        }
+        LIMIT 1
+      }
+      ?observationSet cube:observation ?observation.
+      ?observation blv:epidemics <https://agriculture.ld.admin.ch/fsvo/animal-disease/epidemics/75>.
+    }
+    ORDER BY DESC (?diagnosisDate)
+  }
+  ?observation (blv:animal-specie/schema:name) ?specieName;
+    blv:animal-specie ?specie.
+  FILTER(LANGMATCHES(LANG(?specieName), "de"))
+}

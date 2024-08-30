@@ -1,0 +1,34 @@
+SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5 ?dimension6 ?dimension7 WHERE {
+  <https://energy.ld.admin.ch/sfoe/bfe_ogd84_einmalverguetung_fuer_photovoltaikanlagen/9> <https://cube.link/observationSet> ?observationSet0.
+  ?observationSet0 <https://cube.link/observation> ?source0.
+  ?source0 <https://energy.ld.admin.ch/sfoe/bfe_ogd84_einmalverguetung_fuer_photovoltaikanlagen/Jahr> ?dimension0;
+    <https://energy.ld.admin.ch/sfoe/bfe_ogd84_einmalverguetung_fuer_photovoltaikanlagen/Kanton> ?dimension1;
+    <https://energy.ld.admin.ch/sfoe/bfe_ogd84_einmalverguetung_fuer_photovoltaikanlagen/AnzahlAnlagen> ?dimension2;
+    <https://energy.ld.admin.ch/sfoe/bfe_ogd84_einmalverguetung_fuer_photovoltaikanlagen/InstallierteLeistungkW> ?dimension3;
+    <https://energy.ld.admin.ch/sfoe/bfe_ogd84_einmalverguetung_fuer_photovoltaikanlagen/VerguetungCHF> ?dimension4;
+    <https://energy.ld.admin.ch/sfoe/bfe_ogd84_einmalverguetung_fuer_photovoltaikanlagen/AnzahlAnlagenPro100000Einwohner> ?dimension5;
+    <https://energy.ld.admin.ch/sfoe/bfe_ogd84_einmalverguetung_fuer_photovoltaikanlagen/InstallierteLeistungkWPro100000Einwohner> ?dimension6.
+  FILTER(?dimension1 = <https://ld.admin.ch/canton/1>)
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension7_0.
+    FILTER(LANGMATCHES(LANG(?dimension7_0), "en"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension7_1.
+    FILTER(LANGMATCHES(LANG(?dimension7_1), "de"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension7_2.
+    FILTER(LANGMATCHES(LANG(?dimension7_2), "fr"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension7_3.
+    FILTER(LANGMATCHES(LANG(?dimension7_3), "it"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension7_4.
+    FILTER((LANG(?dimension7_4)) = "")
+  }
+  BIND(COALESCE(?dimension7_0, ?dimension7_1, ?dimension7_2, ?dimension7_3, ?dimension7_4) AS ?dimension7)
+}
+GROUP BY ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5 ?dimension6 ?dimension7

@@ -1,0 +1,18 @@
+PREFIX cube: <https://cube.link/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX schema: <http://schema.org/>
+SELECT DISTINCT ?dimension ?label ?type ?description FROM <https://lindas.admin.ch/foag/agricultural-market-data>
+WHERE {
+  <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationConstraint ?shape.
+  ?shape ?p ?blankNode.
+  ?blankNode sh:path ?dimension.
+  OPTIONAL {
+    ?blankNode schema:name ?label.
+    FILTER((LANG(?label)) = "de")
+  }
+  OPTIONAL {
+    ?blankNode schema:description ?description.
+    FILTER((LANG(?description)) = "de")
+  }
+  OPTIONAL { ?blankNode <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?type. }
+}

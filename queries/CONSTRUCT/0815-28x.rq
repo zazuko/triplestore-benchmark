@@ -1,0 +1,35 @@
+PREFIX schema: <http://schema.org/>
+CONSTRUCT { ?uri schema:name ?label. }
+WHERE {
+  GRAPH ?g {
+    ?uri schema:name ?label.
+    VALUES ?uri {
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+      <http://xmlns.com/foaf/0.1/Organization>
+      schema:Organization
+      <http://xmlns.com/foaf/0.1/Agent>
+      <https://version.link/Identity>
+      schema:name
+      schema:identifier
+      <https://ld.admin.ch/ou/20011514/2024-06-06/dn>
+      schema:address
+      <https://ld.admin.ch/ou/20011514/2024-06-06/address>
+      schema:parentOrganization
+      <https://ld.admin.ch/ou/20008277>
+      schema:subOrganization
+      <https://ld.admin.ch/ou/20011717>
+      <https://ld.admin.ch/ou/20011515>
+      <https://ld.admin.ch/ou/20011520>
+      <https://ld.admin.ch/ou/20011541>
+      <https://ld.admin.ch/ou/20011551>
+      <https://ld.admin.ch/ou/20011554>
+      <https://ld.admin.ch/ou/20027959>
+      schema:startDate
+      <https://version.link/version>
+      <https://ld.admin.ch/ou/20011514/2024-06-06>
+      <https://version.link/inVersionedIdentitySet>
+      <https://ld.admin.ch/ou>
+      <http://xmlns.com/foaf/0.1/name>
+    }
+  }
+}

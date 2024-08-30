@@ -1,0 +1,77 @@
+SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5 ?dimension6 ?dimension7 WHERE {
+  <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_movements/2> <https://cube.link/observationSet> ?observationSet0.
+  ?observationSet0 <https://cube.link/observation> ?source0.
+  ?source0 <http://schema.org/location> ?dimension0;
+    <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_movements/year> ?dimension1;
+    <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_movements/value> ?dimension2;
+    <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_movements/art> ?dimension3;
+    <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_movements/type> ?dimension4.
+  ?dimension4 <http://schema.org/sameAs> ?dimension8.
+  FILTER(?dimension8 = <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_movements/Type/1>)
+  FILTER(?dimension1 >= "2000"^^<http://www.w3.org/2001/XMLSchema#gYear>)
+  FILTER(?dimension1 <= "2022"^^<http://www.w3.org/2001/XMLSchema#gYear>)
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension5_0.
+    FILTER(LANGMATCHES(LANG(?dimension5_0), "en"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension5_1.
+    FILTER(LANGMATCHES(LANG(?dimension5_1), "de"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension5_2.
+    FILTER(LANGMATCHES(LANG(?dimension5_2), "fr"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension5_3.
+    FILTER(LANGMATCHES(LANG(?dimension5_3), "it"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension5_4.
+    FILTER((LANG(?dimension5_4)) = "")
+  }
+  BIND(COALESCE(?dimension5_0, ?dimension5_1, ?dimension5_2, ?dimension5_3, ?dimension5_4) AS ?dimension5)
+  OPTIONAL {
+    ?dimension3 <http://schema.org/name> ?dimension6_0.
+    FILTER(LANGMATCHES(LANG(?dimension6_0), "en"))
+  }
+  OPTIONAL {
+    ?dimension3 <http://schema.org/name> ?dimension6_1.
+    FILTER(LANGMATCHES(LANG(?dimension6_1), "de"))
+  }
+  OPTIONAL {
+    ?dimension3 <http://schema.org/name> ?dimension6_2.
+    FILTER(LANGMATCHES(LANG(?dimension6_2), "fr"))
+  }
+  OPTIONAL {
+    ?dimension3 <http://schema.org/name> ?dimension6_3.
+    FILTER(LANGMATCHES(LANG(?dimension6_3), "it"))
+  }
+  OPTIONAL {
+    ?dimension3 <http://schema.org/name> ?dimension6_4.
+    FILTER((LANG(?dimension6_4)) = "")
+  }
+  BIND(COALESCE(?dimension6_0, ?dimension6_1, ?dimension6_2, ?dimension6_3, ?dimension6_4) AS ?dimension6)
+  OPTIONAL {
+    ?dimension4 <http://schema.org/name> ?dimension7_0.
+    FILTER(LANGMATCHES(LANG(?dimension7_0), "en"))
+  }
+  OPTIONAL {
+    ?dimension4 <http://schema.org/name> ?dimension7_1.
+    FILTER(LANGMATCHES(LANG(?dimension7_1), "de"))
+  }
+  OPTIONAL {
+    ?dimension4 <http://schema.org/name> ?dimension7_2.
+    FILTER(LANGMATCHES(LANG(?dimension7_2), "fr"))
+  }
+  OPTIONAL {
+    ?dimension4 <http://schema.org/name> ?dimension7_3.
+    FILTER(LANGMATCHES(LANG(?dimension7_3), "it"))
+  }
+  OPTIONAL {
+    ?dimension4 <http://schema.org/name> ?dimension7_4.
+    FILTER((LANG(?dimension7_4)) = "")
+  }
+  BIND(COALESCE(?dimension7_0, ?dimension7_1, ?dimension7_2, ?dimension7_3, ?dimension7_4) AS ?dimension7)
+}
+GROUP BY ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5 ?dimension6 ?dimension7

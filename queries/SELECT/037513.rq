@@ -1,0 +1,13 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?NAMLabel (SUM(COALESCE(?Count, 0 )) AS ?totalCount) WHERE {
+  ?observationSet cube:observation ?observation.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/property/NAM> ?NAM.
+  ?NAM schema:name ?NAMLabel.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/measure/BEW> ?Count;
+    <https://ld.stadt-zuerich.ch/statistics/property/TIME> ?time.
+  FILTER(?Count != "NaN"^^xsd:double)
+}
+GROUP BY ?NAMLabel
+ORDER BY DESC (?totalCount)

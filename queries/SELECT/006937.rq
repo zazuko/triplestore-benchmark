@@ -1,0 +1,21 @@
+PREFIX cube: <https://cube.link/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+CONSTRUCT { ?values schema:name ?label. }
+WHERE {
+  SELECT ?values ?label WHERE {
+    VALUES ?cube {
+      <https://environment.ld.admin.ch/foen/ubd000502/4>
+    }
+    ?cube rdf:type cube:Cube;
+      cube:observationConstraint ?shape.
+    ?shape rdf:type cube:Constraint;
+      sh:property ?property.
+    ?property sh:path ?dimensions;
+      sh:in ?list.
+    ?list ((rdf:rest*)/rdf:first) ?values.
+    ?values schema:name ?label.
+    FILTER((LANG(?label)) = "en")
+  }
+}

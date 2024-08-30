@@ -1,0 +1,10 @@
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX void: <http://rdfs.org/ns/void#>
+SELECT (COUNT(DISTINCT ?sub) AS ?count) WHERE {
+  ?sub (schema:name|schema:decription) ?name;
+    rdf:type ?resultType.
+  FILTER(?resultType IN(void:Dataset))
+  FILTER(NOT EXISTS { ?sub schema:expires ?x. })
+  FILTER(NOT EXISTS { ?sub schema:creativeWorkStatus <https://lindas.admin.ch/definedTerm/CreativeWorkStatus/Draft>. })
+}

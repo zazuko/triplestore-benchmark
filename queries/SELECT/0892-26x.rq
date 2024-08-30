@@ -1,0 +1,174 @@
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+CONSTRUCT {
+  ?resource1 schema:identifier ?resource2.
+  ?resource1 schema:name ?resource3.
+  ?resource1 schema:description ?resource4.
+  ?resource1 schema:position ?resource5.
+  ?resource1 schema:alternateName ?resource6.
+  ?resource1 rdf:type ?resource7.
+  ?resource8 <https://agriculture.ld.admin.ch/foag/property/market> ?resource1.
+  ?resource8 schema:identifier ?resource11.
+  ?resource8 schema:name ?resource12.
+  ?resource8 schema:description ?resource13.
+  ?resource8 schema:position ?resource14.
+  ?resource8 schema:alternateName ?resource15.
+  ?resource8 rdf:type ?resource10.
+  ?resource16 <https://agriculture.ld.admin.ch/foag/property/product-group> ?resource8.
+  ?resource16 schema:identifier ?resource19.
+  ?resource16 schema:name ?resource20.
+  ?resource16 schema:description ?resource21.
+  ?resource16 schema:position ?resource22.
+  ?resource16 schema:alternateName ?resource23.
+  ?resource16 rdf:type ?resource18.
+  ?resource24 <https://agriculture.ld.admin.ch/foag/property/product-subgroup> ?resource16.
+  ?resource24 schema:identifier ?resource27.
+  ?resource24 schema:name ?resource28.
+  ?resource24 schema:description ?resource29.
+  ?resource24 schema:position ?resource30.
+  ?resource24 schema:alternateName ?resource31.
+  ?resource24 rdf:type ?resource26.
+}
+WHERE {
+  {
+    SELECT ?resource1 ?resource2 ?resource3 ?resource4 ?resource5 ?resource6 ?resource7 ?resource8 WHERE {
+      VALUES ?resource1 {
+        <https://agriculture.ld.admin.ch/foag/market/1>
+        <https://agriculture.ld.admin.ch/foag/market/2>
+        <https://agriculture.ld.admin.ch/foag/market/3>
+        <https://agriculture.ld.admin.ch/foag/market/0>
+      }
+      { ?resource1 schema:identifier ?resource2. }
+      UNION
+      { ?resource1 schema:name ?resource3. }
+      UNION
+      { ?resource1 schema:description ?resource4. }
+      UNION
+      { ?resource1 schema:position ?resource5. }
+      UNION
+      { ?resource1 schema:alternateName ?resource6. }
+      UNION
+      { ?resource1 rdf:type ?resource7. }
+      UNION
+      {
+        ?resource1 ^<https://agriculture.ld.admin.ch/foag/property/market> ?resource8.
+        ?resource8 rdf:type ?resource10.
+        VALUES ?resource10 {
+          <https://agriculture.ld.admin.ch/foag/ProductGroup>
+        }
+      }
+    }
+  }
+  UNION
+  {
+    SELECT ?resource8 ?resource11 ?resource12 ?resource13 ?resource14 ?resource15 ?resource10 ?resource16 WHERE {
+      VALUES ?resource1 {
+        <https://agriculture.ld.admin.ch/foag/market/1>
+        <https://agriculture.ld.admin.ch/foag/market/2>
+        <https://agriculture.ld.admin.ch/foag/market/3>
+        <https://agriculture.ld.admin.ch/foag/market/0>
+      }
+      ?resource1 ^<https://agriculture.ld.admin.ch/foag/property/market> ?resource8.
+      ?resource8 rdf:type ?resource10.
+      VALUES ?resource10 {
+        <https://agriculture.ld.admin.ch/foag/ProductGroup>
+      }
+      { ?resource8 schema:identifier ?resource11. }
+      UNION
+      { ?resource8 schema:name ?resource12. }
+      UNION
+      { ?resource8 schema:description ?resource13. }
+      UNION
+      { ?resource8 schema:position ?resource14. }
+      UNION
+      { ?resource8 schema:alternateName ?resource15. }
+      UNION
+      { ?resource8 rdf:type ?resource10. }
+      UNION
+      {
+        ?resource8 ^<https://agriculture.ld.admin.ch/foag/property/product-group> ?resource16.
+        ?resource16 rdf:type ?resource18.
+        VALUES ?resource18 {
+          <https://agriculture.ld.admin.ch/foag/ProductSubgroup>
+        }
+      }
+    }
+  }
+  UNION
+  {
+    SELECT ?resource16 ?resource19 ?resource20 ?resource21 ?resource22 ?resource23 ?resource18 ?resource24 WHERE {
+      VALUES ?resource1 {
+        <https://agriculture.ld.admin.ch/foag/market/1>
+        <https://agriculture.ld.admin.ch/foag/market/2>
+        <https://agriculture.ld.admin.ch/foag/market/3>
+        <https://agriculture.ld.admin.ch/foag/market/0>
+      }
+      ?resource1 ^<https://agriculture.ld.admin.ch/foag/property/market> ?resource8.
+      ?resource8 rdf:type ?resource10.
+      VALUES ?resource10 {
+        <https://agriculture.ld.admin.ch/foag/ProductGroup>
+      }
+      ?resource8 ^<https://agriculture.ld.admin.ch/foag/property/product-group> ?resource16.
+      ?resource16 rdf:type ?resource18.
+      VALUES ?resource18 {
+        <https://agriculture.ld.admin.ch/foag/ProductSubgroup>
+      }
+      { ?resource16 schema:identifier ?resource19. }
+      UNION
+      { ?resource16 schema:name ?resource20. }
+      UNION
+      { ?resource16 schema:description ?resource21. }
+      UNION
+      { ?resource16 schema:position ?resource22. }
+      UNION
+      { ?resource16 schema:alternateName ?resource23. }
+      UNION
+      { ?resource16 rdf:type ?resource18. }
+      UNION
+      {
+        ?resource16 ^<https://agriculture.ld.admin.ch/foag/property/product-subgroup> ?resource24.
+        ?resource24 rdf:type ?resource26.
+        VALUES ?resource26 {
+          <https://agriculture.ld.admin.ch/foag/Product>
+        }
+      }
+    }
+  }
+  UNION
+  {
+    SELECT ?resource24 ?resource27 ?resource28 ?resource29 ?resource30 ?resource31 ?resource26 WHERE {
+      VALUES ?resource1 {
+        <https://agriculture.ld.admin.ch/foag/market/1>
+        <https://agriculture.ld.admin.ch/foag/market/2>
+        <https://agriculture.ld.admin.ch/foag/market/3>
+        <https://agriculture.ld.admin.ch/foag/market/0>
+      }
+      ?resource1 ^<https://agriculture.ld.admin.ch/foag/property/market> ?resource8.
+      ?resource8 rdf:type ?resource10.
+      VALUES ?resource10 {
+        <https://agriculture.ld.admin.ch/foag/ProductGroup>
+      }
+      ?resource8 ^<https://agriculture.ld.admin.ch/foag/property/product-group> ?resource16.
+      ?resource16 rdf:type ?resource18.
+      VALUES ?resource18 {
+        <https://agriculture.ld.admin.ch/foag/ProductSubgroup>
+      }
+      ?resource16 ^<https://agriculture.ld.admin.ch/foag/property/product-subgroup> ?resource24.
+      ?resource24 rdf:type ?resource26.
+      VALUES ?resource26 {
+        <https://agriculture.ld.admin.ch/foag/Product>
+      }
+      { ?resource24 schema:identifier ?resource27. }
+      UNION
+      { ?resource24 schema:name ?resource28. }
+      UNION
+      { ?resource24 schema:description ?resource29. }
+      UNION
+      { ?resource24 schema:position ?resource30. }
+      UNION
+      { ?resource24 schema:alternateName ?resource31. }
+      UNION
+      { ?resource24 rdf:type ?resource26. }
+    }
+  }
+}

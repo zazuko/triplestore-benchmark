@@ -1,0 +1,367 @@
+PREFIX cube: <https://cube.link/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX schema: <http://schema.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+CONSTRUCT {
+  ?dimensionIri rdf:first ?unversionedValue.
+  ?unversionedValue schema:name ?name.
+  ?unversionedValue schema:alternateName ?alternateName.
+  ?unversionedValue schema:description ?description.
+  ?unversionedValue schema:identifier ?identifier.
+  ?unversionedValue schema:position ?position.
+  ?unversionedValue schema:color ?color.
+  ?unversionedValue geo:hasGeometry ?geometry.
+  ?unversionedValue schema:latitude ?latitude.
+  ?unversionedValue schema:longitude ?longitude.
+}
+WHERE {
+  {
+    SELECT ?dimensionIri ?versionedValue ?unversionedValue WHERE {
+      VALUES ?dimensionIri {
+        <https://environment.ld.admin.ch/foen/ubd003001/hierarchy>
+      }
+      <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationConstraint/sh:property) ?dimension.
+      ?dimension sh:path ?dimensionIri;
+        schema:version ?version;
+        (sh:in/(rdf:rest*)/rdf:first) ?versionedValue.
+      ?versionedValue schema:sameAs ?unversionedValue.
+    }
+  }
+  UNION
+  {
+    SELECT ?dimensionIri ?versionedValue ?unversionedValue WHERE {
+      VALUES ?dimensionIri {
+        <https://environment.ld.admin.ch/foen/ubd003001/hierarchy>
+      }
+      <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationConstraint/sh:property) ?dimension.
+      ?dimension sh:path ?dimensionIri.
+      FILTER(NOT EXISTS { ?dimension schema:version ?version. })
+      ?dimension (sh:in/(rdf:rest*)/rdf:first) ?versionedValue.
+      BIND(?versionedValue AS ?unversionedValue)
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimensionIri ?versionedValue ?unversionedValue WHERE {
+      {
+        SELECT ?observation WHERE {
+          VALUES ?dimensionIri {
+            <https://environment.ld.admin.ch/foen/ubd003001/hierarchy>
+          }
+          <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationConstraint/sh:property) ?dimension.
+          ?dimension sh:path ?dimensionIri;
+            schema:version ?version.
+          FILTER(NOT EXISTS { ?dimension sh:in ?in. })
+          <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationSet/cube:observation) ?observation.
+        }
+      }
+      VALUES ?dimensionIri {
+        <https://environment.ld.admin.ch/foen/ubd003001/hierarchy>
+      }
+      ?observation ?dimensionIri ?versionedValue.
+      ?versionedValue schema:sameAs ?unversionedValue.
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimensionIri ?versionedValue ?unversionedValue WHERE {
+      {
+        SELECT ?observation WHERE {
+          VALUES ?dimensionIri {
+            <https://environment.ld.admin.ch/foen/ubd003001/hierarchy>
+          }
+          <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationConstraint/sh:property) ?dimension.
+          ?dimension sh:path ?dimensionIri.
+          FILTER(NOT EXISTS { ?dimension schema:version ?version. })
+          FILTER(NOT EXISTS { ?dimension sh:in ?in. })
+          <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationSet/cube:observation) ?observation.
+        }
+      }
+      VALUES ?dimensionIri {
+        <https://environment.ld.admin.ch/foen/ubd003001/hierarchy>
+      }
+      ?observation ?dimensionIri ?versionedValue.
+      BIND(?versionedValue AS ?unversionedValue)
+    }
+  }
+  UNION
+  {
+    SELECT ?dimensionIri ?versionedValue ?unversionedValue WHERE {
+      VALUES ?dimensionIri {
+        <https://environment.ld.admin.ch/foen/ubd003001/groupid>
+      }
+      <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationConstraint/sh:property) ?dimension.
+      ?dimension sh:path ?dimensionIri;
+        schema:version ?version;
+        (sh:in/(rdf:rest*)/rdf:first) ?versionedValue.
+      ?versionedValue schema:sameAs ?unversionedValue.
+    }
+  }
+  UNION
+  {
+    SELECT ?dimensionIri ?versionedValue ?unversionedValue WHERE {
+      VALUES ?dimensionIri {
+        <https://environment.ld.admin.ch/foen/ubd003001/groupid>
+      }
+      <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationConstraint/sh:property) ?dimension.
+      ?dimension sh:path ?dimensionIri.
+      FILTER(NOT EXISTS { ?dimension schema:version ?version. })
+      ?dimension (sh:in/(rdf:rest*)/rdf:first) ?versionedValue.
+      BIND(?versionedValue AS ?unversionedValue)
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimensionIri ?versionedValue ?unversionedValue WHERE {
+      {
+        SELECT ?observation WHERE {
+          VALUES ?dimensionIri {
+            <https://environment.ld.admin.ch/foen/ubd003001/groupid>
+          }
+          <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationConstraint/sh:property) ?dimension.
+          ?dimension sh:path ?dimensionIri;
+            schema:version ?version.
+          FILTER(NOT EXISTS { ?dimension sh:in ?in. })
+          <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationSet/cube:observation) ?observation.
+        }
+      }
+      VALUES ?dimensionIri {
+        <https://environment.ld.admin.ch/foen/ubd003001/groupid>
+      }
+      ?observation ?dimensionIri ?versionedValue.
+      ?versionedValue schema:sameAs ?unversionedValue.
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimensionIri ?versionedValue ?unversionedValue WHERE {
+      {
+        SELECT ?observation WHERE {
+          VALUES ?dimensionIri {
+            <https://environment.ld.admin.ch/foen/ubd003001/groupid>
+          }
+          <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationConstraint/sh:property) ?dimension.
+          ?dimension sh:path ?dimensionIri.
+          FILTER(NOT EXISTS { ?dimension schema:version ?version. })
+          FILTER(NOT EXISTS { ?dimension sh:in ?in. })
+          <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationSet/cube:observation) ?observation.
+        }
+      }
+      VALUES ?dimensionIri {
+        <https://environment.ld.admin.ch/foen/ubd003001/groupid>
+      }
+      ?observation ?dimensionIri ?versionedValue.
+      BIND(?versionedValue AS ?unversionedValue)
+    }
+  }
+  UNION
+  {
+    SELECT ?dimensionIri ?versionedValue ?unversionedValue WHERE {
+      VALUES ?dimensionIri {
+        <https://environment.ld.admin.ch/foen/ubd003001/yearissue>
+      }
+      <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationConstraint/sh:property) ?dimension.
+      ?dimension sh:path ?dimensionIri;
+        schema:version ?version;
+        (sh:in/(rdf:rest*)/rdf:first) ?versionedValue.
+      ?versionedValue schema:sameAs ?unversionedValue.
+    }
+  }
+  UNION
+  {
+    SELECT ?dimensionIri ?versionedValue ?unversionedValue WHERE {
+      VALUES ?dimensionIri {
+        <https://environment.ld.admin.ch/foen/ubd003001/yearissue>
+      }
+      <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationConstraint/sh:property) ?dimension.
+      ?dimension sh:path ?dimensionIri.
+      FILTER(NOT EXISTS { ?dimension schema:version ?version. })
+      ?dimension (sh:in/(rdf:rest*)/rdf:first) ?versionedValue.
+      BIND(?versionedValue AS ?unversionedValue)
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimensionIri ?versionedValue ?unversionedValue WHERE {
+      {
+        SELECT ?observation WHERE {
+          VALUES ?dimensionIri {
+            <https://environment.ld.admin.ch/foen/ubd003001/yearissue>
+          }
+          <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationConstraint/sh:property) ?dimension.
+          ?dimension sh:path ?dimensionIri;
+            schema:version ?version.
+          FILTER(NOT EXISTS { ?dimension sh:in ?in. })
+          <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationSet/cube:observation) ?observation.
+        }
+      }
+      VALUES ?dimensionIri {
+        <https://environment.ld.admin.ch/foen/ubd003001/yearissue>
+      }
+      ?observation ?dimensionIri ?versionedValue.
+      ?versionedValue schema:sameAs ?unversionedValue.
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimensionIri ?versionedValue ?unversionedValue WHERE {
+      {
+        SELECT ?observation WHERE {
+          VALUES ?dimensionIri {
+            <https://environment.ld.admin.ch/foen/ubd003001/yearissue>
+          }
+          <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationConstraint/sh:property) ?dimension.
+          ?dimension sh:path ?dimensionIri.
+          FILTER(NOT EXISTS { ?dimension schema:version ?version. })
+          FILTER(NOT EXISTS { ?dimension sh:in ?in. })
+          <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationSet/cube:observation) ?observation.
+        }
+      }
+      VALUES ?dimensionIri {
+        <https://environment.ld.admin.ch/foen/ubd003001/yearissue>
+      }
+      ?observation ?dimensionIri ?versionedValue.
+      BIND(?versionedValue AS ?unversionedValue)
+    }
+  }
+  UNION
+  {
+    SELECT ?dimensionIri ?versionedValue ?unversionedValue WHERE {
+      VALUES ?dimensionIri {
+        <https://environment.ld.admin.ch/foen/ubd003001/statuscode>
+      }
+      <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationConstraint/sh:property) ?dimension.
+      ?dimension sh:path ?dimensionIri;
+        schema:version ?version;
+        (sh:in/(rdf:rest*)/rdf:first) ?versionedValue.
+      ?versionedValue schema:sameAs ?unversionedValue.
+    }
+  }
+  UNION
+  {
+    SELECT ?dimensionIri ?versionedValue ?unversionedValue WHERE {
+      VALUES ?dimensionIri {
+        <https://environment.ld.admin.ch/foen/ubd003001/statuscode>
+      }
+      <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationConstraint/sh:property) ?dimension.
+      ?dimension sh:path ?dimensionIri.
+      FILTER(NOT EXISTS { ?dimension schema:version ?version. })
+      ?dimension (sh:in/(rdf:rest*)/rdf:first) ?versionedValue.
+      BIND(?versionedValue AS ?unversionedValue)
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimensionIri ?versionedValue ?unversionedValue WHERE {
+      {
+        SELECT ?observation WHERE {
+          VALUES ?dimensionIri {
+            <https://environment.ld.admin.ch/foen/ubd003001/statuscode>
+          }
+          <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationConstraint/sh:property) ?dimension.
+          ?dimension sh:path ?dimensionIri;
+            schema:version ?version.
+          FILTER(NOT EXISTS { ?dimension sh:in ?in. })
+          <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationSet/cube:observation) ?observation.
+        }
+      }
+      VALUES ?dimensionIri {
+        <https://environment.ld.admin.ch/foen/ubd003001/statuscode>
+      }
+      ?observation ?dimensionIri ?versionedValue.
+      ?versionedValue schema:sameAs ?unversionedValue.
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimensionIri ?versionedValue ?unversionedValue WHERE {
+      {
+        SELECT ?observation WHERE {
+          VALUES ?dimensionIri {
+            <https://environment.ld.admin.ch/foen/ubd003001/statuscode>
+          }
+          <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationConstraint/sh:property) ?dimension.
+          ?dimension sh:path ?dimensionIri.
+          FILTER(NOT EXISTS { ?dimension schema:version ?version. })
+          FILTER(NOT EXISTS { ?dimension sh:in ?in. })
+          <https://environment.ld.admin.ch/foen/ubd003001/5> (cube:observationSet/cube:observation) ?observation.
+        }
+      }
+      VALUES ?dimensionIri {
+        <https://environment.ld.admin.ch/foen/ubd003001/statuscode>
+      }
+      ?observation ?dimensionIri ?versionedValue.
+      BIND(?versionedValue AS ?unversionedValue)
+    }
+  }
+  OPTIONAL {
+    ?versionedValue schema:name ?name_en.
+    FILTER((LANG(?name_en)) = "en")
+  }
+  OPTIONAL {
+    ?versionedValue schema:name ?name_de.
+    FILTER((LANG(?name_de)) = "de")
+  }
+  OPTIONAL {
+    ?versionedValue schema:name ?name_fr.
+    FILTER((LANG(?name_fr)) = "fr")
+  }
+  OPTIONAL {
+    ?versionedValue schema:name ?name_it.
+    FILTER((LANG(?name_it)) = "it")
+  }
+  OPTIONAL {
+    ?versionedValue schema:name ?name_.
+    FILTER((LANG(?name_)) = "")
+  }
+  BIND(COALESCE(?name_en, ?name_de, ?name_fr, ?name_it, ?name_) AS ?name)
+  OPTIONAL {
+    ?versionedValue schema:description ?description_en.
+    FILTER((LANG(?description_en)) = "en")
+  }
+  OPTIONAL {
+    ?versionedValue schema:description ?description_de.
+    FILTER((LANG(?description_de)) = "de")
+  }
+  OPTIONAL {
+    ?versionedValue schema:description ?description_fr.
+    FILTER((LANG(?description_fr)) = "fr")
+  }
+  OPTIONAL {
+    ?versionedValue schema:description ?description_it.
+    FILTER((LANG(?description_it)) = "it")
+  }
+  OPTIONAL {
+    ?versionedValue schema:description ?description_.
+    FILTER((LANG(?description_)) = "")
+  }
+  BIND(COALESCE(?description_en, ?description_de, ?description_fr, ?description_it, ?description_) AS ?description)
+  OPTIONAL {
+    ?versionedValue schema:alternateName ?alternateName_en.
+    FILTER((LANG(?alternateName_en)) = "en")
+  }
+  OPTIONAL {
+    ?versionedValue schema:alternateName ?alternateName_de.
+    FILTER((LANG(?alternateName_de)) = "de")
+  }
+  OPTIONAL {
+    ?versionedValue schema:alternateName ?alternateName_fr.
+    FILTER((LANG(?alternateName_fr)) = "fr")
+  }
+  OPTIONAL {
+    ?versionedValue schema:alternateName ?alternateName_it.
+    FILTER((LANG(?alternateName_it)) = "it")
+  }
+  OPTIONAL {
+    ?versionedValue schema:alternateName ?alternateName_.
+    FILTER((LANG(?alternateName_)) = "")
+  }
+  BIND(COALESCE(?alternateName_en, ?alternateName_de, ?alternateName_fr, ?alternateName_it, ?alternateName_) AS ?alternateName)
+  OPTIONAL { ?versionedValue schema:identifier ?identifier. }
+  OPTIONAL { ?versionedValue schema:position ?position. }
+  OPTIONAL { ?versionedValue schema:color ?color. }
+  OPTIONAL { ?versionedValue geo:hasGeometry ?geometry. }
+  OPTIONAL { ?versionedValue schema:latitude ?latitude. }
+  OPTIONAL { ?versionedValue schema:longitude ?longitude. }
+}

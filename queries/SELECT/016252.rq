@@ -1,0 +1,14 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?time ?todesursacheLabel (SUM(COALESCE(?Count, 0 )) AS ?totalCount) WHERE {
+  ?observationSet cube:observation ?observation.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/property/TIME> ?time;
+    <https://ld.stadt-zuerich.ch/statistics/property/TOU> ?todesursache.
+  ?todesursache schema:name ?todesursacheLabel.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/measure/GES> ?Count.
+  FILTER(?Count != "NaN"^^xsd:double)
+  FILTER((?time >= "1970-01-01"^^xsd:date) && (?time <= "2023-12-31"^^xsd:date))
+}
+GROUP BY ?time ?todesursacheLabel
+ORDER BY (?time) DESC (?totalCount)

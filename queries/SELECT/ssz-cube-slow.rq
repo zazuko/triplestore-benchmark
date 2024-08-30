@@ -1,0 +1,24 @@
+SELECT DISTINCT ?dimension0 ?dimension1 ?dimension7 ?dimension8 ?dimension2 ?dimension9 ?dimension10 ?dimension3 ?dimension11 ?dimension12 ?dimension4 ?dimension13 ?dimension14 ?dimension5 ?dimension15 ?dimension16 ?dimension6 ?dimension17 ?dimension18 WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000230> <https://cube.link/observationSet> ?observationSet0.
+  ?observationSet0 <https://cube.link/observation> ?source0.
+  ?source0 <https://ld.stadt-zuerich.ch/statistics/measure/UMZ> ?dimension0;
+    <https://ld.stadt-zuerich.ch/statistics/property/ZEIT> ?dimension1;
+    <https://ld.stadt-zuerich.ch/statistics/property/RAUM> ?dimension2;
+    <https://ld.stadt-zuerich.ch/statistics/property/ORT> ?dimension3;
+    <https://ld.stadt-zuerich.ch/statistics/property/ALT> ?dimension4;
+    <https://ld.stadt-zuerich.ch/statistics/property/SEX> ?dimension5;
+    <https://ld.stadt-zuerich.ch/statistics/property/ZIV> ?dimension6.
+  ?dimension1 <http://schema.org/name> ?dimension7;
+    <http://schema.org/termCode> ?dimension8.
+  ?dimension2 <http://schema.org/name> ?dimension9;
+    <http://schema.org/termCode> ?dimension10.
+  ?dimension3 <http://schema.org/name> ?dimension11;
+    <http://schema.org/termCode> ?dimension12.
+  ?dimension4 <http://schema.org/name> ?dimension13;
+    <http://schema.org/termCode> ?dimension14.
+  ?dimension5 <http://schema.org/name> ?dimension15;
+    <http://schema.org/termCode> ?dimension16.
+  ?dimension6 <http://schema.org/name> ?dimension17;
+    <http://schema.org/termCode> ?dimension18.
+}
+GROUP BY ?dimension0 ?dimension1 ?dimension7 ?dimension8 ?dimension2 ?dimension9 ?dimension10 ?dimension3 ?dimension11 ?dimension12 ?dimension4 ?dimension13 ?dimension14 ?dimension5 ?dimension15 ?dimension16 ?dimension6 ?dimension17 ?dimension18

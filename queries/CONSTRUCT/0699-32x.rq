@@ -1,0 +1,39 @@
+PREFIX schema: <http://schema.org/>
+CONSTRUCT { ?uri schema:name ?label. }
+WHERE {
+  GRAPH ?g {
+    ?uri schema:name ?label.
+    VALUES ?uri {
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+      <http://rdfs.org/ns/void#Dataset>
+      <http://www.w3.org/ns/dcat#Dataset>
+      schema:Dataset
+      <https://schema.ld.admin.ch/LindasDataset>
+      <http://purl.org/dc/terms/creator>
+      <https://register.ld.admin.ch/opendataswiss/org/bundesamt-fur-umwelt-bafu>
+      <http://purl.org/dc/terms/issued>
+      <http://purl.org/dc/terms/title>
+      <http://purl.org/dc/terms/description>
+      <http://rdfs.org/ns/void#sparqlEndpoint>
+      <https://politics.ld.admin.ch/query/>
+      schema:name
+      <http://purl.org/dc/terms/license>
+      <https://ld.admin.ch/definedTerm/TermsOfUse/Open-Use>
+      schema:contributor
+      <https://register.ld.admin.ch/zefix/company/1198554>
+      schema:description
+      schema:publisher
+      <https://ld.admin.ch/org/lindas>
+      schema:contactPoint
+      <https://environment.ld.admin.ch/.well-known/void/dataset/hydro/SebastienBruchez>
+      schema:dateCreated
+      schema:datePublished
+      schema:dateModified
+      schema:workExample
+      <https://ld.admin.ch/application/opendataswiss>
+      <https://ld.admin.ch/application/visualize>
+      <https://ld.admin.ch/application/hydrodata>
+      schema:creativeWorkStatus
+    }
+  }
+}

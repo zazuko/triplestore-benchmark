@@ -1,0 +1,6 @@
+SELECT ?s ?p ?o WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000267/observation/> <https://cube.link/observation> ?s.
+  ?s <https://ld.stadt-zuerich.ch/statistics/property/TIME> ?d;
+    ?p ?o.
+}
+ORDER BY DESC (?d)

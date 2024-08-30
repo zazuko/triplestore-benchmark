@@ -1,0 +1,25 @@
+PREFIX schema: <http://schema.org/>
+CONSTRUCT { ?uri schema:name ?label. }
+WHERE {
+  GRAPH ?g {
+    ?uri schema:name ?label.
+    VALUES ?uri {
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+      <https://register.ld.admin.ch/DefinedTerm>
+      <https://register.ld.admin.ch/Term>
+      <https://register.ld.admin.ch/name>
+      <https://register.ld.admin.ch/description>
+      <https://register.ld.admin.ch/identifier>
+      <https://register.ld.admin.ch/alternateName>
+      <https://register.ld.admin.ch/inDefinedTermSet>
+      <https://register.ld.admin.ch/termdat/EWB17>
+      <https://register.ld.admin.ch/hasPart>
+      <https://register.ld.admin.ch/termdat/56905/abbreviation>
+      <https://register.ld.admin.ch/URL>
+      <https://register.ld.admin.ch/citation>
+      <https://register.ld.admin.ch/position>
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#seeAlso>
+      <https://register.ld.admin.ch/termdat/56898>
+    }
+  }
+}

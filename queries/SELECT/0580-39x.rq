@@ -1,0 +1,8 @@
+PREFIX cube: <https://cube.link/>
+SELECT ?dimension0 WHERE {
+  <https://energy.ld.admin.ch/elcom/electricityprice-swiss> (cube:observationSet/cube:observation) ?observation.
+  ?observation <https://energy.ld.admin.ch/elcom/electricityprice/dimension/category> ?dimension0.
+  VALUES ?dimension0 {
+    <https://energy.ld.admin.ch/elcom/electricityprice/category/H1>
+  }
+}

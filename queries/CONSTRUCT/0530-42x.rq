@@ -1,0 +1,30 @@
+PREFIX schema: <http://schema.org/>
+CONSTRUCT { ?uri schema:name ?label. }
+WHERE {
+  GRAPH ?g {
+    ?uri schema:name ?label.
+    VALUES ?uri {
+      <https://version.link/inVersionedIdentitySet>
+      <https://ld.admin.ch/fso/register>
+      <https://version.link/predecessor>
+      <https://ld.admin.ch/district/version/10166>
+      <https://ld.admin.ch/district/version/10190>
+      <https://ld.admin.ch/district/version/10169>
+      <https://ld.admin.ch/district/version/10164>
+      <https://ld.admin.ch/district/version/10193>
+      <https://ld.admin.ch/district/version/10167>
+      <https://ld.admin.ch/district/version/10175>
+      <https://ld.admin.ch/district/version/10233>
+      <https://ld.admin.ch/district/version/10162>
+      <https://ld.admin.ch/district/version/10165>
+      <https://ld.admin.ch/district/version/10160>
+      <https://ld.admin.ch/district/version/10189>
+      <https://ld.admin.ch/district/version/10184>
+      <https://ld.admin.ch/district/version/10163>
+      <https://version.link/startEvent>
+      <https://ld.admin.ch/district/changeevent/148>
+      <https://version.link/endEvent>
+      <https://ld.admin.ch/district/changeevent/155>
+    }
+  }
+}

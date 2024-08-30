@@ -1,0 +1,7 @@
+CONSTRUCT { ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?o. }
+WHERE {
+  GRAPH ?g {
+    ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?o.
+    FILTER(REGEX(STR(?s), "^https://lod.opentransportdata.swiss/didok/"))
+  }
+}

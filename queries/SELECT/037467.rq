@@ -1,0 +1,18 @@
+PREFIX schema: <http://schema.org/>
+PREFIX schemac: <https://cube.link/>
+PREFIX property: <https://ld.stadt-zuerich.ch/statistics/property/>
+PREFIX measure: <https://ld.stadt-zuerich.ch/statistics/measure/>
+SELECT DISTINCT ?obs ?vornameText ?geburtsjahr ?Npers ?jahr FROM <https://lindas.admin.ch/stadtzuerich/stat>
+WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000437> schemac:observationSet ?obsSet.
+  ?obsSet schemac:observation ?obs.
+  ?obs property:TIME ?stichtag;
+    property:NAM ?vorname;
+    property:GEJ ?gebJahr.
+  ?vorname schema:name ?vornameText.
+  ?gebJahr schema:position ?geburtsjahr.
+  ?obs measure:BEW ?Npers.
+  BIND(YEAR(?stichtag) AS ?jahr)
+  FILTER(?jahr = 2021 )
+  FILTER(?vornameText = "Charles")
+}

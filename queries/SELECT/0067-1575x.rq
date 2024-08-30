@@ -1,0 +1,16 @@
+SELECT ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5 WHERE {
+  <https://environment.ld.admin.ch/foen/nfi/nfi_C-96/cube/2023-1> (<https://cube.link/observationSet>/<https://cube.link/observation>) ?source0.
+  ?source0 <https://environment.ld.admin.ch/foen/nfi/classificationUnit> ?dimension1;
+    <https://environment.ld.admin.ch/foen/nfi/evaluationType> ?dimension2;
+    <https://environment.ld.admin.ch/foen/nfi/grid> ?dimension3;
+    <https://environment.ld.admin.ch/foen/nfi/unitOfEvaluation> ?dimension4;
+    <https://environment.ld.admin.ch/foen/nfi/unitOfReference> ?dimension5.
+  VALUES ?dimension1 {
+    <https://environment.ld.admin.ch/foen/nfi/ClassificationUnit/Total>
+  }
+  BIND(?dimension2 = <https://environment.ld.admin.ch/foen/nfi/EvaluationType/1> AS ?d2)
+  BIND(?dimension3 = <https://environment.ld.admin.ch/foen/nfi/Grid/410> AS ?d3)
+  BIND(?dimension4 = <https://environment.ld.admin.ch/foen/nfi/UnitOfEvaluation/2382> AS ?d4)
+  BIND(?dimension5 = <https://ld.admin.ch/country/CHE> AS ?d5)
+}
+ORDER BY DESC (?d1) DESC (?d2) DESC (?d3) DESC (?d4) DESC (?d5)

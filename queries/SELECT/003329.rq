@@ -1,0 +1,5 @@
+PREFIX schema: <http://schema.org/>
+SELECT ?uri ?name WHERE {
+  ?uri schema:name ?name.
+  FILTER(REGEX(?name, "Wipkingen", "i"))
+}

@@ -1,0 +1,16 @@
+PREFIX schema: <http://schema.org/>
+PREFIX schemac: <https://cube.link/>
+PREFIX property: <https://ld.stadt-zuerich.ch/statistics/property/>
+PREFIX measure: <https://ld.stadt-zuerich.ch/statistics/measure/>
+SELECT ?obsSet ?obs ?time ?name ?gesl ?nameLabel ?geslLabel ?pers ?year WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000437> schemac:observationSet ?obsSet.
+  ?obsSet schemac:observation ?obs.
+  ?obs property:TIME ?time;
+    property:NAM ?name;
+    property:SEX ?gesl.
+  ?name schema:name ?nameLabel.
+  ?gesl schema:name ?geslLabel.
+  ?obs measure:BEW ?pers.
+  BIND(YEAR(?time) AS ?year)
+  FILTER((?year = 2021 ) && (?geslLabel = "weiblich"))
+}

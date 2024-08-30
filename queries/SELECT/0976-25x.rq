@@ -1,0 +1,18 @@
+PREFIX schema: <http://schema.org/>
+PREFIX cube: <https://cube.link/>
+PREFIX elcom: <https://energy.ld.admin.ch/elcom/electricityprice/dimension/>
+SELECT ?municipality_id ?category ?energy ?grid ?aidfee (?community_fees + ?aidfee AS ?taxes) ?fixcosts ?variablecosts FROM <https://lindas.admin.ch/elcom/electricityprice>
+WHERE {
+  <https://energy.ld.admin.ch/elcom/electricityprice/observation/> cube:observation ?observation.
+  ?observation (elcom:category/schema:name) ?category;
+    elcom:municipality ?municipality_id;
+    elcom:period "2023"^^<http://www.w3.org/2001/XMLSchema#gYear>;
+    elcom:product <https://energy.ld.admin.ch/elcom/electricityprice/product/standard>;
+    elcom:fixcosts ?fixcosts;
+    elcom:total ?variablecosts;
+    elcom:gridusage ?grid;
+    elcom:energy ?energy;
+    elcom:charge ?community_fees;
+    elcom:aidfee ?aidfee.
+}
+ORDER BY (?municipality_id) (?category) (?variablecosts)

@@ -1,0 +1,273 @@
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT DISTINCT ?dimension ?value ?label WHERE {
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/unit>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/currency>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/key-indicator-type>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/product>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/product-subgroup>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/product-group>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/market>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/production-system>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/value-chain>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/value-chain-detail>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/data-source>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/data-method>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/product-properties>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/product-origin>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/sales-region>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/foreign-trade>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/usage>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+  UNION
+  {
+    SELECT DISTINCT ?dimension ?value ?label WHERE {
+      VALUES ?dimension {
+        <https://agriculture.ld.admin.ch/foag/dimension/cost-component>
+      }
+      <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationSet ?observationSet.
+      ?observationSet cube:observation ?observation.
+      ?observation ?dimension ?value.
+      OPTIONAL {
+        ?value schema:name ?label.
+        FILTER((LANG(?label)) = "de")
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+PREFIX schemac: <https://cube.link/>
+PREFIX property: <https://ld.stadt-zuerich.ch/statistics/property/>
+SELECT * FROM <https://lindas.admin.ch/stadtzuerich/stat>
+WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000437> schemac:observationSet ?obsSet.
+  ?obs property:TIME ?time;
+    property:RAUM ?raum.
+  BIND(YEAR(?time) AS ?jahr)
+  FILTER(?jahr = 2021 )
+}

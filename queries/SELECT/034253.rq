@@ -1,0 +1,14 @@
+PREFIX schema: <http://schema.org/>
+PREFIX schemac: <https://cube.link/>
+PREFIX susi: <https://ld.stadt-zuerich.ch/statistics/property/>
+SELECT DISTINCT ?gschlaecht ?gschlaechtleibel ?ziit ?jahr ?ruum ?ruumleibel FROM <https://lindas.admin.ch/stadtzuerich/stat>
+WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000437> schemac:observationSet ?obsSet.
+  ?obsSet schemac:observation ?obs.
+  ?obs susi:TIME ?ziit;
+    susi:RAUM ?ruum.
+  ?ruum schema:name ?ruumleibel.
+  ?obs susi:SEX ?gschlaecht.
+  ?gschlaecht schema:name ?gschlaechtleibel.
+  BIND(YEAR(?ziit) AS ?jahr)
+}

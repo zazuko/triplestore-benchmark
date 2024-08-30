@@ -1,0 +1,7 @@
+SELECT ?observation ?var0 ?var1 ?var2 ?var3 WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000181/observation/> <https://cube.link/observation> ?observation.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/measure/WFP> ?var0;
+    <https://ld.stadt-zuerich.ch/statistics/property/RAUM> ?var1;
+    <https://ld.stadt-zuerich.ch/statistics/property/TIME> ?var2;
+    <https://ld.stadt-zuerich.ch/statistics/property/ZEIT> ?var3.
+}

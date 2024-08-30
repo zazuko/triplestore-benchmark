@@ -1,0 +1,25 @@
+PREFIX schema: <http://schema.org/>
+SELECT DISTINCT * WHERE {
+  VALUES ?agent {
+    <https://politics.ld.admin.ch/council/N>
+  }
+  {
+    ?agent schema:name ?nameDe, ?nameFr, ?nameIt.
+    FILTER((LANG(?nameDe)) = "")
+    FILTER((LANG(?nameFr)) = "")
+    FILTER((LANG(?nameIt)) = "")
+  }
+  UNION
+  {
+    ?agent schema:name ?nameDe.
+    FILTER((LANG(?nameDe)) = "de")
+    OPTIONAL {
+      ?agent schema:name ?nameFr.
+      FILTER((LANG(?nameFr)) = "fr")
+    }
+    OPTIONAL {
+      ?agent schema:name ?nameIt.
+      FILTER((LANG(?nameIt)) = "it")
+    }
+  }
+}

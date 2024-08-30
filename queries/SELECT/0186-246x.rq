@@ -1,0 +1,17 @@
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?dimension0_v ?dimension1_v ?dimension2_v WHERE {
+  <https://environment.ld.admin.ch/foen/ubd003701/5> (cube:observationSet/cube:observation) ?observation.
+  ?observation <https://environment.ld.admin.ch/foen/ubd003701/beurteilung> ?dimension0.
+  ?dimension0 schema:sameAs ?dimension0_v.
+  ?observation <https://environment.ld.admin.ch/foen/ubd003701/gemeindetype> ?dimension1.
+  ?dimension1 schema:sameAs ?dimension1_v.
+  ?observation <https://environment.ld.admin.ch/foen/ubd003701/laermbelasteteeinheit> ?dimension2.
+  ?dimension2 schema:sameAs ?dimension2_v.
+  VALUES ?dimension0_v {
+    <https://environment.ld.admin.ch/foen/ubd003701/beurteilung/%3EIGWLSV>
+  }
+  BIND(?dimension1_v = <https://environment.ld.admin.ch/foen/ubd003701/gemeindeTyp/CH> AS ?d1)
+  BIND(?dimension2_v = <https://environment.ld.admin.ch/foen/ubd003701/laermbelasteteEinheit/Pers> AS ?d2)
+}
+ORDER BY DESC (?d1) DESC (?d2)

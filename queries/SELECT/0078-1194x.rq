@@ -1,0 +1,119 @@
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+CONSTRUCT {
+  ?resource1 schema:identifier ?resource2.
+  ?resource1 schema:name ?resource3.
+  ?resource1 schema:description ?resource4.
+  ?resource1 schema:position ?resource5.
+  ?resource1 schema:alternateName ?resource6.
+  ?resource1 rdf:type ?resource7.
+  ?resource1 schema:containsPlace ?resource8.
+  ?resource8 schema:identifier ?resource11.
+  ?resource8 schema:name ?resource12.
+  ?resource8 schema:description ?resource13.
+  ?resource8 schema:position ?resource14.
+  ?resource8 schema:alternateName ?resource15.
+  ?resource8 rdf:type ?resource10.
+}
+WHERE {
+  {
+    SELECT ?resource1 ?resource2 ?resource3 ?resource4 ?resource5 ?resource6 ?resource7 ?resource8 WHERE {
+      VALUES ?resource1 {
+        <https://ld.admin.ch/canton/1>
+        <https://ld.admin.ch/canton/9>
+        <https://ld.admin.ch/canton/17>
+        <https://ld.admin.ch/canton/2>
+        <https://ld.admin.ch/canton/5>
+        <https://ld.admin.ch/canton/3>
+        <https://ld.admin.ch/canton/19>
+        <https://ld.admin.ch/canton/11>
+        <https://ld.admin.ch/canton/25>
+        <https://ld.admin.ch/canton/18>
+        <https://ld.admin.ch/canton/22>
+        <https://ld.admin.ch/canton/23>
+        <https://ld.admin.ch/canton/21>
+        <https://ld.admin.ch/canton/20>
+        <https://ld.admin.ch/canton/24>
+        <https://ld.admin.ch/canton/4>
+        <https://ld.admin.ch/canton/12>
+        <https://ld.admin.ch/canton/13>
+        <https://ld.admin.ch/canton/8>
+        <https://ld.admin.ch/canton/26>
+        <https://ld.admin.ch/canton/10>
+        <https://ld.admin.ch/canton/16>
+        <https://ld.admin.ch/canton/15>
+        <https://ld.admin.ch/canton/14>
+        <https://ld.admin.ch/canton/6>
+        <https://ld.admin.ch/canton/7>
+      }
+      { ?resource1 schema:identifier ?resource2. }
+      UNION
+      { ?resource1 schema:name ?resource3. }
+      UNION
+      { ?resource1 schema:description ?resource4. }
+      UNION
+      { ?resource1 schema:position ?resource5. }
+      UNION
+      { ?resource1 schema:alternateName ?resource6. }
+      UNION
+      { ?resource1 rdf:type ?resource7. }
+      UNION
+      {
+        ?resource1 schema:containsPlace ?resource8.
+        ?resource8 rdf:type ?resource10.
+        VALUES ?resource10 {
+          <https://environment.ld.admin.ch/foen/gefahren-waldbrand/Region>
+        }
+      }
+    }
+  }
+  UNION
+  {
+    SELECT ?resource8 ?resource11 ?resource12 ?resource13 ?resource14 ?resource15 ?resource10 WHERE {
+      VALUES ?resource1 {
+        <https://ld.admin.ch/canton/1>
+        <https://ld.admin.ch/canton/9>
+        <https://ld.admin.ch/canton/17>
+        <https://ld.admin.ch/canton/2>
+        <https://ld.admin.ch/canton/5>
+        <https://ld.admin.ch/canton/3>
+        <https://ld.admin.ch/canton/19>
+        <https://ld.admin.ch/canton/11>
+        <https://ld.admin.ch/canton/25>
+        <https://ld.admin.ch/canton/18>
+        <https://ld.admin.ch/canton/22>
+        <https://ld.admin.ch/canton/23>
+        <https://ld.admin.ch/canton/21>
+        <https://ld.admin.ch/canton/20>
+        <https://ld.admin.ch/canton/24>
+        <https://ld.admin.ch/canton/4>
+        <https://ld.admin.ch/canton/12>
+        <https://ld.admin.ch/canton/13>
+        <https://ld.admin.ch/canton/8>
+        <https://ld.admin.ch/canton/26>
+        <https://ld.admin.ch/canton/10>
+        <https://ld.admin.ch/canton/16>
+        <https://ld.admin.ch/canton/15>
+        <https://ld.admin.ch/canton/14>
+        <https://ld.admin.ch/canton/6>
+        <https://ld.admin.ch/canton/7>
+      }
+      ?resource1 schema:containsPlace ?resource8.
+      ?resource8 rdf:type ?resource10.
+      VALUES ?resource10 {
+        <https://environment.ld.admin.ch/foen/gefahren-waldbrand/Region>
+      }
+      { ?resource8 schema:identifier ?resource11. }
+      UNION
+      { ?resource8 schema:name ?resource12. }
+      UNION
+      { ?resource8 schema:description ?resource13. }
+      UNION
+      { ?resource8 schema:position ?resource14. }
+      UNION
+      { ?resource8 schema:alternateName ?resource15. }
+      UNION
+      { ?resource8 rdf:type ?resource10. }
+    }
+  }
+}

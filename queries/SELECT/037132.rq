@@ -1,0 +1,20 @@
+PREFIX schema: <http://schema.org/>
+PREFIX schemac: <https://cube.link/>
+PREFIX susi: <https://ld.stadt-zuerich.ch/statistics/property/>
+SELECT ?obs ?ziit ?vornameleibel ?jahrgang ?anzahl ?geschlecht ?geschlechtCode FROM <https://lindas.admin.ch/stadtzuerich/stat>
+WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000437> schemac:observationSet ?obsSet.
+  ?obsSet schemac:observation ?obs.
+  ?obs susi:TIME ?ziit;
+    susi:SEX ?geschlecht.
+  ?geschlecht schema:termCode ?geschlechtCode.
+  ?obs susi:NAM ?vornameID.
+  ?vornameID schema:name ?vornameleibel.
+  ?obs susi:GEJ ?jg.
+  ?jg schema:position ?jahrgang.
+  ?obs <https://ld.stadt-zuerich.ch/statistics/measure/BEW> ?anzahl.
+  BIND(YEAR(?ziit) AS ?nurjahr)
+  FILTER((((?vornameleibel = "Maike") || (?vornameleibel = "Thomas")) || (?vornameleibel = "Hansjörg")) || (?vornameleibel = "Rolf"))
+  FILTER(?geschlechtCode = "SEX0002")
+}
+ORDER BY (?jahrgang)

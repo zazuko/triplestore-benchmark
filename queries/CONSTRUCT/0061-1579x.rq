@@ -1,0 +1,91 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX schema: <http://schema.org/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+CONSTRUCT {
+  ?iri schema:workExample <https://ld.admin.ch/application/visualize>.
+  ?iri schema:name ?name.
+  ?iri schema:description ?description.
+  ?iri dcterms:publisher ?publisher.
+  ?iri schema:datePublished ?date_published.
+  ?iri schema:creativeWorkStatus ?status.
+  ?iri schema:version ?version.
+  ?iri dcterms:identifier ?identifier.
+  ?iri vcard:fn ?contact_name.
+  ?iri vcard:hasEmail ?contact_mail.
+  ?iri dcat:landingPage ?landing_page.
+  ?iri dcat:theme ?category.
+  ?iri dcterms:creator ?organization.
+  ?category schema:name ?category_name.
+  ?organization schema:name ?organization_name.
+  ?status schema:name ?status_name.
+}
+WHERE {
+  {
+    VALUES ?iri {
+      <https://environment.ld.admin.ch/foen/nfi/nfi_C-90/cube/2023-2>
+    }
+    {
+      ?iri schema:name ?name.
+      FILTER((LANG(?name)) = "de")
+    }
+    UNION
+    {
+      ?iri schema:description ?description.
+      FILTER((LANG(?description)) = "de")
+    }
+    UNION
+    { ?iri dcterms:publisher ?publisher. }
+    UNION
+    {
+      ?iri schema:datePublished ?date_published.
+      FILTER((DATATYPE(?date_published)) = xsd:date)
+    }
+    UNION
+    { ?iri schema:creativeWorkStatus ?status. }
+    UNION
+    { ?iri schema:version ?version. }
+    UNION
+    { ?iri dcterms:identifier ?identifier. }
+    UNION
+    {
+      ?iri dcat:contactPoint _:g_33.
+      _:g_33 vcard:fn ?contact_name;
+        vcard:hasEmail ?contact_mail.
+    }
+    UNION
+    { ?iri dcat:landingPage ?landing_page. }
+    UNION
+    { ?iri dcat:theme ?category. }
+    UNION
+    { ?iri dcterms:creator ?organization. }
+  }
+  UNION
+  {
+    GRAPH <https://lindas.admin.ch/sfa/opendataswiss> {
+      ?category <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> schema:DefinedTerm;
+        schema:inDefinedTermSet <https://register.ld.admin.ch/opendataswiss/category>;
+        schema:name ?category_name.
+      FILTER((LANG(?category_name)) = "de")
+    }
+  }
+  UNION
+  {
+    GRAPH <https://lindas.admin.ch/sfa/opendataswiss> {
+      ?organization <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> schema:Organization;
+        schema:inDefinedTermSet <https://register.ld.admin.ch/opendataswiss/org>;
+        schema:name ?organization_name.
+      FILTER((LANG(?organization_name)) = "de")
+    }
+  }
+  UNION
+  {
+    GRAPH <https://lindas.admin.ch/meta> {
+      ?status <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> schema:DefinedTerm;
+        schema:inDefinedTermSet <https://ld.admin.ch/vocabulary/CreativeWorkStatus>;
+        schema:name ?status_name.
+      FILTER((LANG(?status_name)) = "de")
+    }
+  }
+}

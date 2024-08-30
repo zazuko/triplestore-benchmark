@@ -1,0 +1,10 @@
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+SELECT ?dimensionIri ?version ?nodeKind WHERE {
+  <https://environment.ld.admin.ch/foen/nfi/nfi_T-changes/cube/2024-1> (cube:observationConstraint/sh:property) ?dimension.
+  ?dimension sh:path ?dimensionIri.
+  OPTIONAL { ?dimension schema:version ?version. }
+  OPTIONAL { ?dimension sh:nodeKind ?nodeKind. }
+  FILTER(?dimensionIri IN(<https://environment.ld.admin.ch/foen/nfi/unitOfReference>, <https://environment.ld.admin.ch/foen/nfi/classificationUnit>, <https://environment.ld.admin.ch/foen/nfi/unitOfEvaluation>, <https://environment.ld.admin.ch/foen/nfi/grid>, <https://environment.ld.admin.ch/foen/nfi/evaluationType>))
+}

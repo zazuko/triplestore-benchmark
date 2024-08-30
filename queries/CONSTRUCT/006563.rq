@@ -1,0 +1,18 @@
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dct: <http://purl.org/dc/terms/>
+CONSTRUCT {
+  ?cube rdf:type cube:Cube.
+  ?cube schema:name ?label.
+  ?cube schema:description ?description.
+}
+WHERE {
+  ?cube rdf:type cube:Cube;
+    schema:name ?label;
+    schema:description ?description;
+    dct:creator <https://register.ld.admin.ch/opendataswiss/org/bundesamt-fur-umwelt-bafu>.
+  FILTER((LANG(?label)) = "en")
+  FILTER((LANG(?description)) = "en")
+  MINUS { ?cube schema:expires ?date. }
+}

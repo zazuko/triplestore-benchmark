@@ -1,0 +1,10 @@
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?dataset (COUNT(*) AS ?count) ?label WHERE {
+  GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
+    ?dataset <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> qb:DataSet;
+      rdfs:label ?label.
+    ?obs qb:dataSet ?dataset.
+  }
+}
+GROUP BY ?dataset ?label

@@ -1,0 +1,12 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX : <https://ld.stadt-zuerich.ch/statistics/property/>
+SELECT ?obs ?measureValue WHERE {
+  ?obs rdf:type <https://cube.link/Observation>;
+    <https://cube.link/observedBy> <https://ld.stadt-zuerich.ch/org/SSZ>;
+    <https://ld.stadt-zuerich.ch/statistics/measure/BEW> ?measureValue;
+    :ALT ?alt;
+    :RAUM ?raum;
+    :TIME ?time;
+    :ZEIT ?zeit.
+  FILTER((((?alt = <https://ld.stadt-zuerich.ch/statistics/code/ALT0507>) && (?raum = <https://ld.stadt-zuerich.ch/statistics/code/R00073>)) && (?time >= "2003-01-01"^^<http://www.w3.org/2001/XMLSchema#date>)) && (?time <= "2003-12-31"^^<http://www.w3.org/2001/XMLSchema#date>))
+}

@@ -1,0 +1,19 @@
+PREFIX schema: <http://schema.org/>
+CONSTRUCT { ?uri schema:name ?label. }
+WHERE {
+  GRAPH ?g {
+    ?uri schema:name ?label.
+    VALUES ?uri {
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+      schema:DefinedTerm
+      <https://agriculture.ld.admin.ch/foag/Product>
+      schema:validFrom
+      schema:name
+      schema:identifier
+      schema:validThrough
+      <https://agriculture.ld.admin.ch/foag/property/product-subgroup>
+      <https://agriculture.ld.admin.ch/foag/product-subgroup/45>
+      <http://www.linkedmodel.org/schema/dtype#order>
+    }
+  }
+}

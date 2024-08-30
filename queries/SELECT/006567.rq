@@ -1,0 +1,14 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cube: <https://cube.link/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT (AVG(?emission) AS ?averageEmission) WHERE {
+  <https://environment.ld.admin.ch/foen/ubd000502/4> rdf:type cube:Cube;
+    cube:observationSet ?observationSet.
+  ?observationSet rdf:type cube:ObservationSet;
+    cube:observation ?observation.
+  ?observation rdf:type cube:Observation;
+    <https://environment.ld.admin.ch/foen/ubd000502/gas> <https://ld.admin.ch/cube/dimension/pol01air/pol11>;
+    <https://environment.ld.admin.ch/foen/ubd000502/jahr> ?year;
+    <https://environment.ld.admin.ch/foen/ubd000502/werte> ?emission.
+  FILTER((?year >= "2005"^^xsd:gYear) && (?year <= "2007"^^xsd:gYear))
+}

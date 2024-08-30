@@ -1,0 +1,21 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?class ?instcount ?label ?parent WHERE {
+  {
+    SELECT ?class (COUNT(?inst) AS ?instcount) WHERE {
+      ?inst rdf:type ?class.
+      FILTER(ISIRI(?class))
+    }
+    GROUP BY ?class
+  }
+  UNION
+  { ?class rdf:type rdfs:Class. }
+  UNION
+  { ?class rdf:type owl:Class. }
+  OPTIONAL { ?class rdfs:label ?label. }
+  OPTIONAL {
+    ?class rdfs:subClassOf ?parent.
+    FILTER(ISIRI(?parent))
+  }
+}

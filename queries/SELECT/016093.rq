@@ -1,0 +1,8 @@
+PREFIX gtfs: <http://vocab.gtfs.org/terms#>
+PREFIX otd: <https://lod.opentransportdata.swiss/vocab/>
+SELECT DISTINCT ?Zonenplan ?Stopplace WHERE {
+  ?Relation <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> otd:Relation;
+    otd:zone ?Relation_zone;
+    otd:zoningPlan ?Zonenplan;
+    gtfs:stop ?Stopplace.
+}

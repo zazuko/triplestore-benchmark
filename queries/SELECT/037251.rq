@@ -1,0 +1,14 @@
+PREFIX schema: <http://schema.org/>
+PREFIX schemac: <https://cube.link/>
+PREFIX property: <https://ld.stadt-zuerich.ch/statistics/property/>
+SELECT DISTINCT * FROM <https://lindas.admin.ch/stadtzuerich/stat>
+WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000437> schemac:observationSet ?obsSet.
+  ?obsSet schemac:observation ?obs.
+  ?obs property:ZEIT ?zeit_prop.
+  ?zeit_prop schema:name ?zeit_name.
+  ?obs property:NAM ?prop_name.
+  ?prop_name schema:name ?name_text.
+  ?obs property:TIME ?time.
+  BIND(YEAR(?time) AS ?year)
+}

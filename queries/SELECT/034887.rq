@@ -1,0 +1,25 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?time ?raumLabel (SUM(COALESCE(?Todesfälle, 0 )) AS ?totalTodesfälle) (SUM(COALESCE(?Bevölkerung, 0 )) AS ?totalBevölkerung) (((SUM(COALESCE(?Todesfälle, 0 ))) / (SUM(COALESCE(?Bevölkerung, 0 )))) * 100  AS ?prozentualerAnteil) WHERE {
+  {
+    <https://ld.stadt-zuerich.ch/statistics/000369/observation/> cube:observation ?observation1.
+    ?observation1 <https://ld.stadt-zuerich.ch/statistics/property/RAUM> ?raum.
+    ?raum schema:name ?raumLabel.
+    ?observation1 <https://ld.stadt-zuerich.ch/statistics/measure/GES> ?Todesfälle;
+      <https://ld.stadt-zuerich.ch/statistics/property/TIME> ?time.
+    FILTER(?raum = <https://ld.stadt-zuerich.ch/statistics/code/R30000>)
+    FILTER(?Todesfälle != "NaN"^^xsd:double)
+  }
+  UNION
+  {
+    <https://ld.stadt-zuerich.ch/statistics/000201/observation/> cube:observation ?observation2.
+    ?observation2 <https://ld.stadt-zuerich.ch/statistics/property/RAUM> ?raum;
+      <https://ld.stadt-zuerich.ch/statistics/measure/BEW> ?Bevölkerung;
+      <https://ld.stadt-zuerich.ch/statistics/property/TIME> ?time.
+    FILTER(?raum = <https://ld.stadt-zuerich.ch/statistics/code/R30000>)
+    FILTER(?Bevölkerung != "NaN"^^xsd:double)
+  }
+}
+GROUP BY ?time ?raumLabel
+ORDER BY (?time)

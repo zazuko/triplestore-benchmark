@@ -1,0 +1,99 @@
+SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5 ?dimension6 ?dimension7 ?dimension8 ?dimension9 WHERE {
+  <https://energy.ld.admin.ch/elcom/electricityprice> <https://cube.link/observationSet> ?observationSet0.
+  ?observationSet0 <https://cube.link/observation> ?source0.
+  ?source0 <https://energy.ld.admin.ch/elcom/electricityprice/dimension/category> ?dimension0;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/municipality> ?dimension1;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/operator> ?dimension2;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/period> ?dimension3;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/total> ?dimension4;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/product> ?dimension5.
+  FILTER(?dimension5 = <https://energy.ld.admin.ch/elcom/electricityprice/product/standard>)
+  FILTER(?dimension0 = <https://energy.ld.admin.ch/elcom/electricityprice/category/H4>)
+  FILTER(?dimension2 = <https://energy.ld.admin.ch/elcom/electricityprice/operator/486>)
+  FILTER(?dimension1 = <https://ld.admin.ch/municipality/1>)
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension6_0.
+    FILTER(LANGMATCHES(LANG(?dimension6_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension6_1.
+    FILTER(LANGMATCHES(LANG(?dimension6_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension6_2.
+    FILTER(LANGMATCHES(LANG(?dimension6_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension6_3.
+    FILTER(LANGMATCHES(LANG(?dimension6_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension6_4.
+    FILTER((LANG(?dimension6_4)) = "")
+  }
+  BIND(COALESCE(?dimension6_0, ?dimension6_1, ?dimension6_2, ?dimension6_3, ?dimension6_4) AS ?dimension6)
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension7_0.
+    FILTER(LANGMATCHES(LANG(?dimension7_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension7_1.
+    FILTER(LANGMATCHES(LANG(?dimension7_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension7_2.
+    FILTER(LANGMATCHES(LANG(?dimension7_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension7_3.
+    FILTER(LANGMATCHES(LANG(?dimension7_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension7_4.
+    FILTER((LANG(?dimension7_4)) = "")
+  }
+  BIND(COALESCE(?dimension7_0, ?dimension7_1, ?dimension7_2, ?dimension7_3, ?dimension7_4) AS ?dimension7)
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension8_0.
+    FILTER(LANGMATCHES(LANG(?dimension8_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension8_1.
+    FILTER(LANGMATCHES(LANG(?dimension8_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension8_2.
+    FILTER(LANGMATCHES(LANG(?dimension8_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension8_3.
+    FILTER(LANGMATCHES(LANG(?dimension8_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension8_4.
+    FILTER((LANG(?dimension8_4)) = "")
+  }
+  BIND(COALESCE(?dimension8_0, ?dimension8_1, ?dimension8_2, ?dimension8_3, ?dimension8_4) AS ?dimension8)
+  OPTIONAL {
+    ?dimension5 <http://schema.org/name> ?dimension9_0.
+    FILTER(LANGMATCHES(LANG(?dimension9_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension5 <http://schema.org/name> ?dimension9_1.
+    FILTER(LANGMATCHES(LANG(?dimension9_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension5 <http://schema.org/name> ?dimension9_2.
+    FILTER(LANGMATCHES(LANG(?dimension9_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension5 <http://schema.org/name> ?dimension9_3.
+    FILTER(LANGMATCHES(LANG(?dimension9_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension5 <http://schema.org/name> ?dimension9_4.
+    FILTER((LANG(?dimension9_4)) = "")
+  }
+  BIND(COALESCE(?dimension9_0, ?dimension9_1, ?dimension9_2, ?dimension9_3, ?dimension9_4) AS ?dimension9)
+}
+GROUP BY ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5 ?dimension6 ?dimension7 ?dimension8 ?dimension9

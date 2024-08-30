@@ -1,0 +1,13 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?time ?kreisLabel (AVG(?mietpreis) AS ?durchschnittlicherMietpreis) WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000302/observation/> cube:observation ?observation.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/property/TIME> ?time;
+    <https://ld.stadt-zuerich.ch/statistics/property/RAUM> ?kreis.
+  ?kreis schema:name ?kreisLabel.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/measure/WFP> ?mietpreis.
+  FILTER(?mietpreis != "NaN"^^xsd:double)
+}
+GROUP BY ?time ?kreisLabel
+ORDER BY (?time) DESC (?durchschnittlicherMietpreis)

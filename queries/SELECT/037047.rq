@@ -1,0 +1,12 @@
+PREFIX schema: <http://schema.org/>
+PREFIX schemac: <https://cube.link/>
+PREFIX property: <https://ld.stadt-zuerich.ch/statistics/property/>
+SELECT DISTINCT * FROM <https://lindas.admin.ch/stadtzuerich/stat>
+WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000437> schemac:observationSet ?obsSet.
+  ?obsSet schemac:observation ?obs.
+  ?obs property:TIME ?datetime;
+    property:NAM ?name_code.
+  ?name_code schema:name ?name_lang.
+  FILTER(?name_lang = "Sara")
+}

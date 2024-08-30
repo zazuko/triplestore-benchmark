@@ -1,0 +1,21 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX vl: <https://version.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?s ?p ?o ?v FROM <https://lindas.admin.ch/fch/orgs>
+WHERE {
+  ?v rdf:type vl:Version;
+    vl:inVersionedIdentitySet <https://ld.admin.ch/ou>;
+    vl:identity ?s;
+    ?p ?o.
+  VALUES ?p {
+    rdf:type
+    schema:name
+    schema:alternateName
+    schema:parentOrganization
+    schema:identifier
+    vl:identityIdentifier
+  }
+  FILTER(NOT EXISTS { ?v vl:successor ?succ. })
+  FILTER((?p != rdf:type) || (?o = vl:Deprecated))
+}
+ORDER BY (?s)

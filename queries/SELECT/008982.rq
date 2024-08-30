@@ -1,0 +1,11 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cube: <https://cube.link/>
+SELECT ?time (SUM(COALESCE(?Count, 0 )) AS ?totalCount) WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000285/observation/> cube:observation ?observation.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/measure/BST> ?Count;
+    <https://ld.stadt-zuerich.ch/statistics/property/TIME> ?time.
+  FILTER(?Count != "NaN"^^xsd:double)
+  FILTER((?time >= "1923-01-01"^^xsd:date) && (?time <= "2023-12-31"^^xsd:date))
+}
+GROUP BY ?time
+ORDER BY (?time)

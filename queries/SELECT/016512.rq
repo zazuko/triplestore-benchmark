@@ -1,0 +1,7 @@
+PREFIX schema: <http://schema.org/>
+PREFIX cube: <https://cube.link/>
+SELECT ?dimension ?type (LCASE(?id) AS ?identifier) WHERE {
+  ?dimension <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?type;
+    schema:identifier ?id.
+  FILTER(?type IN(cube:KeyDimension, cube:MeasureDimension))
+}

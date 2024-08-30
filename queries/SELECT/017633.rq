@@ -1,0 +1,12 @@
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?nameLabel (SUM(COALESCE(?Count, 0 )) AS ?totalCount) WHERE {
+  ?observationSet cube:observation ?observation.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/property/NAM> ?name.
+  ?name schema:name ?nameLabel.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/measure/BEW> ?Count;
+    <https://ld.stadt-zuerich.ch/statistics/property/SEX> ?sex.
+  ?sex schema:name "weiblich".
+}
+GROUP BY ?nameLabel
+ORDER BY DESC (?totalCount)

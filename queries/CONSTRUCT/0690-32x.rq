@@ -1,0 +1,13 @@
+PREFIX schema: <http://schema.org/>
+CONSTRUCT { ?uri schema:name ?label. }
+WHERE {
+  GRAPH ?g {
+    ?uri schema:name ?label.
+    VALUES ?uri {
+      schema:name
+      <http://www.w3.org/2004/02/skos/core#broader>
+      <https://agriculture.ld.admin.ch/fsvo/animal-disease/epidemics-group/4>
+      schema:identifier
+    }
+  }
+}

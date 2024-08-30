@@ -1,0 +1,13 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?time ?somePropertyLabel (SUM(COALESCE(?Count, 0 )) AS ?totalCount) WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000349/observation/> cube:observation ?observation.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/property/TIME> ?time;
+    <https://ld.stadt-zuerich.ch/statistics/measure/ALT> ?Count;
+    <https://ld.stadt-zuerich.ch/statistics/property/ELK> ?someProperty.
+  ?someProperty schema:name ?somePropertyLabel.
+  FILTER(?Count != "NaN"^^xsd:double)
+}
+GROUP BY ?time ?somePropertyLabel
+ORDER BY (?time) DESC (?totalCount)
