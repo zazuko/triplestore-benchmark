@@ -1,0 +1,35 @@
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX cube: <https://cube.link/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX strom: <https://energy.ld.admin.ch/elcom/electricityprice/dimension/>
+SELECT DISTINCT ?netzbetreiber ?webseite ?gemeindeNummer ?gemeindeName ?postleitzahl ?kanton FROM <https://lindas.admin.ch/elcom/electricityprice>
+FROM <https://lindas.admin.ch/territorial>
+FROM <https://lindas.admin.ch/fso/register>
+WHERE {
+  {
+    SELECT ?municipality ?gemeindeName ?gemeindeNummer ?kanton (IF((MIN(?plz)) = (MAX(?plz)), MIN(?plz), CONCAT(MIN(?plz), " - ", MAX(?plz))) AS ?postleitzahl) WHERE {
+      ?municipality schema:name ?gemeindeName;
+        schema:identifier ?gemeindeNummer;
+        schema:postalCode ?plz;
+        schema:containedInPlace ?canton.
+      ?canton rdf:type <https://schema.ld.admin.ch/Canton>;
+        schema:alternateName ?kanton.
+    }
+    GROUP BY ?municipality ?gemeindeName ?gemeindeNummer ?kanton
+  }
+  {
+    SELECT ?operator ?netzbetreiber ?webseite WHERE {
+      ?operator rdf:type schema:Organization;
+        schema:name ?netzbetreiber.
+      OPTIONAL { ?operator schema:url ?webseite. }
+    }
+  }
+  { SELECT (MAX(?year) AS ?latestYear) WHERE { ?obs strom:period ?year. } }
+  <https://energy.ld.admin.ch/elcom/electricityprice> rdf:type cube:Cube;
+    (cube:observationSet/cube:observation) ?obs.
+  ?obs strom:period "2024"^^xsd:gYear;
+    strom:municipality ?municipality;
+    strom:operator ?operator.
+}
+ORDER BY (?netzbetreiber) (?gemeindeNummer)

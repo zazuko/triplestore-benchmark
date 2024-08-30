@@ -1,0 +1,14 @@
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?dimension0_v ?dimension1_v WHERE {
+  <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_movements/2> (cube:observationSet/cube:observation) ?observation.
+  ?observation <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_movements/type> ?dimension0.
+  ?dimension0 schema:sameAs ?dimension0_v.
+  ?observation <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_movements/art> ?dimension1.
+  ?dimension1 schema:sameAs ?dimension1_v.
+  VALUES ?dimension0_v {
+    <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_movements/Type/1>
+  }
+  BIND(?dimension1_v = <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_movements/Art/3> AS ?d1)
+}
+ORDER BY DESC (?d1)

@@ -1,0 +1,132 @@
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+PREFIX time: <http://www.w3.org/2006/time#>
+SELECT ?observation ?costComponentLabel ?currencyLabel ?dataMethodLabel ?dataSourceLabel ?foreignTradeLabel ?keyIndicatorTypeLabel ?marketLabel ?productGroupLabel ?productSubgroupLabel ?productLabel ?productPropertiesLabel ?productionSystemLabel ?productOriginLabel ?salesRegionLabel ?unitLabel ?usageLabel ?valueChainDetailLabel ?valueChainLabel ?measure ?year ?month WHERE {
+  GRAPH <https://lindas.admin.ch/foag/agricultural-market-data> {
+    VALUES ?lang {
+      "de"
+    }
+    FILTER(?product IN(<https://agriculture.ld.admin.ch/foag/product/141>, <https://agriculture.ld.admin.ch/foag/product/142>, <https://agriculture.ld.admin.ch/foag/product/143>, <https://agriculture.ld.admin.ch/foag/product/144>, <https://agriculture.ld.admin.ch/foag/product/145>, <https://agriculture.ld.admin.ch/foag/product/146>, <https://agriculture.ld.admin.ch/foag/product/147>, <https://agriculture.ld.admin.ch/foag/product/148>, <https://agriculture.ld.admin.ch/foag/product/149>, <https://agriculture.ld.admin.ch/foag/product/150>, <https://agriculture.ld.admin.ch/foag/product/168>, <https://agriculture.ld.admin.ch/foag/product/169>, <https://agriculture.ld.admin.ch/foag/product/170>, <https://agriculture.ld.admin.ch/foag/product/172>, <https://agriculture.ld.admin.ch/foag/product/173>, <https://agriculture.ld.admin.ch/foag/product/178>, <https://agriculture.ld.admin.ch/foag/product/179>, <https://agriculture.ld.admin.ch/foag/product/180>, <https://agriculture.ld.admin.ch/foag/product/182>, <https://agriculture.ld.admin.ch/foag/product/183>))
+    FILTER(?valueChainDetail IN(<https://agriculture.ld.admin.ch/foag/value-chain-detail/1>, <https://agriculture.ld.admin.ch/foag/value-chain-detail/2>))
+    FILTER(?costComponent IN(<https://agriculture.ld.admin.ch/foag/cost-component/0>, <https://agriculture.ld.admin.ch/foag/cost-component/1>, <https://agriculture.ld.admin.ch/foag/cost-component/2>))
+    FILTER(?currency IN(<https://agriculture.ld.admin.ch/foag/currency/1>))
+    FILTER(?foreignTrade IN(<https://agriculture.ld.admin.ch/foag/foreign-trade/0>))
+    FILTER(?dataSource IN(<https://agriculture.ld.admin.ch/foag/data-source/1>, <https://agriculture.ld.admin.ch/foag/data-source/14>, <https://agriculture.ld.admin.ch/foag/data-source/15>, <https://agriculture.ld.admin.ch/foag/data-source/35>, <https://agriculture.ld.admin.ch/foag/data-source/36>, <https://agriculture.ld.admin.ch/foag/data-source/43>, <https://agriculture.ld.admin.ch/foag/data-source/62>, <https://agriculture.ld.admin.ch/foag/data-source/7>))
+    FILTER(?salesRegion IN(<https://agriculture.ld.admin.ch/foag/sales-region/0>, <https://agriculture.ld.admin.ch/foag/sales-region/1>, <https://agriculture.ld.admin.ch/foag/sales-region/11>, <https://agriculture.ld.admin.ch/foag/sales-region/14>, <https://agriculture.ld.admin.ch/foag/sales-region/15>, <https://agriculture.ld.admin.ch/foag/sales-region/3>, <https://agriculture.ld.admin.ch/foag/sales-region/4>, <https://agriculture.ld.admin.ch/foag/sales-region/5>, <https://agriculture.ld.admin.ch/foag/sales-region/6>))
+    FILTER(?usage IN(<https://agriculture.ld.admin.ch/foag/usage/0>, <https://agriculture.ld.admin.ch/foag/usage/5>, <https://agriculture.ld.admin.ch/foag/usage/6>, <https://agriculture.ld.admin.ch/foag/usage/9>))
+    FILTER(?productOrigin IN(<https://agriculture.ld.admin.ch/foag/product-origin/1>, <https://agriculture.ld.admin.ch/foag/product-origin/10>, <https://agriculture.ld.admin.ch/foag/product-origin/11>, <https://agriculture.ld.admin.ch/foag/product-origin/12>, <https://agriculture.ld.admin.ch/foag/product-origin/13>, <https://agriculture.ld.admin.ch/foag/product-origin/23>, <https://agriculture.ld.admin.ch/foag/product-origin/26>, <https://agriculture.ld.admin.ch/foag/product-origin/3>, <https://agriculture.ld.admin.ch/foag/product-origin/4>, <https://agriculture.ld.admin.ch/foag/product-origin/5>, <https://agriculture.ld.admin.ch/foag/product-origin/6>, <https://agriculture.ld.admin.ch/foag/product-origin/7>, <https://agriculture.ld.admin.ch/foag/product-origin/8>, <https://agriculture.ld.admin.ch/foag/product-origin/9>))
+    FILTER(?productProperties IN(<https://agriculture.ld.admin.ch/foag/product-properties/0>))
+    FILTER(?productionSystem IN(<https://agriculture.ld.admin.ch/foag/production-system/3>, <https://agriculture.ld.admin.ch/foag/production-system/0>, <https://agriculture.ld.admin.ch/foag/production-system/1>, <https://agriculture.ld.admin.ch/foag/production-system/2>))
+    FILTER(?dataMethod IN(<https://agriculture.ld.admin.ch/foag/data-method/3>, <https://agriculture.ld.admin.ch/foag/data-method/5>))
+    FILTER(?unit IN(<https://agriculture.ld.admin.ch/foag/unit/1>))
+    <https://agriculture.ld.admin.ch/foag/cube/MilkDairyProducts/Production_Price_Month> cube:observationSet ?observationSet.
+    ?observationSet cube:observation ?observation.
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/cost-component> ?costComponent.
+    OPTIONAL {
+      ?costComponent schema:name ?costComponentLabel.
+      FILTER(LANGMATCHES(LANG(?costComponentLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/currency> ?currency.
+    OPTIONAL {
+      ?currency schema:name ?currencyLabel.
+      FILTER(LANGMATCHES(LANG(?currencyLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/data-method> ?dataMethod.
+    OPTIONAL {
+      ?dataMethod schema:name ?dataMethodLabel.
+      FILTER(LANGMATCHES(LANG(?dataMethodLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/data-source> ?dataSource.
+    OPTIONAL {
+      ?dataSource schema:name ?dataSourceLabel.
+      FILTER(LANGMATCHES(LANG(?dataSourceLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/date> ?date;
+      <https://agriculture.ld.admin.ch/foag/dimension/foreign-trade> ?foreignTrade.
+    OPTIONAL {
+      ?foreignTrade schema:name ?foreignTradeLabel.
+      FILTER(LANGMATCHES(LANG(?foreignTradeLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/key-indicator-type> ?keyIndicatorType.
+    OPTIONAL {
+      ?keyIndicatorType schema:name ?keyIndicatorTypeLabel.
+      FILTER(LANGMATCHES(LANG(?keyIndicatorTypeLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/market> ?market.
+    OPTIONAL {
+      ?market schema:name ?marketLabel.
+      FILTER(LANGMATCHES(LANG(?marketLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/product-group> ?productGroup.
+    OPTIONAL {
+      ?productGroup schema:name ?productGroupLabel.
+      FILTER(LANGMATCHES(LANG(?productGroupLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/product-subgroup> ?productSubgroup.
+    OPTIONAL {
+      ?productSubgroup schema:name ?productSubgroupLabel.
+      FILTER(LANGMATCHES(LANG(?productSubgroupLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/product> ?product.
+    OPTIONAL {
+      ?product schema:name ?productLabel.
+      FILTER(LANGMATCHES(LANG(?productLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/product-properties> ?productProperties.
+    OPTIONAL {
+      ?productProperties schema:name ?productPropertiesLabel.
+      FILTER(LANGMATCHES(LANG(?productPropertiesLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/production-system> ?productionSystem.
+    OPTIONAL {
+      ?productionSystem schema:name ?productionSystemLabel.
+      FILTER(LANGMATCHES(LANG(?productionSystemLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/product-origin> ?productOrigin.
+    OPTIONAL {
+      ?productOrigin schema:name ?productOriginLabel.
+      FILTER(LANGMATCHES(LANG(?productOriginLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/sales-region> ?salesRegion.
+    OPTIONAL {
+      ?salesRegion schema:name ?salesRegionLabel.
+      FILTER(LANGMATCHES(LANG(?salesRegionLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/unit> ?unit.
+    OPTIONAL {
+      ?unit schema:name ?unitLabel.
+      FILTER(LANGMATCHES(LANG(?unitLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/usage> ?usage.
+    OPTIONAL {
+      ?usage schema:name ?usageLabel.
+      FILTER(LANGMATCHES(LANG(?usageLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/value-chain-detail> ?valueChainDetail.
+    OPTIONAL {
+      ?valueChainDetail schema:name ?valueChainDetailLabel.
+      FILTER(LANGMATCHES(LANG(?valueChainDetailLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/value-chain> ?valueChain.
+    OPTIONAL {
+      ?valueChain schema:name ?valueChainLabel.
+      FILTER(LANGMATCHES(LANG(?valueChainLabel), ?lang))
+    }
+    ?observation <https://agriculture.ld.admin.ch/foag/measure/price> ?measure.
+  }
+  ?date time:year ?year.
+  OPTIONAL { ?date time:month ?month. }
+  ?fromInterval schema:inDefinedTermSet <https://ld.admin.ch/time/month>;
+    time:year "2024"^^schema:Integer;
+    time:month "3"^^schema:Integer;
+    (time:hasBeginning/time:inXSDDateTimeStamp) ?fromPeriod.
+  ?toInterval schema:inDefinedTermSet <https://ld.admin.ch/time/month>;
+    time:year "2024"^^schema:Integer;
+    time:month "3"^^schema:Integer;
+    (time:hasEnd/time:inXSDDateTimeStamp) ?toPeriod.
+  ?date (time:hasBeginning/time:inXSDDateTimeStamp) ?start;
+    (time:hasEnd/time:inXSDDateTimeStamp) ?end.
+  FILTER(?start >= ?fromPeriod)
+  FILTER(?end <= ?toPeriod)
+}
+ORDER BY (?year) (?month)

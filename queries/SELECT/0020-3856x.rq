@@ -1,0 +1,10 @@
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT * FROM <https://lindas.admin.ch/foen/hydro>
+WHERE {
+  ?station rdf:type <http://example.com/HydroMeasuringStation>;
+    schema:name "Berlingen".
+  ?observation <https://environment.ld.admin.ch/foen/hydro/dimension/station> ?station;
+    <https://environment.ld.admin.ch/foen/hydro/dimension/measurementTime> ?measurementTime;
+    <https://environment.ld.admin.ch/foen/hydro/dimension/waterLevel> ?waterLevel.
+}

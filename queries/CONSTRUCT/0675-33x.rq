@@ -1,0 +1,39 @@
+PREFIX schema: <http://schema.org/>
+CONSTRUCT { ?uri schema:name ?label. }
+WHERE {
+  GRAPH ?g {
+    ?uri schema:name ?label.
+    VALUES ?uri {
+      <https://ld.admin.ch/municipality/5131>
+      <https://ld.admin.ch/municipality/5249>
+      <https://ld.admin.ch/municipality/5238>
+      <https://ld.admin.ch/municipality/5118>
+      <https://ld.admin.ch/municipality/5219>
+      <https://ld.admin.ch/municipality/5113>
+      <https://ld.admin.ch/municipality/5144>
+      <https://ld.admin.ch/municipality/5210>
+      <https://ld.admin.ch/municipality/5091>
+      <https://ld.admin.ch/municipality/5097>
+      <https://ld.admin.ch/municipality/5222>
+      <https://ld.admin.ch/municipality/5176>
+      <https://ld.admin.ch/municipality/5120>
+      <https://ld.admin.ch/municipality/5207>
+      <https://ld.admin.ch/municipality/5257>
+      <https://ld.admin.ch/municipality/5309>
+      <https://ld.admin.ch/municipality/5078>
+      <https://ld.admin.ch/municipality/5263>
+      <https://ld.admin.ch/municipality/5112>
+      <https://ld.admin.ch/municipality/5266>
+      <https://ld.admin.ch/municipality/5115>
+      <https://ld.admin.ch/municipality/5202>
+      <https://ld.admin.ch/municipality/5076>
+      <https://ld.admin.ch/municipality/5017>
+      <https://ld.admin.ch/municipality/5079>
+      <https://ld.admin.ch/municipality/5050>
+      <https://ld.admin.ch/municipality/5001>
+      <https://ld.admin.ch/municipality/5310>
+      <https://ld.admin.ch/municipality/5203>
+      <https://ld.admin.ch/municipality/5323>
+    }
+  }
+}

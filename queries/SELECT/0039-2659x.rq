@@ -1,0 +1,6 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT DISTINCT ?k (SAMPLE(?s1) AS ?s) WHERE {
+  ?s1 rdf:type <http://filteredpush.org/ontologies/oa/dwcFP#TaxonName>;
+    <http://rs.tdwg.org/dwc/terms/kingdom> ?k.
+}
+GROUP BY ?k

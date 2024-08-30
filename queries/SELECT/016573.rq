@@ -1,0 +1,69 @@
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX schema: <http://schema.org/>
+PREFIX cube: <https://cube.link/>
+PREFIX ssz: <https://ld.stadt-zuerich.ch/schema/>
+PREFIX hydra: <http://www.w3.org/ns/hydra/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+CONSTRUCT {
+  <urn:ssz:sets> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hydra:Collection.
+  <urn:ssz:sets> hydra:member ?termSet.
+  ?termSet rdfs:label ?label.
+}
+WHERE {
+  {
+    SELECT (COUNT(DISTINCT ?cube) AS ?cube_count) WHERE {
+      SELECT ?cube WHERE {
+        BIND("https://ld.stadt-zuerich.ch/statistics/000230" AS ?cubes)
+        VALUES ?n {
+          1 
+          2 
+          3 
+          4 
+          5 
+          6 
+          7 
+          8 
+          9 
+          10 
+        }
+        BIND(CONCAT("^([^,]*,){", STR(?n), "} *") AS ?skipN)
+        BIND(IRI(REPLACE(REPLACE(?cubes, ?skipN, ""), ",.*$", "")) AS ?cube)
+      }
+    }
+  }
+  {
+    SELECT ?termSet (COUNT(DISTINCT ?cube) AS ?usages) WHERE {
+      {
+        SELECT ?cube WHERE {
+          BIND("https://ld.stadt-zuerich.ch/statistics/000230" AS ?cubes)
+          VALUES ?n {
+            1 
+            2 
+            3 
+            4 
+            5 
+            6 
+            7 
+            8 
+            9 
+            10 
+          }
+          BIND(CONCAT("^([^,]*,){", STR(?n), "} *") AS ?skipN)
+          BIND(IRI(REPLACE(REPLACE(?cubes, ?skipN, ""), ",.*$", "")) AS ?cube)
+        }
+      }
+      VALUES ?dimension {
+        <https://ld.stadt-zuerich.ch/statistics/property/ORT>
+      }
+      ?cube <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> cube:Cube;
+        (cube:observationConstraint/sh:property) _:g_0.
+      _:g_0 sh:path ?dimension;
+        ssz:hasFilter ?termSet.
+      ?termSet ssz:filterOf ?dimension.
+    }
+    GROUP BY ?termSet
+  }
+  ?termSet schema:name ?label.
+  FILTER(?usages = ?cube_count)
+  FILTER(CONTAINS(LCASE(?label), LCASE("")))
+}

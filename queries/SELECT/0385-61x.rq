@@ -1,0 +1,38 @@
+PREFIX cube: <https://cube.link/>
+PREFIX meta: <https://cube.link/meta/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+SELECT DISTINCT (COUNT(DISTINCT ?iri) AS ?count) ?termsetIri ?termsetLabel WHERE {
+  ?iri (cube:observationConstraint/sh:property) ?dimension.
+  ?dimension rdf:type cube:KeyDimension;
+    (sh:in/(rdf:rest*)/rdf:first) ?value.
+  ?value schema:inDefinedTermSet ?termsetIri.
+  ?termsetIri rdf:type meta:SharedDimension.
+  OPTIONAL {
+    ?termsetIri schema:name ?termsetLabel_en.
+    FILTER((LANG(?termsetLabel_en)) = "en")
+  }
+  OPTIONAL {
+    ?termsetIri schema:name ?termsetLabel_de.
+    FILTER((LANG(?termsetLabel_de)) = "de")
+  }
+  OPTIONAL {
+    ?termsetIri schema:name ?termsetLabel_fr.
+    FILTER((LANG(?termsetLabel_fr)) = "fr")
+  }
+  OPTIONAL {
+    ?termsetIri schema:name ?termsetLabel_it.
+    FILTER((LANG(?termsetLabel_it)) = "it")
+  }
+  OPTIONAL {
+    ?termsetIri schema:name ?termsetLabel_.
+    FILTER((LANG(?termsetLabel_)) = "")
+  }
+  BIND(COALESCE(?termsetLabel_en, ?termsetLabel_de, ?termsetLabel_fr, ?termsetLabel_it, ?termsetLabel_) AS ?termsetLabel)
+  ?iri schema:workExample <https://ld.admin.ch/application/visualize>;
+    schema:creativeWorkStatus <https://ld.admin.ch/vocabulary/CreativeWorkStatus/Published>;
+    cube:observationConstraint ?shape.
+  FILTER(NOT EXISTS { ?iri schema:expires ?expiryDate. })
+}
+GROUP BY ?termsetIri ?termsetLabel

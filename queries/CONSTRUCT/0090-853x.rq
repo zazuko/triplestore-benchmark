@@ -1,0 +1,39 @@
+PREFIX schema: <http://schema.org/>
+CONSTRUCT { ?uri schema:name ?label. }
+WHERE {
+  GRAPH ?g {
+    ?uri schema:name ?label.
+    VALUES ?uri {
+      <https://environment.ld.admin.ch/foen/nfi/Topic/SE19>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/19r>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/SE19r>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/21>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/SE21>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/210>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/SE210>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/210r>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/SE210r>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/214>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/SE214>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/214r>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/SE214r>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/215>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/SE215>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/215r>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/SE215r>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/21r>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/SE21r>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/23>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/SE23>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/23r>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/SE23r>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/24>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/SE24>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/24r>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/SE24r>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/29>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/SE29>
+      <https://environment.ld.admin.ch/foen/nfi/Topic/2r>
+    }
+  }
+}

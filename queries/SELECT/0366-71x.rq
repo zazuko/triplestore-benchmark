@@ -1,0 +1,18 @@
+PREFIX cube: <https://cube.link/>
+PREFIX blv: <https://agriculture.ld.admin.ch/fsvo/animal-disease/>
+PREFIX schema: <http://schema.org/>
+SELECT DISTINCT ?option ?value WHERE {
+  {
+    {
+      SELECT ?observationSet WHERE {
+        BIND(<https://agriculture.ld.admin.ch/fsvo/animal-disease> AS ?cube)
+        ?cube cube:observationSet ?observationSet.
+      }
+      LIMIT 1
+    }
+    ?observationSet cube:observation ?observation.
+    ?observation blv:epidemics ?option.
+    ?option schema:name ?value.
+    FILTER(?value = "Salmonellose"@de)
+  }
+}

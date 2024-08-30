@@ -1,0 +1,9 @@
+PREFIX gtfs: <http://vocab.gtfs.org/terms#>
+PREFIX schema: <http://schema.org/>
+PREFIX otd: <https://lod.opentransportdata.swiss/vocab/>
+SELECT DISTINCT ?Relation_zone ?Stopplace_didok_id WHERE {
+  ?Relation <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> otd:Relation;
+    otd:zone ?Relation_zone;
+    gtfs:stop ?Stopplace.
+  ?Stopplace schema:identifier ?Stopplace_didok_id.
+}

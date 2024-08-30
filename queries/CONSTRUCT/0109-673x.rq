@@ -1,0 +1,30 @@
+CONSTRUCT {
+  ?resource2 <https://agriculture.ld.admin.ch/foag/property/value-chain> ?resource1.
+  ?resource2 ?resource3 ?resource4.
+  ?resource1 ?resource5 ?resource6.
+}
+WHERE {
+  VALUES ?resource1 {
+    <https://agriculture.ld.admin.ch/foag/value-chain/1>
+    <https://agriculture.ld.admin.ch/foag/value-chain/6>
+    <https://agriculture.ld.admin.ch/foag/value-chain/0>
+    <https://agriculture.ld.admin.ch/foag/value-chain/2>
+    <https://agriculture.ld.admin.ch/foag/value-chain/5>
+    <https://agriculture.ld.admin.ch/foag/value-chain/8>
+    <https://agriculture.ld.admin.ch/foag/value-chain/9>
+    <https://agriculture.ld.admin.ch/foag/value-chain/10>
+    <https://agriculture.ld.admin.ch/foag/value-chain/11>
+  }
+  {
+    { ?resource2 <https://agriculture.ld.admin.ch/foag/property/value-chain> ?resource1. }
+    UNION
+    {
+      ?resource2 <https://agriculture.ld.admin.ch/foag/property/value-chain> ?resource1;
+        ?resource3 ?resource4.
+    }
+  }
+  UNION
+  { ?resource1 ?resource5 ?resource6. }
+  ?resource1 ^<https://agriculture.ld.admin.ch/foag/property/value-chain> ?resource2.
+  ?resource2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://agriculture.ld.admin.ch/foag/ValueChain_Detail>.
+}

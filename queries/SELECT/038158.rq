@@ -1,0 +1,22 @@
+PREFIX : <http://voc.zazuko.com/zack#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX gont: <https://gont.ch/>
+CONSTRUCT {
+  _:e_c0 :numberOfResults ?count.
+  _:e_c0 :queryStart "0".
+  _:e_c0 :queryEnd "0".
+}
+WHERE {
+  {
+    SELECT (COUNT(DISTINCT ?sub) AS ?count) WHERE {
+      GRAPH <https://linked.opendata.swiss/graph/FOT/didok> {
+        ?sub gont:municipality ?municipality;
+          rdfs:label ?name.
+        FILTER(CONTAINS(LCASE(?name), LCASE("basel")))
+        ?sub rdf:type ?resultType.
+        FILTER(?resultType IN(<http://schema.org/CivicStructure>))
+      }
+    }
+  }
+}

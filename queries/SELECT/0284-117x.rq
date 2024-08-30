@@ -1,0 +1,72 @@
+SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5 WHERE {
+  <https://environment.ld.admin.ch/foen/gefahren-waldbrand-praeventionsmassnahmen-kantone/1> <https://cube.link/observationSet> ?observationSet0.
+  ?observationSet0 <https://cube.link/observation> ?source0.
+  ?source0 <https://environment.ld.admin.ch/foen/gefahren-waldbrand-praeventionsmassnahmen-kantone/region> ?dimension0;
+    <https://environment.ld.admin.ch/foen/gefahren-waldbrand-praeventionsmassnahmen-kantone/level> ?dimension1;
+    <https://environment.ld.admin.ch/foen/gefahren-waldbrand-praeventionsmassnahmen-kantone/canton> ?dimension2.
+  FILTER(?dimension2 = <https://ld.admin.ch/canton/17>)
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension3_0.
+    FILTER(LANGMATCHES(LANG(?dimension3_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension3_1.
+    FILTER(LANGMATCHES(LANG(?dimension3_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension3_2.
+    FILTER(LANGMATCHES(LANG(?dimension3_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension3_3.
+    FILTER(LANGMATCHES(LANG(?dimension3_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension3_4.
+    FILTER((LANG(?dimension3_4)) = "")
+  }
+  BIND(COALESCE(?dimension3_0, ?dimension3_1, ?dimension3_2, ?dimension3_3, ?dimension3_4) AS ?dimension3)
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension4_0.
+    FILTER(LANGMATCHES(LANG(?dimension4_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension4_1.
+    FILTER(LANGMATCHES(LANG(?dimension4_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension4_2.
+    FILTER(LANGMATCHES(LANG(?dimension4_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension4_3.
+    FILTER(LANGMATCHES(LANG(?dimension4_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension4_4.
+    FILTER((LANG(?dimension4_4)) = "")
+  }
+  BIND(COALESCE(?dimension4_0, ?dimension4_1, ?dimension4_2, ?dimension4_3, ?dimension4_4) AS ?dimension4)
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension5_0.
+    FILTER(LANGMATCHES(LANG(?dimension5_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension5_1.
+    FILTER(LANGMATCHES(LANG(?dimension5_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension5_2.
+    FILTER(LANGMATCHES(LANG(?dimension5_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension5_3.
+    FILTER(LANGMATCHES(LANG(?dimension5_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension5_4.
+    FILTER((LANG(?dimension5_4)) = "")
+  }
+  BIND(COALESCE(?dimension5_0, ?dimension5_1, ?dimension5_2, ?dimension5_3, ?dimension5_4) AS ?dimension5)
+}
+GROUP BY ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5

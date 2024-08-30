@@ -1,0 +1,22 @@
+PREFIX schema: <http://schema.org/>
+CONSTRUCT { ?uri schema:name ?label. }
+WHERE {
+  GRAPH ?g {
+    ?uri schema:name ?label.
+    VALUES ?uri {
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+      <https://cube.link/Observation>
+      schema:name
+      <https://cube.link/observedBy>
+      <https://ld.admin.ch/office/VII.1.3>
+      <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_statistics_movements/Year>
+      <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_statistics_movements/airport>
+      <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_statistics_movements/3/Airport/LSMF>
+      <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_statistics_movements/art>
+      <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_statistics_movements/3/Art/3>
+      <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_statistics_movements/type>
+      <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_statistics_movements/3/Type/7>
+      <https://transport.ld.admin.ch/foca/FOCA_Air_traffic_statistics_movements/Statistics>
+    }
+  }
+}

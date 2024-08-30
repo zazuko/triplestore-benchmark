@@ -1,0 +1,36 @@
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX cube: <https://cube.link/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX strom: <https://energy.ld.admin.ch/elcom/electricityprice/dimension/>
+SELECT ?uid ?netzbetreiber ?kategorieName ?gemeindeNummer ?gemeindeName ?kanton ?total ?energie ?abgaben ?netznutzung ?netzzuschlag FROM <https://lindas.admin.ch/elcom/electricityprice>
+FROM <https://lindas.admin.ch/territorial>
+FROM <https://lindas.admin.ch/fso/register>
+WHERE {
+  {
+    SELECT ?uid ?operator ?netzbetreiber ?netzbetreiberPlz ?netzbetreiberOrt WHERE {
+      ?operator rdf:type schema:Organization;
+        schema:name ?netzbetreiber;
+        schema:identifier ?uid.
+    }
+  }
+  <https://energy.ld.admin.ch/elcom/electricityprice> rdf:type cube:Cube;
+    (cube:observationSet/cube:observation) ?obs.
+  ?obs strom:period "2024"^^xsd:gYear;
+    strom:municipality ?municipality;
+    strom:category ?category;
+    strom:product <https://energy.ld.admin.ch/elcom/electricityprice/product/standard>;
+    strom:total ?total;
+    strom:energy ?energie;
+    strom:charge ?abgaben;
+    strom:gridusage ?netznutzung;
+    strom:aidfee ?netzzuschlag;
+    strom:operator ?operator.
+  ?municipality schema:name ?gemeindeName;
+    schema:identifier ?gemeindeNummer;
+    schema:containedInPlace ?canton.
+  ?canton rdf:type <https://schema.ld.admin.ch/Canton>;
+    schema:alternateName ?kanton.
+  ?category schema:name ?kategorieName.
+}
+ORDER BY (?netzbetreiber) (?kategorieName)

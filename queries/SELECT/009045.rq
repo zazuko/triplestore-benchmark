@@ -1,0 +1,8 @@
+PREFIX schema: <http://schema.org/>
+SELECT DISTINCT ?property ?name ?description WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000181/observation/> <https://cube.link/observation> ?observation.
+  ?observation ?property ?sub.
+  FILTER(CONTAINS(STR(?property), "ld.stadt-zuerich.ch"))
+  OPTIONAL { ?property schema:description ?description. }
+  OPTIONAL { ?property schema:name ?name. }
+}

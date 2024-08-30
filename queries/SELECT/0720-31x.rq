@@ -1,0 +1,41 @@
+PREFIX schema: <http://schema.org/>
+PREFIX cube: <https://cube.link/>
+PREFIX blv: <https://agriculture.ld.admin.ch/fsvo/animal-disease/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?publicationDate ?canton ?municipality ?animalSpecie ?epidemic ?epidemicGroup ?animalGroup (SUM(?count) AS ?sum) WHERE {
+  {
+    SELECT ?observation WHERE {
+      {
+        SELECT ?observationSet WHERE {
+          BIND(<https://agriculture.ld.admin.ch/fsvo/animal-disease> AS ?cube)
+          ?cube cube:observationSet ?observationSet.
+        }
+        LIMIT 1
+      }
+      ?observationSet cube:observation ?observation.
+      ?observation blv:internet-publication ?publicationDate.
+      FILTER((?publicationDate >= "2024-07-22"^^xsd:date) && (?publicationDate <= "2024-07-28"^^xsd:date))
+    }
+    ORDER BY DESC (?publicationDate)
+  }
+  ?observation blv:internet-publication ?publicationDate;
+    (blv:animal-specie/schema:name) ?animalSpecie;
+    (blv:animal-specie/skos:broader/schema:name) ?animalGroup;
+    (blv:epidemics/schema:name) ?epidemic;
+    (blv:epidemics/skos:broader/schema:name) ?epidemicGroup.
+  OPTIONAL {
+    ?observation blv:canton ?cantonIri.
+    ?cantonIri schema:alternateName ?c.
+  }
+  OPTIONAL { ?observation (schema:containedInPlace/schema:name) ?m. }
+  BIND(IF(BOUND(?m), ?m, "NA") AS ?municipality)
+  BIND(IF(BOUND(?c), ?c, "LI") AS ?canton)
+  BIND(1  AS ?count)
+  FILTER(LANGMATCHES(LANG(?animalSpecie), "de"))
+  FILTER(LANGMATCHES(LANG(?animalGroup), "de"))
+  FILTER(LANGMATCHES(LANG(?epidemic), "de"))
+  FILTER(LANGMATCHES(LANG(?epidemicGroup), "de"))
+}
+GROUP BY ?publicationDate ?canton ?municipality ?animalSpecie ?epidemic ?epidemicGroup ?animalGroup ?count
+ORDER BY (?publicationDate) (?canton)

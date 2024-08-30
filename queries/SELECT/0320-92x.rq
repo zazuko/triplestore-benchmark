@@ -1,0 +1,25 @@
+PREFIX cube: <https://cube.link/>
+PREFIX blv: <https://agriculture.ld.admin.ch/fsvo/animal-disease/>
+PREFIX schema: <http://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT ?option ?value WHERE {
+  {
+    SELECT DISTINCT ?option ?value WHERE {
+      {
+        {
+          SELECT ?observationSet WHERE {
+            BIND(<https://agriculture.ld.admin.ch/fsvo/animal-disease> AS ?cube)
+            ?cube cube:observationSet ?observationSet.
+          }
+          LIMIT 1
+        }
+        ?observationSet cube:observation ?observation.
+        ?observation blv:animal-specie ?firstLevel.
+        ?firstLevel skos:broader ?option.
+        ?option schema:name ?value.
+        FILTER((LANG(?value)) = "de")
+      }
+    }
+  }
+}
+ORDER BY (?value)

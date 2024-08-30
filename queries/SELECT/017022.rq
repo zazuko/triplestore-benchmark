@@ -1,0 +1,12 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?somePropertyLabel (SUM(COALESCE(?Count, 0 )) AS ?totalCount) WHERE {
+  ?observationSet cube:observation ?observation.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/property/SPR> ?someProperty.
+  ?someProperty schema:name ?somePropertyLabel.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/measure/BST> ?Count.
+  FILTER(?Count != "NaN"^^xsd:double)
+}
+GROUP BY ?somePropertyLabel
+ORDER BY DESC (?totalCount)

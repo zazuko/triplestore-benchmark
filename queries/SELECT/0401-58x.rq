@@ -1,0 +1,48 @@
+SELECT ?dimension0 ?dimension1 ?dimension2 ?dimension3 WHERE {
+  <https://environment.ld.admin.ch/foen/gefahren-waldbrand-warnung/1> <https://cube.link/observationSet> ?observationSet0.
+  ?observationSet0 <https://cube.link/observation> ?source0.
+  ?source0 <https://environment.ld.admin.ch/foen/gefahren-waldbrand-warnung/region> ?dimension0;
+    <https://environment.ld.admin.ch/foen/gefahren-waldbrand-warnung/level> ?dimension1.
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension2_0.
+    FILTER(LANGMATCHES(LANG(?dimension2_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension2_1.
+    FILTER(LANGMATCHES(LANG(?dimension2_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension2_2.
+    FILTER(LANGMATCHES(LANG(?dimension2_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension2_3.
+    FILTER(LANGMATCHES(LANG(?dimension2_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension2_4.
+    FILTER((LANG(?dimension2_4)) = "")
+  }
+  BIND(COALESCE(?dimension2_0, ?dimension2_1, ?dimension2_2, ?dimension2_3, ?dimension2_4) AS ?dimension2)
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension3_0.
+    FILTER(LANGMATCHES(LANG(?dimension3_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension3_1.
+    FILTER(LANGMATCHES(LANG(?dimension3_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension3_2.
+    FILTER(LANGMATCHES(LANG(?dimension3_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension3_3.
+    FILTER(LANGMATCHES(LANG(?dimension3_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension3_4.
+    FILTER((LANG(?dimension3_4)) = "")
+  }
+  BIND(COALESCE(?dimension3_0, ?dimension3_1, ?dimension3_2, ?dimension3_3, ?dimension3_4) AS ?dimension3)
+}

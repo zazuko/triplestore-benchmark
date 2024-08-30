@@ -1,0 +1,22 @@
+PREFIX hydra: <http://www.w3.org/ns/hydra/core#>
+PREFIX cube: <https://cube.link/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+CONSTRUCT {
+  <urn:ssz:cubes> rdf:type hydra:Collection.
+  <urn:ssz:cubes> hydra:member ?cube.
+  ?cube rdfs:label ?cubeLabel.
+}
+FROM <https://lindas.admin.ch/stadtzuerich/stat>
+WHERE {
+  VALUES ?kennzahl {
+    <https://ld.stadt-zuerich.ch/statistics/measure/UMZ>
+  }
+  ?shape rdf:type cube:Constraint;
+    (sh:property/sh:path) ?kennzahl.
+  ?cube rdf:type cube:Cube;
+    cube:observationConstraint ?shape;
+    schema:name ?cubeLabel.
+}

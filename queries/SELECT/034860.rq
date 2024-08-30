@@ -1,0 +1,7 @@
+PREFIX schema: <http://schema.org/>
+PREFIX schemac: <https://cube.link/>
+SELECT * FROM <https://lindas.admin.ch/stadtzuerich/stat>
+WHERE {
+  ?cu <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> schemac:Cube;
+    schema:name ?cuLabel.
+}

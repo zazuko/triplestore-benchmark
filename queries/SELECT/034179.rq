@@ -1,0 +1,8 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX schemac: <https://cube.link/>
+SELECT DISTINCT * FROM <https://lindas.admin.ch/stadtzuerich/stat>
+WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000437> schemac:observationSet ?obsSet.
+  ?obsSet schemac:observation ?obs.
+  ?obs <https://ld.stadt-zuerich.ch/statistics/measure/BEW> "2.0"^^xsd:double.
+}

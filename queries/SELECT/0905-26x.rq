@@ -1,0 +1,51 @@
+SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 WHERE {
+  <https://environment.ld.admin.ch/foen/ubd003001/5> <https://cube.link/observationSet> ?observationSet0.
+  ?observationSet0 <https://cube.link/observation> ?source0.
+  ?source0 <https://environment.ld.admin.ch/foen/ubd003001/groupid> ?dimension0;
+    <https://environment.ld.admin.ch/foen/ubd003001/statuscode> ?dimension1;
+    <https://environment.ld.admin.ch/foen/ubd003001/part> ?dimension2.
+  FILTER(?dimension1 = <https://environment.ld.admin.ch/vocabulary/iucn_conservation_categories/DD>)
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension3_0.
+    FILTER(LANGMATCHES(LANG(?dimension3_0), "en"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension3_1.
+    FILTER(LANGMATCHES(LANG(?dimension3_1), "de"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension3_2.
+    FILTER(LANGMATCHES(LANG(?dimension3_2), "fr"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension3_3.
+    FILTER(LANGMATCHES(LANG(?dimension3_3), "it"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension3_4.
+    FILTER((LANG(?dimension3_4)) = "")
+  }
+  BIND(COALESCE(?dimension3_0, ?dimension3_1, ?dimension3_2, ?dimension3_3, ?dimension3_4) AS ?dimension3)
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension4_0.
+    FILTER(LANGMATCHES(LANG(?dimension4_0), "en"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension4_1.
+    FILTER(LANGMATCHES(LANG(?dimension4_1), "de"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension4_2.
+    FILTER(LANGMATCHES(LANG(?dimension4_2), "fr"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension4_3.
+    FILTER(LANGMATCHES(LANG(?dimension4_3), "it"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension4_4.
+    FILTER((LANG(?dimension4_4)) = "")
+  }
+  BIND(COALESCE(?dimension4_0, ?dimension4_1, ?dimension4_2, ?dimension4_3, ?dimension4_4) AS ?dimension4)
+}
+GROUP BY ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4

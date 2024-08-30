@@ -1,0 +1,14 @@
+PREFIX schema: <http://schema.org/>
+PREFIX schemac: <https://cube.link/>
+PREFIX susi: <https://ld.stadt-zuerich.ch/statistics/property/>
+SELECT ?jahr ?schliess FROM <https://lindas.admin.ch/stadtzuerich/stat>
+WHERE {
+  ?cu <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> schemac:Cube;
+    schema:name ?cuLabel.
+  FILTER((?cuLabel = "Eheschliessungen") || (?cuLabel = "Ehescheidungen"))
+  ?cu schemac:observationSet ?obsSet.
+  ?obsSet schemac:observation ?obs.
+  OPTIONAL { ?obs <https://ld.stadt-zuerich.ch/statistics/measure/EHE> ?schliess. }
+  ?obs susi:TIME ?time.
+  BIND(YEAR(?time) AS ?jahr)
+}

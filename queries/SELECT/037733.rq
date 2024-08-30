@@ -1,0 +1,13 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?time ?zimmerzahlLabel (SUM(COALESCE(?Count, 0 )) AS ?totalCount) WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000302/observation/> cube:observation ?observation.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/property/ZIM> ?zimmerzahl.
+  ?zimmerzahl schema:name ?zimmerzahlLabel.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/measure/WFP> ?Count;
+    <https://ld.stadt-zuerich.ch/statistics/property/TIME> ?time.
+  FILTER(?Count != "NaN"^^xsd:double)
+}
+GROUP BY ?time ?zimmerzahlLabel
+ORDER BY (?time) DESC (?totalCount)

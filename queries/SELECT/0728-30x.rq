@@ -1,0 +1,31 @@
+SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension3 WHERE {
+  <https://energy.ld.admin.ch/sfoe/bfe_ogd84_einmalverguetung_fuer_photovoltaikanlagen/10> <https://cube.link/observationSet> ?observationSet0.
+  ?observationSet0 <https://cube.link/observation> ?source0.
+  ?source0 <https://energy.ld.admin.ch/sfoe/bfe_ogd84_einmalverguetung_fuer_photovoltaikanlagen/Jahr> ?dimension0;
+    <https://energy.ld.admin.ch/sfoe/bfe_ogd84_einmalverguetung_fuer_photovoltaikanlagen/Kanton> ?dimension1;
+    <https://energy.ld.admin.ch/sfoe/bfe_ogd84_einmalverguetung_fuer_photovoltaikanlagen/AnzahlAnlagen> ?dimension2.
+  FILTER(?dimension0 >= "2014"^^<http://www.w3.org/2001/XMLSchema#gYear>)
+  FILTER(?dimension0 <= "2023"^^<http://www.w3.org/2001/XMLSchema#gYear>)
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension3_0.
+    FILTER(LANGMATCHES(LANG(?dimension3_0), "en"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension3_1.
+    FILTER(LANGMATCHES(LANG(?dimension3_1), "de"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension3_2.
+    FILTER(LANGMATCHES(LANG(?dimension3_2), "fr"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension3_3.
+    FILTER(LANGMATCHES(LANG(?dimension3_3), "it"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension3_4.
+    FILTER((LANG(?dimension3_4)) = "")
+  }
+  BIND(COALESCE(?dimension3_0, ?dimension3_1, ?dimension3_2, ?dimension3_3, ?dimension3_4) AS ?dimension3)
+}
+GROUP BY ?dimension0 ?dimension1 ?dimension2 ?dimension3

@@ -1,0 +1,14 @@
+PREFIX cube: <https://cube.link/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+SELECT DISTINCT ?cube ?measure ?valueChain ?market FROM <https://lindas.admin.ch/foag/agricultural-market-data>
+WHERE {
+  ?cube <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> cube:Cube;
+    cube:observationConstraint ?shape.
+  ?shape ?p ?blankNode.
+  ?blankNode sh:path ?measure.
+  ?cube cube:observationSet ?observationSet.
+  ?observationSet cube:observation ?observation.
+  ?observation <https://agriculture.ld.admin.ch/foag/dimension/value-chain> ?valueChain;
+    <https://agriculture.ld.admin.ch/foag/dimension/market> ?market.
+  FILTER(CONTAINS(STR(?measure), "https://agriculture.ld.admin.ch/foag/measure/"))
+}

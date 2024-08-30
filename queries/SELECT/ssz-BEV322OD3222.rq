@@ -1,0 +1,18 @@
+SELECT DISTINCT ?dimension0 ?dimension1 ?dimension5 ?dimension6 ?dimension2 ?dimension7 ?dimension8 ?dimension3 ?dimension9 ?dimension10 ?dimension4 ?dimension11 ?dimension12 WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000204> <https://cube.link/observationSet> ?observationSet0.
+  ?observationSet0 <https://cube.link/observation> ?source0.
+  ?source0 <https://ld.stadt-zuerich.ch/statistics/measure/BEW> ?dimension0;
+    <https://ld.stadt-zuerich.ch/statistics/property/ZEIT> ?dimension1;
+    <https://ld.stadt-zuerich.ch/statistics/property/RAUM> ?dimension2;
+    <https://ld.stadt-zuerich.ch/statistics/property/HEL> ?dimension3;
+    <https://ld.stadt-zuerich.ch/statistics/property/SEX> ?dimension4.
+  ?dimension1 <http://schema.org/name> ?dimension5;
+    <http://schema.org/termCode> ?dimension6.
+  ?dimension2 <http://schema.org/name> ?dimension7;
+    <http://schema.org/termCode> ?dimension8.
+  ?dimension3 <http://schema.org/name> ?dimension9;
+    <http://schema.org/termCode> ?dimension10.
+  ?dimension4 <http://schema.org/name> ?dimension11;
+    <http://schema.org/termCode> ?dimension12.
+}
+GROUP BY ?dimension0 ?dimension1 ?dimension5 ?dimension6 ?dimension2 ?dimension7 ?dimension8 ?dimension3 ?dimension9 ?dimension10 ?dimension4 ?dimension11 ?dimension12

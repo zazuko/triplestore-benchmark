@@ -1,0 +1,13 @@
+PREFIX schema: <http://schema.org/>
+PREFIX admin: <https://schema.ld.admin.ch/>
+SELECT * FROM <https://lindas.admin.ch/foj/zefix>
+FROM <https://lindas.admin.ch/territorial>
+WHERE {
+  ?company <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> admin:ZefixOrganisation;
+    admin:municipality ?municipality;
+    schema:additionalType ?additionalType;
+    schema:legalName ?legalName;
+    schema:address ?address.
+  ?address schema:streetAddress ?streetAddress;
+    schema:postalCode ?postalCode.
+}

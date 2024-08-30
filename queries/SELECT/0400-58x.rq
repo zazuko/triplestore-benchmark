@@ -1,0 +1,16 @@
+PREFIX schema: <http://schema.org/>
+PREFIX admin: <https://schema.ld.admin.ch/>
+SELECT DISTINCT ?company_uri ?name ?company_type ?municipality ?adresse ?locality ?company_uid WHERE {
+  ?company_uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> admin:ZefixOrganisation;
+    schema:name ?name;
+    admin:municipality ?muni_id.
+  ?muni_id schema:name ?municipality.
+  ?company_uri schema:additionalType ?type_id.
+  ?type_id schema:name ?company_type.
+  ?company_uri schema:address ?adr.
+  ?adr schema:streetAddress ?adresse;
+    schema:addressLocality ?locality.
+  ?company_uri schema:identifier ?cuid.
+  ?cuid schema:value "CHE313772792", ?company_uid.
+  FILTER(LANGMATCHES(LANG(?company_type), "de"))
+}

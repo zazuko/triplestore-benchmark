@@ -1,0 +1,10 @@
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?somePropertyLabel (SUM(COALESCE(?Count, 0 )) AS ?totalCount) WHERE {
+  ?observationSet cube:observation ?observation.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/measure/GES> ?Count;
+    <https://ld.stadt-zuerich.ch/statistics/property/TOU> ?someProperty.
+  ?someProperty schema:name ?somePropertyLabel.
+}
+GROUP BY ?somePropertyLabel
+ORDER BY DESC (?totalCount)

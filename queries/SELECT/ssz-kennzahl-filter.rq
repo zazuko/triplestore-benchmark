@@ -1,0 +1,10 @@
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT * FROM <https://lindas.admin.ch/stadtzuerich/stat>
+WHERE {
+  ?sub rdf:type rdf:Property;
+    schema:identifier ?kennzahl;
+    schema:name ?kennzahlLabel.
+  FILTER(CONTAINS(LCASE(?kennzahlLabel), LCASE("Wirtschaftlich")))
+  FILTER(CONTAINS(STR(?sub), "measure"))
+}

@@ -1,0 +1,53 @@
+SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5 WHERE {
+  <https://culture.ld.admin.ch/sfa/StateAccounts_Office/8> <https://cube.link/observationSet> ?observationSet0.
+  ?observationSet0 <https://cube.link/observation> ?source0.
+  ?source0 <http://www.w3.org/2006/time#Year> ?dimension0;
+    <http://schema.org/amount> ?dimension1;
+    <https://culture.ld.admin.ch/sfa/StateAccounts_Office/office> ?dimension2;
+    <https://culture.ld.admin.ch/sfa/StateAccounts_Office/operationcharacter> ?dimension3.
+  ?dimension2 <http://schema.org/sameAs> ?dimension6.
+  FILTER(?dimension6 = <https://culture.ld.admin.ch/sfa/StateAccounts_Office/Office/O7>)
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension4_0.
+    FILTER(LANGMATCHES(LANG(?dimension4_0), "fr"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension4_1.
+    FILTER(LANGMATCHES(LANG(?dimension4_1), "de"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension4_2.
+    FILTER(LANGMATCHES(LANG(?dimension4_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension4_3.
+    FILTER(LANGMATCHES(LANG(?dimension4_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension4_4.
+    FILTER((LANG(?dimension4_4)) = "")
+  }
+  BIND(COALESCE(?dimension4_0, ?dimension4_1, ?dimension4_2, ?dimension4_3, ?dimension4_4) AS ?dimension4)
+  OPTIONAL {
+    ?dimension3 <http://schema.org/name> ?dimension5_0.
+    FILTER(LANGMATCHES(LANG(?dimension5_0), "fr"))
+  }
+  OPTIONAL {
+    ?dimension3 <http://schema.org/name> ?dimension5_1.
+    FILTER(LANGMATCHES(LANG(?dimension5_1), "de"))
+  }
+  OPTIONAL {
+    ?dimension3 <http://schema.org/name> ?dimension5_2.
+    FILTER(LANGMATCHES(LANG(?dimension5_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension3 <http://schema.org/name> ?dimension5_3.
+    FILTER(LANGMATCHES(LANG(?dimension5_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension3 <http://schema.org/name> ?dimension5_4.
+    FILTER((LANG(?dimension5_4)) = "")
+  }
+  BIND(COALESCE(?dimension5_0, ?dimension5_1, ?dimension5_2, ?dimension5_3, ?dimension5_4) AS ?dimension5)
+}
+GROUP BY ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5

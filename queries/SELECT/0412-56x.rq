@@ -1,0 +1,36 @@
+PREFIX cube: <https://cube.link/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?observation ?costComponent ?currency ?dataMethod ?dataSource ?foreignTrade ?keyIndicatorType ?market ?productGroup ?productSubgroup ?product ?productProperties ?productionSystem ?productOrigin ?salesRegion ?unit ?usage ?valueChainDetail ?valueChain ?measure ?year ?month WHERE {
+  GRAPH <https://lindas.admin.ch/foag/agricultural-market-data> {
+    <https://agriculture.ld.admin.ch/foag/cube/MilkDairyProducts/Production_Price_Year> cube:observationSet ?observationSet.
+    ?observationSet cube:observation ?observation.
+    ?observation <https://agriculture.ld.admin.ch/foag/dimension/cost-component> ?costComponent;
+      <https://agriculture.ld.admin.ch/foag/dimension/currency> ?currency;
+      <https://agriculture.ld.admin.ch/foag/dimension/data-method> ?dataMethod;
+      <https://agriculture.ld.admin.ch/foag/dimension/data-source> ?dataSource;
+      <https://agriculture.ld.admin.ch/foag/dimension/date> ?date;
+      <https://agriculture.ld.admin.ch/foag/dimension/foreign-trade> ?foreignTrade;
+      <https://agriculture.ld.admin.ch/foag/dimension/key-indicator-type> ?keyIndicatorType;
+      <https://agriculture.ld.admin.ch/foag/dimension/market> ?market;
+      <https://agriculture.ld.admin.ch/foag/dimension/product-group> ?productGroup;
+      <https://agriculture.ld.admin.ch/foag/dimension/product-subgroup> ?productSubgroup;
+      <https://agriculture.ld.admin.ch/foag/dimension/product> ?product;
+      <https://agriculture.ld.admin.ch/foag/dimension/product-properties> ?productProperties;
+      <https://agriculture.ld.admin.ch/foag/dimension/production-system> ?productionSystem;
+      <https://agriculture.ld.admin.ch/foag/dimension/product-origin> ?productOrigin;
+      <https://agriculture.ld.admin.ch/foag/dimension/sales-region> ?salesRegion;
+      <https://agriculture.ld.admin.ch/foag/dimension/unit> ?unit;
+      <https://agriculture.ld.admin.ch/foag/dimension/usage> ?usage;
+      <https://agriculture.ld.admin.ch/foag/dimension/value-chain-detail> ?valueChainDetail;
+      <https://agriculture.ld.admin.ch/foag/dimension/value-chain> ?valueChain;
+      <https://agriculture.ld.admin.ch/foag/measure/price> ?measure.
+  }
+  ?date time:year ?year.
+  FILTER((DATATYPE(?year)) = xsd:integer)
+  OPTIONAL {
+    ?date time:month ?month.
+    FILTER((DATATYPE(?month)) = xsd:integer)
+  }
+}
+ORDER BY (?year) (?month)

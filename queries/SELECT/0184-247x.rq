@@ -1,0 +1,10 @@
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?dimension0_v WHERE {
+  <https://culture.ld.admin.ch/sfa/StateAccounts_Office/8> (cube:observationSet/cube:observation) ?observation.
+  ?observation <https://culture.ld.admin.ch/sfa/StateAccounts_Office/office> ?dimension0.
+  ?dimension0 schema:sameAs ?dimension0_v.
+  VALUES ?dimension0_v {
+    <https://culture.ld.admin.ch/sfa/StateAccounts_Office/Office/O7>
+  }
+}

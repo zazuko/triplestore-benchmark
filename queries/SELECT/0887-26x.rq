@@ -1,0 +1,53 @@
+SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5 WHERE {
+  <https://environment.ld.admin.ch/foen/ubd000502/5> <https://cube.link/observationSet> ?observationSet0.
+  ?observationSet0 <https://cube.link/observation> ?source0.
+  ?source0 <https://environment.ld.admin.ch/foen/ubd000502/sektorid> ?dimension0;
+    <https://environment.ld.admin.ch/foen/ubd000502/gas> ?dimension1;
+    <https://environment.ld.admin.ch/foen/ubd000502/jahr> ?dimension2;
+    <https://environment.ld.admin.ch/foen/ubd000502/werte> ?dimension3.
+  FILTER(?dimension0 IN(<https://environment.ld.admin.ch/vocabulary/ghg_emission_sectors_co2_ordinance/11>, <https://environment.ld.admin.ch/vocabulary/ghg_emission_sectors_co2_ordinance/12>, <https://environment.ld.admin.ch/vocabulary/ghg_emission_sectors_co2_ordinance/13>, <https://environment.ld.admin.ch/vocabulary/ghg_emission_sectors_co2_ordinance/14>))
+  FILTER(?dimension1 = <https://ld.admin.ch/cube/dimension/testdimension/test1>)
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension4_0.
+    FILTER(LANGMATCHES(LANG(?dimension4_0), "en"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension4_1.
+    FILTER(LANGMATCHES(LANG(?dimension4_1), "de"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension4_2.
+    FILTER(LANGMATCHES(LANG(?dimension4_2), "fr"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension4_3.
+    FILTER(LANGMATCHES(LANG(?dimension4_3), "it"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension4_4.
+    FILTER((LANG(?dimension4_4)) = "")
+  }
+  BIND(COALESCE(?dimension4_0, ?dimension4_1, ?dimension4_2, ?dimension4_3, ?dimension4_4) AS ?dimension4)
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension5_0.
+    FILTER(LANGMATCHES(LANG(?dimension5_0), "en"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension5_1.
+    FILTER(LANGMATCHES(LANG(?dimension5_1), "de"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension5_2.
+    FILTER(LANGMATCHES(LANG(?dimension5_2), "fr"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension5_3.
+    FILTER(LANGMATCHES(LANG(?dimension5_3), "it"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension5_4.
+    FILTER((LANG(?dimension5_4)) = "")
+  }
+  BIND(COALESCE(?dimension5_0, ?dimension5_1, ?dimension5_2, ?dimension5_3, ?dimension5_4) AS ?dimension5)
+}
+GROUP BY ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5

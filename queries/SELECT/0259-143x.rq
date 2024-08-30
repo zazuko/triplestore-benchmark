@@ -1,0 +1,10 @@
+PREFIX cube: <https://cube.link/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+SELECT DISTINCT ?min ?max FROM <https://lindas.admin.ch/foag/agricultural-market-data>
+WHERE {
+  <https://agriculture.ld.admin.ch/foag/cube/Eggs/Production_Price_Year> cube:observationConstraint ?shape.
+  ?shape ?prop ?blankNode.
+  ?blankNode sh:path <https://agriculture.ld.admin.ch/foag/measure/price>;
+    sh:minInclusive ?min;
+    sh:maxInclusive ?max.
+}

@@ -1,0 +1,13 @@
+PREFIX schema: <http://schema.org/>
+PREFIX schemac: <https://cube.link/>
+PREFIX property: <https://ld.stadt-zuerich.ch/statistics/property/>
+PREFIX measure: <https://ld.stadt-zuerich.ch/statistics/measure/>
+SELECT DISTINCT * FROM <https://lindas.admin.ch/stadtzuerich/stat>
+WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000437> schemac:observationSet ?obsSet.
+  ?obsSet schemac:observation ?obs.
+  ?obs measure:BEW ?Anz;
+    property:GEJ ?geburtsjahr_code;
+    property:NAM ?name_code.
+  ?name_code schema:name ?name_lang.
+}

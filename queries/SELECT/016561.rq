@@ -1,0 +1,39 @@
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?cube ?kennzahl (LCASE(CONCAT(?kennzahlIdentifier, IF(?dimensionKey = "", "", "_"), ?dimensionKey)) AS ?cubeKey) FROM <https://lindas.admin.ch/stadtzuerich/stat>
+WHERE {
+  ?cube <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> cube:Cube;
+    (cube:observationConstraint/sh:property/sh:path) ?kennzahl.
+  ?kennzahl <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> cube:MeasureDimension;
+    schema:identifier ?kennzahlIdentifier.
+  {
+    SELECT ?cube (GROUP_CONCAT(?dimensionIdentifier; SEPARATOR = "_") AS ?dimensionKey) WHERE {
+      ?cube <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> cube:Cube;
+        (cube:observationConstraint/sh:property/sh:path) ?dimension.
+      FILTER(?dimension NOT IN(<https://ld.stadt-zuerich.ch/statistics/property/ZEIT>, <https://ld.stadt-zuerich.ch/statistics/property/RAUM>))
+      OPTIONAL {
+        ?dimension <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> cube:KeyDimension;
+          schema:identifier ?dimensionIdentifier.
+      }
+    }
+    GROUP BY ?cube ?kennzahl
+  }
+}
+VALUES ?cube {
+  <https://ld.stadt-zuerich.ch/statistics/000230>
+  <https://ld.stadt-zuerich.ch/statistics/000256>
+  <https://ld.stadt-zuerich.ch/statistics/000230>
+  <https://ld.stadt-zuerich.ch/statistics/000256>
+  <https://ld.stadt-zuerich.ch/statistics/000230>
+  <https://ld.stadt-zuerich.ch/statistics/000256>
+  <https://ld.stadt-zuerich.ch/statistics/000230>
+  <https://ld.stadt-zuerich.ch/statistics/000230>
+  <https://ld.stadt-zuerich.ch/statistics/000256>
+  <https://ld.stadt-zuerich.ch/statistics/000230>
+  <https://ld.stadt-zuerich.ch/statistics/000256>
+  <https://ld.stadt-zuerich.ch/statistics/000230>
+  <https://ld.stadt-zuerich.ch/statistics/000256>
+  <https://ld.stadt-zuerich.ch/statistics/000230>
+  <https://ld.stadt-zuerich.ch/statistics/000256>
+}

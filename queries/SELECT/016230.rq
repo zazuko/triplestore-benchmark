@@ -1,0 +1,6 @@
+SELECT ?cube ?observation_set WHERE {
+  VALUES ?cube {
+    <https://ld.stadt-zuerich.ch/statistics/000203>
+  }
+  ?cube <https://cube.link/observationSet> ?observation_set.
+}

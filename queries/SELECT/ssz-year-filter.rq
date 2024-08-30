@@ -1,0 +1,12 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX : <https://ld.stadt-zuerich.ch/statistics/property/>
+SELECT ?observation ?observedBy ?bew ?alt ?raum ?zeit WHERE {
+  ?observation rdf:type <https://cube.link/Observation>;
+    <https://cube.link/observedBy> ?observedBy;
+    <https://ld.stadt-zuerich.ch/statistics/measure/BEW> ?bew;
+    :ALT ?alt;
+    :RAUM ?raum;
+    :TIME ?time;
+    :ZEIT ?zeit.
+  FILTER((YEAR(?time)) = 2012 )
+}

@@ -1,0 +1,15 @@
+CONSTRUCT { ?uri <http://schema.org/name> ?label. }
+WHERE {
+  ?uri <http://schema.org/name> ?label.
+  VALUES ?uri {
+    <https://ld.stadt-zuerich.ch/statistics/code/SEX0001>
+    <https://ld.stadt-zuerich.ch/statistics/code/SEX0002>
+    <https://ld.stadt-zuerich.ch/statistics/code/ZIV0001>
+    <https://ld.stadt-zuerich.ch/statistics/code/ZIV0003>
+    <https://ld.stadt-zuerich.ch/statistics/code/ZIV0005>
+    <https://ld.stadt-zuerich.ch/statistics/code/ZIV0004>
+    <https://ld.stadt-zuerich.ch/statistics/code/ZIV0006>
+    <https://ld.stadt-zuerich.ch/statistics/code/ZIV0007>
+    <https://ld.stadt-zuerich.ch/statistics/code/ZIV0099>
+  }
+}

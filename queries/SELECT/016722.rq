@@ -1,0 +1,14 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cube: <https://cube.link/>
+PREFIX schema: <http://schema.org/>
+SELECT ?time ?sexLabel (SUM(COALESCE(?Count, 0 )) AS ?totalCount) WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000277/observation/> cube:observation ?observation.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/property/SEX> ?sex.
+  ?sex schema:name ?sexLabel.
+  ?observation <https://ld.stadt-zuerich.ch/statistics/measure/BEW> ?Count;
+    <https://ld.stadt-zuerich.ch/statistics/property/TIME> ?time.
+  FILTER(?Count != "NaN"^^xsd:double)
+  FILTER((?time >= "2022-01-01"^^xsd:date) && (?time <= "2022-12-31"^^xsd:date))
+}
+GROUP BY ?time ?sexLabel
+ORDER BY (?time) DESC (?totalCount)

@@ -1,0 +1,23 @@
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX otd: <https://lod.opentransportdata.swiss/vocab/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+SELECT DISTINCT ?Zone ?Zone_id ?Zone_label ?Provider ?Provider_id ?Provider_name ?ZonePlan ?ZonePlan_label ?Alliance ?Alliance_label WHERE {
+  ?Zone <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> otd:Zone;
+    schema:identifier ?Zone_id.
+  OPTIONAL { ?Zone rdfs:label ?Zone_label. }
+  OPTIONAL {
+    ?Zone schema:provider ?Provider.
+    ?Provider schema:identifier ?Provider_id.
+  }
+  OPTIONAL { ?Provider vcard:name ?Provider_name. }
+  OPTIONAL {
+    ?Zone otd:zoningPlan ?ZonePlan.
+    ?ZonePlan rdfs:label ?ZonePlan_label.
+  }
+  OPTIONAL { ?ZonePlan rdfs:label ?ZonePlan_label. }
+  OPTIONAL {
+    ?Zone otd:alliance ?Alliance.
+    ?Alliance rdfs:label ?Alliance_label.
+  }
+}

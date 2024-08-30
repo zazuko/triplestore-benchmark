@@ -1,0 +1,20 @@
+PREFIX schema: <http://schema.org/>
+CONSTRUCT { ?uri schema:name ?label. }
+WHERE {
+  GRAPH ?g {
+    ?uri schema:name ?label.
+    VALUES ?uri {
+      <https://ld.admin.ch/district/version/10050>
+      <https://ld.admin.ch/district/version/10037>
+      <https://ld.admin.ch/district/version/10085>
+      <https://ld.admin.ch/district/version/10046>
+      <https://ld.admin.ch/district/version/10041>
+      <https://ld.admin.ch/district/version/10039>
+      <https://ld.admin.ch/district/version/10055>
+      <https://ld.admin.ch/district/version/10043>
+      <https://ld.admin.ch/district/version/10049>
+      <https://version.link/startEvent>
+      <https://ld.admin.ch/district/changeevent/151>
+    }
+  }
+}

@@ -1,0 +1,136 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+PREFIX cube: <https://cube.link/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX visualize: <https://visualize.admin.ch/>
+CONSTRUCT {
+  ?iri rdf:type cube:Cube.
+  ?iri cube:observationConstraint ?shape.
+  ?iri dcat:theme ?themeIri.
+  ?iri dcterms:publisher ?publisher.
+  ?iri schema:about ?subthemeIri.
+  ?iri schema:creativeWorkStatus ?status.
+  ?iri schema:creator ?creatorIri.
+  ?iri schema:datePublished ?datePublished.
+  ?iri schema:description ?description.
+  ?iri schema:name ?title.
+  ?iri schema:workExample <https://ld.admin.ch/application/visualize>.
+  ?iri visualize:hasDimension ?dimensionIri.
+  ?dimensionIri visualize:hasTermset ?termsetIri.
+  ?dimensionIri visualize:hasTimeUnit ?unitType.
+  ?dimensionIri schema:name ?dimensionLabel.
+  ?termsetIri schema:name ?termsetLabel.
+  ?creatorIri schema:name ?creatorLabel.
+  ?themeIri schema:name ?themeLabel.
+  ?subthemeIri schema:inDefinedTermSet ?subthemeTermset.
+  ?subthemeIri schema:name ?subthemeLabel.
+}
+WHERE {
+  ?iri rdf:type cube:Cube.
+  OPTIONAL {
+    ?iri schema:name ?title_de.
+    FILTER((LANG(?title_de)) = "de")
+  }
+  OPTIONAL {
+    ?iri schema:name ?title_fr.
+    FILTER((LANG(?title_fr)) = "fr")
+  }
+  OPTIONAL {
+    ?iri schema:name ?title_it.
+    FILTER((LANG(?title_it)) = "it")
+  }
+  OPTIONAL {
+    ?iri schema:name ?title_en.
+    FILTER((LANG(?title_en)) = "en")
+  }
+  OPTIONAL {
+    ?iri schema:name ?title_.
+    FILTER((LANG(?title_)) = "")
+  }
+  BIND(COALESCE(?title_de, ?title_fr, ?title_it, ?title_en, ?title_) AS ?title)
+  OPTIONAL {
+    ?iri schema:description ?description_de.
+    FILTER((LANG(?description_de)) = "de")
+  }
+  OPTIONAL {
+    ?iri schema:description ?description_fr.
+    FILTER((LANG(?description_fr)) = "fr")
+  }
+  OPTIONAL {
+    ?iri schema:description ?description_it.
+    FILTER((LANG(?description_it)) = "it")
+  }
+  OPTIONAL {
+    ?iri schema:description ?description_en.
+    FILTER((LANG(?description_en)) = "en")
+  }
+  OPTIONAL {
+    ?iri schema:description ?description_.
+    FILTER((LANG(?description_)) = "")
+  }
+  BIND(COALESCE(?description_de, ?description_fr, ?description_it, ?description_en, ?description_) AS ?description)
+  OPTIONAL { ?iri dcterms:publisher ?publisher. }
+  ?iri schema:creativeWorkStatus ?status.
+  OPTIONAL { ?iri schema:datePublished ?datePublished. }
+  OPTIONAL {
+    ?iri dcterms:creator ?creatorIri.
+    GRAPH <https://lindas.admin.ch/sfa/opendataswiss> {
+      ?creatorIri rdf:type schema:Organization;
+        schema:inDefinedTermSet <https://register.ld.admin.ch/opendataswiss/org>.
+      OPTIONAL {
+        ?creatorIri schema:name ?creatorLabel_de.
+        FILTER((LANG(?creatorLabel_de)) = "de")
+      }
+      OPTIONAL {
+        ?creatorIri schema:name ?creatorLabel_fr.
+        FILTER((LANG(?creatorLabel_fr)) = "fr")
+      }
+      OPTIONAL {
+        ?creatorIri schema:name ?creatorLabel_it.
+        FILTER((LANG(?creatorLabel_it)) = "it")
+      }
+      OPTIONAL {
+        ?creatorIri schema:name ?creatorLabel_en.
+        FILTER((LANG(?creatorLabel_en)) = "en")
+      }
+      OPTIONAL {
+        ?creatorIri schema:name ?creatorLabel_.
+        FILTER((LANG(?creatorLabel_)) = "")
+      }
+      BIND(COALESCE(?creatorLabel_de, ?creatorLabel_fr, ?creatorLabel_it, ?creatorLabel_en, ?creatorLabel_) AS ?creatorLabel)
+    }
+  }
+  OPTIONAL {
+    ?iri dcat:theme ?themeIri.
+    GRAPH <https://lindas.admin.ch/sfa/opendataswiss> {
+      ?themeIri rdf:type schema:DefinedTerm;
+        schema:inDefinedTermSet <https://register.ld.admin.ch/opendataswiss/category>.
+      OPTIONAL {
+        ?themeIri schema:name ?themeLabel_de.
+        FILTER((LANG(?themeLabel_de)) = "de")
+      }
+      OPTIONAL {
+        ?themeIri schema:name ?themeLabel_fr.
+        FILTER((LANG(?themeLabel_fr)) = "fr")
+      }
+      OPTIONAL {
+        ?themeIri schema:name ?themeLabel_it.
+        FILTER((LANG(?themeLabel_it)) = "it")
+      }
+      OPTIONAL {
+        ?themeIri schema:name ?themeLabel_en.
+        FILTER((LANG(?themeLabel_en)) = "en")
+      }
+      OPTIONAL {
+        ?themeIri schema:name ?themeLabel_.
+        FILTER((LANG(?themeLabel_)) = "")
+      }
+      BIND(COALESCE(?themeLabel_de, ?themeLabel_fr, ?themeLabel_it, ?themeLabel_en, ?themeLabel_) AS ?themeLabel)
+    }
+  }
+  ?iri schema:workExample <https://ld.admin.ch/application/visualize>;
+    schema:creativeWorkStatus <https://ld.admin.ch/vocabulary/CreativeWorkStatus/Published>;
+    cube:observationConstraint ?shape.
+  FILTER(NOT EXISTS { ?iri schema:expires ?expiryDate. })
+}

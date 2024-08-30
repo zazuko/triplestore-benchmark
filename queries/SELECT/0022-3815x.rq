@@ -1,0 +1,15 @@
+PREFIX schema: <http://schema.org/>
+PREFIX dimension: <https://environment.ld.admin.ch/foen/hydro/dimension/>
+SELECT ?station_id ?waterBodyName ?stationName ?time ?waterLevel WHERE {
+  GRAPH <https://lindas.admin.ch/foen/hydro> {
+    ?station <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/HydroMeasuringStation>;
+      schema:identifier ?station_id;
+      schema:name ?stationName;
+      schema:containedInPlace ?waterBody.
+    ?waterBody schema:name ?waterBodyName.
+    ?obs dimension:station ?station;
+      dimension:measurementTime ?time;
+      dimension:waterLevel ?waterLevel.
+    FILTER(?station_id = 2288 )
+  }
+}

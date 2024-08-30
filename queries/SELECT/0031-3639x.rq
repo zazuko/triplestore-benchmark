@@ -1,0 +1,32 @@
+PREFIX : <http://voc.zazuko.com/zack#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+CONSTRUCT {
+  :query :result ?sub.
+  ?sub rdf:type :resultItem.
+  ?sub ?pred ?obj.
+  ?obj schema:name ?oname.
+}
+WHERE {
+  {
+    SELECT DISTINCT ?sub WHERE {
+      {
+        SELECT ?sub WHERE {
+          ?sub (schema:name|schema:description) ?name;
+            rdf:type ?resultType.
+          FILTER(?resultType IN(<http://rdfs.org/ns/void#Dataset>))
+          FILTER(NOT EXISTS { ?sub schema:validThrough ?x. })
+          FILTER(NOT EXISTS { ?sub schema:creativeWorkStatus <https://ld.admin.ch/definedTerm/CreativeWorkStatus/Draft>. })
+        }
+        ORDER BY (?resultType) (?name)
+      }
+    }
+    LIMIT 20
+  }
+  SERVICE <db://lindas> {
+    {
+      ?sub ?pred ?obj.
+      OPTIONAL { ?obj schema:name ?oname. }
+    }
+  }
+}

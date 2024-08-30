@@ -1,0 +1,160 @@
+SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5 ?dimension6 ?dimension7 ?dimension8 ?dimension9 ?dimension10 ?dimension11 ?dimension12 ?dimension13 ?dimension14 ?dimension15 ?dimension16 ?dimension17 ?dimension18 ?dimension19 ?dimension20 ?dimension21 ?dimension22 ?dimension23 ?dimension24 ?dimension25 ?dimension26 ?dimension27 ?dimension28 ?dimension29 WHERE {
+  <https://environment.ld.admin.ch/foen/nfi/nfi_C-90/cube/2023-3> <https://cube.link/observationSet> ?observationSet0.
+  ?observationSet0 <https://cube.link/observation> ?source0.
+  ?source0 <https://environment.ld.admin.ch/foen/nfi/Topic/SE73r> ?dimension0;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/24r> ?dimension1;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/SE2r> ?dimension2;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/SE24> ?dimension3;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/SE18> ?dimension4;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/SE116r> ?dimension5;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/SE116> ?dimension6;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/SE3r> ?dimension7;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/SE3> ?dimension8;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/SE23r> ?dimension9;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/SE21r> ?dimension10;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/SE24r> ?dimension11;
+    <https://environment.ld.admin.ch/foen/nfi/unitOfReference> ?dimension12;
+    <https://environment.ld.admin.ch/foen/nfi/inventory> ?dimension13;
+    <https://environment.ld.admin.ch/foen/nfi/grid> ?dimension14;
+    <https://environment.ld.admin.ch/foen/nfi/unitOfEvaluation> ?dimension15;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/SE23> ?dimension16;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/SE21> ?dimension17;
+    <https://environment.ld.admin.ch/foen/nfi/evaluationType> ?dimension18;
+    <https://environment.ld.admin.ch/foen/nfi/classificationUnit> ?dimension19;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/SE18r> ?dimension20;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/SE92r> ?dimension21;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/SE73> ?dimension22;
+    <https://environment.ld.admin.ch/foen/nfi/Topic/SE171r> ?dimension23.
+  FILTER(?dimension12 = <https://ld.admin.ch/country/CHE>)
+  FILTER(?dimension19 = <https://environment.ld.admin.ch/foen/nfi/ClassificationUnit/Total>)
+  FILTER(?dimension14 = <https://environment.ld.admin.ch/foen/nfi/Grid/410>)
+  FILTER(?dimension15 = <https://environment.ld.admin.ch/foen/nfi/UnitOfEvaluation/2382>)
+  FILTER(?dimension18 = <https://environment.ld.admin.ch/foen/nfi/EvaluationType/1>)
+  OPTIONAL {
+    ?dimension13 <http://schema.org/name> ?dimension24_0.
+    FILTER(LANGMATCHES(LANG(?dimension24_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension13 <http://schema.org/name> ?dimension24_1.
+    FILTER(LANGMATCHES(LANG(?dimension24_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension13 <http://schema.org/name> ?dimension24_2.
+    FILTER(LANGMATCHES(LANG(?dimension24_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension13 <http://schema.org/name> ?dimension24_3.
+    FILTER(LANGMATCHES(LANG(?dimension24_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension13 <http://schema.org/name> ?dimension24_4.
+    FILTER((LANG(?dimension24_4)) = "")
+  }
+  BIND(COALESCE(?dimension24_0, ?dimension24_1, ?dimension24_2, ?dimension24_3, ?dimension24_4) AS ?dimension24)
+  OPTIONAL {
+    ?dimension12 <http://schema.org/name> ?dimension25_0.
+    FILTER(LANGMATCHES(LANG(?dimension25_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension12 <http://schema.org/name> ?dimension25_1.
+    FILTER(LANGMATCHES(LANG(?dimension25_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension12 <http://schema.org/name> ?dimension25_2.
+    FILTER(LANGMATCHES(LANG(?dimension25_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension12 <http://schema.org/name> ?dimension25_3.
+    FILTER(LANGMATCHES(LANG(?dimension25_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension12 <http://schema.org/name> ?dimension25_4.
+    FILTER((LANG(?dimension25_4)) = "")
+  }
+  BIND(COALESCE(?dimension25_0, ?dimension25_1, ?dimension25_2, ?dimension25_3, ?dimension25_4) AS ?dimension25)
+  OPTIONAL {
+    ?dimension19 <http://schema.org/name> ?dimension26_0.
+    FILTER(LANGMATCHES(LANG(?dimension26_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension19 <http://schema.org/name> ?dimension26_1.
+    FILTER(LANGMATCHES(LANG(?dimension26_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension19 <http://schema.org/name> ?dimension26_2.
+    FILTER(LANGMATCHES(LANG(?dimension26_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension19 <http://schema.org/name> ?dimension26_3.
+    FILTER(LANGMATCHES(LANG(?dimension26_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension19 <http://schema.org/name> ?dimension26_4.
+    FILTER((LANG(?dimension26_4)) = "")
+  }
+  BIND(COALESCE(?dimension26_0, ?dimension26_1, ?dimension26_2, ?dimension26_3, ?dimension26_4) AS ?dimension26)
+  OPTIONAL {
+    ?dimension15 <http://schema.org/name> ?dimension27_0.
+    FILTER(LANGMATCHES(LANG(?dimension27_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension15 <http://schema.org/name> ?dimension27_1.
+    FILTER(LANGMATCHES(LANG(?dimension27_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension15 <http://schema.org/name> ?dimension27_2.
+    FILTER(LANGMATCHES(LANG(?dimension27_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension15 <http://schema.org/name> ?dimension27_3.
+    FILTER(LANGMATCHES(LANG(?dimension27_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension15 <http://schema.org/name> ?dimension27_4.
+    FILTER((LANG(?dimension27_4)) = "")
+  }
+  BIND(COALESCE(?dimension27_0, ?dimension27_1, ?dimension27_2, ?dimension27_3, ?dimension27_4) AS ?dimension27)
+  OPTIONAL {
+    ?dimension14 <http://schema.org/name> ?dimension28_0.
+    FILTER(LANGMATCHES(LANG(?dimension28_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension14 <http://schema.org/name> ?dimension28_1.
+    FILTER(LANGMATCHES(LANG(?dimension28_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension14 <http://schema.org/name> ?dimension28_2.
+    FILTER(LANGMATCHES(LANG(?dimension28_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension14 <http://schema.org/name> ?dimension28_3.
+    FILTER(LANGMATCHES(LANG(?dimension28_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension14 <http://schema.org/name> ?dimension28_4.
+    FILTER((LANG(?dimension28_4)) = "")
+  }
+  BIND(COALESCE(?dimension28_0, ?dimension28_1, ?dimension28_2, ?dimension28_3, ?dimension28_4) AS ?dimension28)
+  OPTIONAL {
+    ?dimension18 <http://schema.org/name> ?dimension29_0.
+    FILTER(LANGMATCHES(LANG(?dimension29_0), "de"))
+  }
+  OPTIONAL {
+    ?dimension18 <http://schema.org/name> ?dimension29_1.
+    FILTER(LANGMATCHES(LANG(?dimension29_1), "fr"))
+  }
+  OPTIONAL {
+    ?dimension18 <http://schema.org/name> ?dimension29_2.
+    FILTER(LANGMATCHES(LANG(?dimension29_2), "it"))
+  }
+  OPTIONAL {
+    ?dimension18 <http://schema.org/name> ?dimension29_3.
+    FILTER(LANGMATCHES(LANG(?dimension29_3), "en"))
+  }
+  OPTIONAL {
+    ?dimension18 <http://schema.org/name> ?dimension29_4.
+    FILTER((LANG(?dimension29_4)) = "")
+  }
+  BIND(COALESCE(?dimension29_0, ?dimension29_1, ?dimension29_2, ?dimension29_3, ?dimension29_4) AS ?dimension29)
+}
+GROUP BY ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5 ?dimension6 ?dimension7 ?dimension8 ?dimension9 ?dimension10 ?dimension11 ?dimension12 ?dimension13 ?dimension14 ?dimension15 ?dimension16 ?dimension17 ?dimension18 ?dimension19 ?dimension20 ?dimension21 ?dimension22 ?dimension23 ?dimension24 ?dimension25 ?dimension26 ?dimension27 ?dimension28 ?dimension29

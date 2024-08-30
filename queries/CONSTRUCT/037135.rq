@@ -1,0 +1,9 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX schema: <http://schema.org/>
+CONSTRUCT { ?cube schema:expires "2023-11-23T09:05:03.516Z"^^xsd:dateTime. }
+FROM <https://lindas.admin.ch/sfa/cube>
+WHERE {
+  <https://culture.ld.admin.ch/sfa/StateAccounts_Office> schema:hasPart ?cube.
+  OPTIONAL { ?cube schema:expires ?expires. }
+  FILTER(!(BOUND(?expires)))
+}

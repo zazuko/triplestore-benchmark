@@ -1,0 +1,10 @@
+SELECT (MAX(?count) AS ?max) (MIN(?count) AS ?min) WHERE {
+  GRAPH <https://lindas.admin.ch/stadtzuerich/stat> {
+    SELECT ?observation (COUNT(?observation) AS ?count) WHERE {
+      <https://ld.stadt-zuerich.ch/statistics/000267> <https://cube.link/observationSet> ?observationSet.
+      ?observationSet <https://cube.link/observation> ?observation.
+      ?observation <https://ld.stadt-zuerich.ch/statistics/property/RAUM> ?value.
+    }
+    GROUP BY ?observation
+  }
+}

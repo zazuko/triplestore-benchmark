@@ -1,0 +1,36 @@
+SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension10 ?dimension11 ?dimension3 ?dimension12 ?dimension13 ?dimension4 ?dimension14 ?dimension15 ?dimension5 ?dimension16 ?dimension17 ?dimension6 ?dimension18 ?dimension19 ?dimension7 ?dimension20 ?dimension21 WHERE {
+  <https://ld.stadt-zuerich.ch/statistics/000230> <https://cube.link/observationSet> ?observationSet0.
+  ?observationSet0 <https://cube.link/observation> ?source0.
+  <https://ld.stadt-zuerich.ch/statistics/000256> <https://cube.link/observationSet> ?observationSet1.
+  ?observationSet1 <https://cube.link/observation> ?source1.
+  ?source0 <https://ld.stadt-zuerich.ch/statistics/measure/UMZ> ?dimension0.
+  ?source1 <https://ld.stadt-zuerich.ch/statistics/measure/BEW> ?dimension1.
+  ?source0 <https://ld.stadt-zuerich.ch/statistics/property/ZEIT> ?dimension2.
+  ?source1 <https://ld.stadt-zuerich.ch/statistics/property/ZEIT> ?dimension2.
+  ?source0 <https://ld.stadt-zuerich.ch/statistics/property/RAUM> ?dimension3.
+  ?source1 <https://ld.stadt-zuerich.ch/statistics/property/RAUM> ?dimension3.
+  ?source0 <https://ld.stadt-zuerich.ch/statistics/property/ORT> ?dimension4;
+    <https://ld.stadt-zuerich.ch/statistics/property/ALT> ?dimension5.
+  ?source1 <https://ld.stadt-zuerich.ch/statistics/property/ALT> ?dimension5.
+  ?source0 <https://ld.stadt-zuerich.ch/statistics/property/SEX> ?dimension6.
+  ?source1 <https://ld.stadt-zuerich.ch/statistics/property/SEX> ?dimension6.
+  ?source0 <https://ld.stadt-zuerich.ch/statistics/property/ZIV> ?dimension7.
+  ?source1 <https://ld.stadt-zuerich.ch/statistics/property/ZIV> ?dimension7.
+  ?dimension2 <http://schema.org/inDefinedTermSet> ?dimension8.
+  ?dimension4 <http://schema.org/inDefinedTermSet> ?dimension9.
+  ?dimension2 <http://schema.org/name> ?dimension10;
+    <http://schema.org/termCode> ?dimension11.
+  ?dimension3 <http://schema.org/name> ?dimension12;
+    <http://schema.org/termCode> ?dimension13.
+  ?dimension4 <http://schema.org/name> ?dimension14;
+    <http://schema.org/termCode> ?dimension15.
+  ?dimension5 <http://schema.org/name> ?dimension16;
+    <http://schema.org/termCode> ?dimension17.
+  ?dimension6 <http://schema.org/name> ?dimension18;
+    <http://schema.org/termCode> ?dimension19.
+  ?dimension7 <http://schema.org/name> ?dimension20;
+    <http://schema.org/termCode> ?dimension21.
+  FILTER(?dimension8 = <https://ld.stadt-zuerich.ch/statistics/termset/Jahr>)
+  FILTER(?dimension9 = <https://ld.stadt-zuerich.ch/statistics/termset/KreiseZh>)
+}
+GROUP BY ?dimension0 ?dimension1 ?dimension2 ?dimension10 ?dimension11 ?dimension3 ?dimension12 ?dimension13 ?dimension4 ?dimension14 ?dimension15 ?dimension5 ?dimension16 ?dimension17 ?dimension6 ?dimension18 ?dimension19 ?dimension7 ?dimension20 ?dimension21

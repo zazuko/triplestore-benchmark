@@ -1,0 +1,8 @@
+PREFIX schema: <http://schema.org/>
+SELECT ?cube ?name WHERE {
+  ?cube <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://cube.link/Cube>;
+    schema:name ?name.
+  FILTER(NOT EXISTS { ?cube schema:validThrough ?v0. })
+  FILTER(NOT EXISTS { ?cube schema:expires ?v1. })
+  FILTER(CONTAINS(STR(?cube), "ld.stadt-zuerich.ch"))
+}

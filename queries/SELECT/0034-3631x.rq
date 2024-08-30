@@ -1,0 +1,105 @@
+SELECT DISTINCT ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5 ?dimension6 ?dimension7 ?dimension8 ?dimension9 ?dimension10 ?dimension11 ?dimension12 ?dimension13 ?dimension14 ?dimension15 WHERE {
+  <https://energy.ld.admin.ch/elcom/electricityprice> <https://cube.link/observationSet> ?observationSet0.
+  ?observationSet0 <https://cube.link/observation> ?source0.
+  ?source0 <https://energy.ld.admin.ch/elcom/electricityprice/dimension/category> ?dimension0;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/municipality> ?dimension1;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/operator> ?dimension2;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/period> ?dimension3;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/aidfee> ?dimension4;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/charge> ?dimension5;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/energy> ?dimension6;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/fixcosts> ?dimension7;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/fixcostspercent> ?dimension8;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/gridusage> ?dimension9;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/total> ?dimension10;
+    <https://energy.ld.admin.ch/elcom/electricityprice/dimension/product> ?dimension11.
+  FILTER(?dimension1 = <https://ld.admin.ch/municipality/1>)
+  FILTER(?dimension0 = <https://energy.ld.admin.ch/elcom/electricityprice/category/C1>)
+  FILTER(?dimension2 = <https://energy.ld.admin.ch/elcom/electricityprice/operator/486>)
+  FILTER(?dimension11 = <https://energy.ld.admin.ch/elcom/electricityprice/product/standard>)
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension12_0.
+    FILTER(LANGMATCHES(LANG(?dimension12_0), "en"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension12_1.
+    FILTER(LANGMATCHES(LANG(?dimension12_1), "de"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension12_2.
+    FILTER(LANGMATCHES(LANG(?dimension12_2), "fr"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension12_3.
+    FILTER(LANGMATCHES(LANG(?dimension12_3), "it"))
+  }
+  OPTIONAL {
+    ?dimension0 <http://schema.org/name> ?dimension12_4.
+    FILTER((LANG(?dimension12_4)) = "")
+  }
+  BIND(COALESCE(?dimension12_0, ?dimension12_1, ?dimension12_2, ?dimension12_3, ?dimension12_4) AS ?dimension12)
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension13_0.
+    FILTER(LANGMATCHES(LANG(?dimension13_0), "en"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension13_1.
+    FILTER(LANGMATCHES(LANG(?dimension13_1), "de"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension13_2.
+    FILTER(LANGMATCHES(LANG(?dimension13_2), "fr"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension13_3.
+    FILTER(LANGMATCHES(LANG(?dimension13_3), "it"))
+  }
+  OPTIONAL {
+    ?dimension1 <http://schema.org/name> ?dimension13_4.
+    FILTER((LANG(?dimension13_4)) = "")
+  }
+  BIND(COALESCE(?dimension13_0, ?dimension13_1, ?dimension13_2, ?dimension13_3, ?dimension13_4) AS ?dimension13)
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension14_0.
+    FILTER(LANGMATCHES(LANG(?dimension14_0), "en"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension14_1.
+    FILTER(LANGMATCHES(LANG(?dimension14_1), "de"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension14_2.
+    FILTER(LANGMATCHES(LANG(?dimension14_2), "fr"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension14_3.
+    FILTER(LANGMATCHES(LANG(?dimension14_3), "it"))
+  }
+  OPTIONAL {
+    ?dimension2 <http://schema.org/name> ?dimension14_4.
+    FILTER((LANG(?dimension14_4)) = "")
+  }
+  BIND(COALESCE(?dimension14_0, ?dimension14_1, ?dimension14_2, ?dimension14_3, ?dimension14_4) AS ?dimension14)
+  OPTIONAL {
+    ?dimension11 <http://schema.org/name> ?dimension15_0.
+    FILTER(LANGMATCHES(LANG(?dimension15_0), "en"))
+  }
+  OPTIONAL {
+    ?dimension11 <http://schema.org/name> ?dimension15_1.
+    FILTER(LANGMATCHES(LANG(?dimension15_1), "de"))
+  }
+  OPTIONAL {
+    ?dimension11 <http://schema.org/name> ?dimension15_2.
+    FILTER(LANGMATCHES(LANG(?dimension15_2), "fr"))
+  }
+  OPTIONAL {
+    ?dimension11 <http://schema.org/name> ?dimension15_3.
+    FILTER(LANGMATCHES(LANG(?dimension15_3), "it"))
+  }
+  OPTIONAL {
+    ?dimension11 <http://schema.org/name> ?dimension15_4.
+    FILTER((LANG(?dimension15_4)) = "")
+  }
+  BIND(COALESCE(?dimension15_0, ?dimension15_1, ?dimension15_2, ?dimension15_3, ?dimension15_4) AS ?dimension15)
+}
+GROUP BY ?dimension0 ?dimension1 ?dimension2 ?dimension3 ?dimension4 ?dimension5 ?dimension6 ?dimension7 ?dimension8 ?dimension9 ?dimension10 ?dimension11 ?dimension12 ?dimension13 ?dimension14 ?dimension15

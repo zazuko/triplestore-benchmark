@@ -1,0 +1,23 @@
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX hydra: <http://www.w3.org/ns/hydra/core#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX cube: <https://cube.link/>
+CONSTRUCT {
+  <urn:ssz:measures> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> hydra:Collection.
+  <urn:ssz:measures> hydra:member ?sub.
+  ?sub rdfs:label ?kennzahlLabel.
+}
+FROM <https://lindas.admin.ch/stadtzuerich/stat>
+WHERE {
+  SELECT DISTINCT ?sub ?kennzahlLabel WHERE {
+    ?sub <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> cube:MeasureDimension;
+      schema:identifier ?kennzahl;
+      schema:name ?kennzahlLabel.
+    ?shape <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> cube:Constraint;
+      (sh:property/sh:path) ?sub.
+    FILTER((CONTAINS(LCASE(?kennzahlLabel), LCASE("bew"))) || ((LCASE(?kennzahl)) = (LCASE("bew"))))
+  }
+  ORDER BY (?kennzahlLabel)
+  LIMIT 10
+}

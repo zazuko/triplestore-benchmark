@@ -1,0 +1,37 @@
+PREFIX schema: <http://schema.org/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+CONSTRUCT {
+  ?dataset ?p ?o.
+  ?o ?nestedP ?nestedO.
+  ?copyright schema:identifier ?copyrightIdentifier.
+  ?dataset dcterms:accrualPeriodicity ?accrualPeriodicity.
+  ?publisher schema:name ?publisherName.
+  ?dataset dcat:theme ?euTheme.
+}
+WHERE {
+  ?dataset ?p ?o;
+    dcterms:creator <https://register.ld.admin.ch/opendataswiss/org/bundesamt-fur-umwelt-bafu>;
+    schema:workExample <https://ld.admin.ch/application/opendataswiss>;
+    schema:creativeWorkStatus <https://ld.admin.ch/vocabulary/CreativeWorkStatus/Published>.
+  FILTER(NOT EXISTS { ?dataset schema:validThrough ?expiration1. })
+  FILTER(NOT EXISTS { ?dataset schema:expires ?expiration2. })
+  OPTIONAL {
+    ?o ?nestedP ?nestedO.
+    FILTER(?nestedP != <https://cube.link/observation>)
+  }
+  OPTIONAL {
+    ?dataset dcterms:rights ?copyright.
+    GRAPH ?copyrightGraph { ?copyright schema:identifier ?copyrightIdentifier. }
+  }
+  OPTIONAL { ?dataset dcterms:accrualPeriodicity ?accrualPeriodicity. }
+  OPTIONAL {
+    ?dataset dcterms:publisher ?publisher.
+    ?publisher schema:name ?publisherName.
+  }
+  OPTIONAL {
+    ?dataset dcat:theme ?theme.
+    ?theme ((schema:supersededBy?)/schema:sameAs) ?euTheme.
+  }
+  FILTER(?p != dcat:theme)
+}

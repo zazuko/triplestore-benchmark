@@ -1,0 +1,33 @@
+PREFIX schema: <http://schema.org/>
+PREFIX vl: <https://version.link/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+CONSTRUCT {
+  ?iri vl:identityIdentifier ?literal.
+  ?iri schema:identifier ?ou.
+  ?iri schema:name ?name.
+  ?iri schema:alternateName ?altName.
+}
+FROM <https://lindas.admin.ch/fch/rvov>
+WHERE {
+  {
+    VALUES ?termSet {
+      <https://ld.admin.ch/department>
+      <https://ld.admin.ch/office>
+    }
+    ?iri schema:inDefinedTermSet ?termSet;
+      schema:identifier ?literal.
+    FILTER(ISLITERAL(?literal))
+  }
+  UNION
+  {
+    VALUES (?iri ?literal) {
+      (<https://ld.admin.ch/FC> "FC")
+      (<https://ld.admin.ch/FCh> "FCh")
+    }
+  }
+  OPTIONAL { ?iri schema:name ?name. }
+  OPTIONAL { ?iri schema:alternateName ?altName. }
+  ?iri owl:sameAs ?org.
+  FILTER(STRSTARTS(STR(?org), "https://register.ld.admin.ch/staatskalender/organization/"))
+  BIND(STRAFTER(STR(?org), "https://register.ld.admin.ch/staatskalender/organization/") AS ?ou)
+}

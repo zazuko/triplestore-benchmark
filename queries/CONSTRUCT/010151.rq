@@ -1,0 +1,9 @@
+CONSTRUCT {
+  ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?o.
+  ?s <http://www.w3.org/2000/01/rdf-schema#label> ?label.
+}
+WHERE {
+  ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?o.
+  OPTIONAL { ?s <http://www.w3.org/2000/01/rdf-schema#label> ?label. }
+  FILTER(REGEX(STR(?s), "^https://ld.stadt-zuerich.ch/statistics/"))
+}

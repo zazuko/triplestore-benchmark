@@ -1,0 +1,25 @@
+PREFIX cube: <https://cube.link/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX schema: <http://schema.org/>
+SELECT DISTINCT ?dimension ?label ?dimensionValue ?dimensionValueLabel FROM <https://lindas.admin.ch/foag/agricultural-market-data>
+WHERE {
+  VALUES ?dimension {
+    <https://agriculture.ld.admin.ch/foag/dimension/market>
+    <https://agriculture.ld.admin.ch/foag/dimension/value-chain>
+  }
+  ?cube <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> cube:Cube;
+    cube:observationConstraint ?shape.
+  ?shape ?p ?blankNode.
+  ?blankNode sh:path ?dimension.
+  OPTIONAL {
+    ?blankNode schema:name ?label.
+    FILTER((LANG(?label)) = "de")
+  }
+  ?cube cube:observationSet ?observationSet.
+  ?observationSet cube:observation ?observation.
+  ?observation ?dimension ?dimensionValue.
+  OPTIONAL {
+    ?dimensionValue schema:name ?dimensionValueLabel.
+    FILTER((LANG(?dimensionValueLabel)) = "de")
+  }
+}

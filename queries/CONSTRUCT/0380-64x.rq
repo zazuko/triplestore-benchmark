@@ -1,0 +1,39 @@
+PREFIX schema: <http://schema.org/>
+CONSTRUCT { ?uri schema:name ?label. }
+WHERE {
+  GRAPH ?g {
+    ?uri schema:name ?label.
+    VALUES ?uri {
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+      <http://rdfs.org/ns/void#Dataset>
+      <http://www.w3.org/ns/dcat#Dataset>
+      schema:Dataset
+      <https://cube.link/Cube>
+      <http://purl.org/dc/terms/identifier>
+      <http://purl.org/dc/terms/creator>
+      <https://register.ld.admin.ch/opendataswiss/org/elcom>
+      <http://purl.org/dc/terms/issued>
+      <http://purl.org/dc/terms/title>
+      <http://purl.org/dc/terms/description>
+      <http://purl.org/dc/terms/publisher>
+      schema:name
+      <http://purl.org/dc/terms/license>
+      <https://ld.admin.ch/vocabulary/TermsOfUse/Open-Use>
+      schema:contributor
+      <https://energy.ld.admin.ch/elcom/org/zazuko>
+      schema:description
+      schema:contactPoint
+      <https://energy.ld.admin.ch/elcom/opendataswiss-meta/BarbaraWyss>
+      schema:dateCreated
+      schema:datePublished
+      schema:dateModified
+      <http://www.w3.org/ns/dcat#landingPage>
+      schema:workExample
+      <https://ld.admin.ch/application/opendataswiss>
+      <https://ld.admin.ch/application/visualize>
+      <https://ld.admin.ch/application/strompreis>
+      schema:identifier
+      schema:creativeWorkStatus
+    }
+  }
+}

@@ -1,0 +1,34 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX schema: <http://schema.org/>
+PREFIX schemac: <https://cube.link/>
+PREFIX property: <https://ld.stadt-zuerich.ch/statistics/property/>
+PREFIX measure: <https://ld.stadt-zuerich.ch/statistics/measure/>
+PREFIX code: <https://ld.stadt-zuerich.ch/statistics/code/>
+SELECT ?nameLabel ?geburten ?personen (ROUND((?geburten / ?personen) * 100 ) AS ?prozent) FROM <https://lindas.admin.ch/stadtzuerich/stat>
+WHERE {
+  {
+    SELECT ?name (SUM(xsd:integer(?geb)) AS ?geburten) WHERE {
+      <https://ld.stadt-zuerich.ch/statistics/000361> schemac:observationSet ?obsSetG.
+      ?obsSetG schemac:observation ?obsG.
+      ?obsG property:TIME "2021-12-31"^^xsd:date;
+        property:SEX code:SEX0001;
+        property:NAF code:NAF0001;
+        property:NAM ?name;
+        measure:GEB ?geb.
+    }
+    GROUP BY ?name
+  }
+  OPTIONAL {
+    SELECT ?name (SUM(xsd:integer(?pers)) AS ?personen) WHERE {
+      <https://ld.stadt-zuerich.ch/statistics/000437> schemac:observationSet ?obsSetB.
+      ?obsSetB schemac:observation ?obsB.
+      ?obsB property:TIME "2021-12-31"^^xsd:date;
+        property:SEX code:SEX0001;
+        property:NAM ?name;
+        measure:BEW ?pers.
+    }
+    GROUP BY ?name
+  }
+  ?name schema:name ?nameLabel.
+}
+ORDER BY DESC (?geburten) (?nameLabel)

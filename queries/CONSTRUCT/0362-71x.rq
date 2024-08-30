@@ -1,0 +1,21 @@
+PREFIX schema: <http://schema.org/>
+CONSTRUCT { ?uri schema:name ?label. }
+WHERE {
+  GRAPH ?g {
+    ?uri schema:name ?label.
+    VALUES ?uri {
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+      schema:Organization
+      schema:DefinedTerm
+      schema:ParliamentaryCommittee
+      schema:name
+      schema:alternateName
+      schema:inDefinedTermSet
+      <https://politics.ld.admin.ch/vocabulary/parliamentary-committee>
+      schema:additionalType
+      <https://politics.ld.admin.ch/vocabulary/committee/type/3>
+      schema:parentOrganization
+      <https://politics.ld.admin.ch/council/N>
+    }
+  }
+}
