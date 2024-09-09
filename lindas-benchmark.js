@@ -8,7 +8,7 @@ const stepDuration = 120; // seconds
 
 const endpoint = __ENV.SPARQL_ENDPOINT;
 const startStr = __ENV.START || "0";
-const endStr = __ENV.END || "808";
+const endStr = __ENV.END || "801";
 const start = parseInt(startStr);
 const end = parseInt(endStr);
 
@@ -41,7 +41,7 @@ const queries = new SharedArray('queries', function () {
 
   list.forEach((filePath) => {
     const queryData = open(filePath);
-    requests.push(`# File: ${filePath} (conformity)\n\n${queryData}`);
+    requests.push(`# File: ${filePath} (benchmark)\n\n${queryData}`);
   });
 
   return requests;
