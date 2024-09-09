@@ -80,7 +80,7 @@ k6 run \
 In case you want to run the benchmark on some specific queries (it can be useful in order to check that it can hit your endpoint as expected), you can add those parameters:
 
 - `-e START=0`: The index of the first query to run (default: `0`)
-- `-e END=808`: The index of the last query to run (default: `808`)
+- `-e END=801`: The index of the last query to run (default: `801`)
 
 The index starts at `0`.
 
