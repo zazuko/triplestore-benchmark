@@ -24,6 +24,23 @@ We also provide a quick way to check if the triplestore is compliant with the qu
 
 ## Quick Start
 
+All SPARQL queries that are used in the differents tests are stored in the `queries` folder.
+
+In case you add/remove/rename a query, you need to update the `query-files.json` file, by running the following command:
+
+```sh
+./scripts/update-query-list.sh
+```
+
+In case you want to know the query file from an ID shown in the results, you can run the following command:
+
+```sh
+jq -r '.[x,y,z]' query-files.json
+```
+
+by replacing `x`, `y`, and `z` by the IDs you want to know the query file.
+You can specify as many IDs as you want.
+
 ### Conformity Test
 
 Check that your triplestore is able to support some common queries against the LINDAS dataset:
@@ -63,9 +80,12 @@ k6 run \
 In case you want to run the benchmark on some specific queries (it can be useful in order to check that it can hit your endpoint as expected), you can add those parameters:
 
 - `-e START=0`: The index of the first query to run (default: `0`)
-- `-e END=1125`: The index of the last query to run (default: `1125`)
+- `-e END=808`: The index of the last query to run (default: `808`)
+
+The index starts at `0`.
 
 The query timeout is set to 2min30s.
+
 It will run 10 virtual users, that will run the maximum number of queries they can against the triplestore during 120s, and this for each query.
 
 The results are stored in a file `./results/summary-benchmark-YYYY-MM-DDTHH-MM-SS.json`.

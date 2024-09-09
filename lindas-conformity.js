@@ -1,6 +1,7 @@
 import http from 'k6/http';
 import { check, group } from 'k6';
 import encoding from 'k6/encoding';
+import { SharedArray, } from 'k6/data';
 import { Trend } from 'k6/metrics';
 
 const endpoint = __ENV.SPARQL_ENDPOINT;
@@ -26,7 +27,19 @@ if (authorizationHeader) {
   headers['Authorization'] = authorizationHeader;
 }
 
-const queries = open('./queries/lindas-queries-2023-11.sparql').split('\n###\n').map((q) => q.trim()).filter((q) => q.length > 0);
+const queries = new SharedArray('queries', function () {
+  const file = open('query-files.json');
+  const list = JSON.parse(file);
+
+  const requests = [];
+
+  list.forEach((filePath) => {
+    const queryData = open(filePath);
+    requests.push(`# File: ${filePath} (conformity)\n\n${queryData}`);
+  });
+
+  return requests;
+});
 const queryLength = queries.length;
 
 export function handleSummary (data) {
