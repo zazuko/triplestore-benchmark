@@ -8,7 +8,7 @@ const stepDuration = 120; // seconds
 
 const endpoint = __ENV.SPARQL_ENDPOINT;
 const startStr = __ENV.START || "0";
-const endStr = __ENV.END || "1125";
+const endStr = __ENV.END || "808";
 const start = parseInt(startStr);
 const end = parseInt(endStr);
 
@@ -34,7 +34,17 @@ if (authorizationHeader) {
 }
 
 const queries = new SharedArray('queries', function () {
-  return open('./queries/lindas-queries-2023-11.sparql').split('\n###\n').map((q) => q.trim()).filter((q) => q.length > 0);
+  const file = open('query-files.json');
+  const list = JSON.parse(file);
+
+  const requests = [];
+
+  list.forEach((filePath) => {
+    const queryData = open(filePath);
+    requests.push(`# File: ${filePath} (conformity)\n\n${queryData}`);
+  });
+
+  return requests;
 });
 
 const trends = []
