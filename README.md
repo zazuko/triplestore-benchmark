@@ -24,6 +24,14 @@ We also provide a quick way to check if the triplestore is compliant with the qu
 
 ## Quick Start
 
+All SPARQL queries that are used in the differents tests are stored in the `queries` folder.
+
+In case you add/remove/rename a query, you need to update the `query-files.json` file, by running the following command:
+
+```sh
+./scripts/update-query-list.sh
+```
+
 ### Conformity Test
 
 Check that your triplestore is able to support some common queries against the LINDAS dataset:
