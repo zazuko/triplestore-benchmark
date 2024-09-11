@@ -1,8 +1,8 @@
-# LINDAS Triplestore Benchmark
+# Triplestore Benchmark
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/?autostart=true&editor=code#https://github.com/zazuko/lindas-benchmark)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/?autostart=true&editor=code#https://github.com/zazuko/triplestore-benchmark)
 
-Welcome to the LINDAS Triplestore Benchmark repository!
+Welcome to the Triplestore Benchmark repository!
 Here, you can explore SPARQL queries extracted from the Swiss government SPARQL endpoint, LINDAS, to benchmark and compare other triplestores.
 
 ## Baseline Comparison
@@ -18,6 +18,7 @@ Ensure you have the following prerequisites ready:
 - A snapshot of the LINDAS dataset, which you can download [here](https://download.zazukoians.org/lindas/lindas_2024-06-14.nq.gz).
   The dataset is approximately 2.3 GB compressed and 60GB uncompressed.
 - A triplestore that you wish to test against.
+- The above referenced dataset uploaded into the triplestore.
 
 We use [k6](https://k6.io/) to benchmark the queries.
 We also provide a quick way to check if the triplestore is compliant with the queries that are run against LINDAS.
@@ -59,7 +60,7 @@ The script has a limit of 1 day to run.
 This will run the queries against the triplestore and check if they are able to return a result.
 The results are stored in a file `./results/summary-conformity.json`.
 
-And inspect results in a human-readable format, run the following command (`jq` is required):
+And to inspect results in a human-readable format, run the following command (`jq` is required):
 
 ```sh
 ./scripts/summary-conformity-simple.sh
