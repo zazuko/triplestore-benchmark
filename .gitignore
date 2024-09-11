@@ -7,3 +7,4 @@ results/*
 *.log
 dist/
 *.db
+.ipynb_checkpoints/
