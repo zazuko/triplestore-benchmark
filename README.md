@@ -97,3 +97,6 @@ To inspect the results in a human-readable format, run the following command (`j
 ```
 
 by updating the path to the JSON file you want to inspect.
+
+You can analyse the results in a more detailed way by running the Jupiter Notebook [`benchmark-analysis.ipynb`](./benchmark-analysis.ipynb).
+Just update the path of the results file you want to analyse at the beginning of the notebook and run it.
