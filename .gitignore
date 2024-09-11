@@ -3,6 +3,7 @@ iguana-*.zip
 iguana-*.zip.*
 /volumes/
 results/*
+!results/summary-benchmark-2024-09-10T18-14-41.json
 *.log
 dist/
 *.db
