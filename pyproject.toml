@@ -9,14 +9,11 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.10"
-notebook = "7.2.1"
+notebook = "7.2.2"
 pandas = "2.2.2"
-itables = "2.1.4"
+itables = "2.1.5"
 nbconvert = "7.16.4"
-matplotlib = "3.9.1"
-jupyterlite-core = "0.4.0"
-jupyterlite-pyodide-kernel = "0.4.1"
-jupyterlab = "4.2.4"
+matplotlib = "3.9.2"
 
 [build-system]
 requires = ["poetry-core"]
